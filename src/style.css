@@ -595,3 +595,21 @@ button.toggled {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+.agent-driving {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+
+.agent-driving .pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--violet);
+  box-shadow: 0 0 10px var(--violet);
+}

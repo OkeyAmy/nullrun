@@ -204,7 +204,10 @@ The first screen asks who is at the controls. An agent can read that answer and 
 handler joining mid-run knows its role.
 
 - **Human** — you move the operative while an AI handler works the network beside you.
-- **AI** — the agent takes both roles and runs the infiltration itself.
+- **AI** — the agent takes both roles and runs the infiltration itself. Human input is genuinely
+  switched off here: keyboard and clicks stop reaching the operative, so the two of you cannot
+  fight over the same body. The action bar becomes a spectator strip, and `C` (or the **Take
+  control** button) hands the operative straight back to you mid-floor.
 
 ### Connecting your agent
 
@@ -236,7 +239,7 @@ pick an implant, descend. Intel banks between runs.
 - Nine implants: extra AP, silent sprint, wider scans, cheaper blackouts, faster alarm decay, and more.
 
 **Controls:** WASD/arrows move · click to path · hover to preview route risk · `E` hack · `F` lift
-intel · `Shift` sprint · `X` extract · `Space` end turn.
+intel · `Shift` sprint · `X` extract · `Space` end turn · `C` take control back from the agent.
 
 ---
 
@@ -292,7 +295,7 @@ Past that, the suite goes wide on purpose rather than parading a few happy paths
 | Determinism | same seed rebuilds an identical floor; 120 seeds give near-unique layouts |
 | Tool-choice evals | **313 generated cases across 18 tools** (`tools/build-evals.mjs`) |
 | Eval execution | all 313 executed against the live page via `executeTool`, plus a 19-check success-path pass proving every tool can *succeed*, not merely respond |
-| Browser smoke | 15 checks on the real page: rendering, HUD survival under input, control occlusion, agent tool calls, zero console errors |
+| Browser smoke | 19 checks on the real page: rendering, HUD survival under input, control occlusion, mode input-gating in both directions, agent tool calls, zero console errors |
 
 Assertions were mutation-checked: the code was deliberately broken to confirm the tests notice.
 Where a single-line mutation slipped through, the test got strengthened until it caught the change.

@@ -107,6 +107,60 @@ check(
 console.log(`      phase after input: ${afterMoving.phase}, log entries: ${afterMoving.logEntries}`);
 await page.screenshot({ path: '.smoke/3-after-input.png' });
 
+// --- agent mode must actually take the controls away from the human -------
+await page.evaluate(() => {
+  const g = window.nullrun.game;
+  g.newRun(20260903);
+  g.setMode('agent');
+  g.beginInfiltration();
+});
+await page.waitForTimeout(200);
+
+const agentBefore = await page.evaluate(() => ({ ...window.nullrun.game.state.player }));
+for (const key of ['ArrowRight', 'ArrowDown', 'ArrowRight', ' ', 'e', 'f']) {
+  await page.keyboard.press(key);
+  await page.waitForTimeout(40);
+}
+const boardBox = await page.locator('#board').boundingBox();
+await page.mouse.click(boardBox.x + boardBox.width * 0.6, boardBox.y + boardBox.height * 0.5);
+await page.waitForTimeout(150);
+const agentAfter = await page.evaluate(() => ({
+  ...window.nullrun.game.state.player,
+  turn: window.nullrun.game.state.turn,
+}));
+check(
+  'agent mode ignores human keyboard and click input',
+  agentBefore.x === agentAfter.x && agentBefore.y === agentAfter.y && agentAfter.turn === 1,
+);
+check(
+  'agent mode offers the human a way to take control back',
+  await page.locator('#btn-takeover').isVisible(),
+);
+await page.keyboard.press('c');
+await page.waitForTimeout(200);
+check(
+  'pressing C hands control back to the human',
+  (await page.evaluate(() => window.nullrun.game.state.mode)) === 'coop',
+);
+
+// ...and co-op must leave the human fully in charge of the operative
+await page.evaluate(() => {
+  const g = window.nullrun.game;
+  g.newRun(20260903);
+  g.setMode('coop');
+  g.beginInfiltration();
+});
+await page.waitForTimeout(200);
+const coopBefore = await page.evaluate(() => ({ ...window.nullrun.game.state.player }));
+await page.keyboard.press('ArrowRight');
+await page.keyboard.press('ArrowDown');
+await page.waitForTimeout(150);
+const coopAfter = await page.evaluate(() => ({ ...window.nullrun.game.state.player }));
+check(
+  'co-op mode still lets the human move the operative',
+  coopBefore.x !== coopAfter.x || coopBefore.y !== coopAfter.y,
+);
+
 // --- hovering must produce a route preview without throwing ---------------
 const box = await page.locator('#board').boundingBox();
 await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5);

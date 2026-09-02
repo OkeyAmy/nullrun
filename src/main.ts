@@ -30,6 +30,16 @@ function report(result: { ok: boolean; message: string }): void {
   hud.render();
 }
 
+/**
+ * In agent mode the handler owns the operative as well as the network, so
+ * human input must not reach the game — otherwise both players drive the same
+ * body and the mode means nothing. Reading the board stays available: hovering
+ * for route risk is spectating, not acting.
+ */
+function humanCanAct(): boolean {
+  return game.state.phase === 'playing' && game.state.mode !== 'agent';
+}
+
 // --- reactive wiring -----------------------------------------------------
 
 game.onChange(() => {
@@ -55,6 +65,11 @@ const MOVE_KEYS: Record<string, [number, number]> = {
 window.addEventListener('keydown', (event) => {
   if (game.state.phase !== 'playing') {
     if (event.key === 'Enter' && game.state.phase === 'briefing') game.beginInfiltration();
+    return;
+  }
+  if (!humanCanAct()) {
+    // the agent is playing; let the human take the operative back with `C`
+    if (event.key === 'c' || event.key === 'C') report(game.setMode('coop'));
     return;
   }
 
@@ -108,7 +123,7 @@ canvas.addEventListener('mouseleave', () => {
 });
 
 canvas.addEventListener('click', (event) => {
-  if (game.state.phase !== 'playing') return;
+  if (!humanCanAct()) return;
   const tile = renderer.tileFromPointer(event.clientX, event.clientY);
   if (!tile) return;
 

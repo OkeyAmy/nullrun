@@ -144,7 +144,21 @@ export class Hud {
 
   private renderActions(): void {
     const s = this.game.state;
-    const playing = s.phase === 'playing';
+    const agentDriving = s.mode === 'agent';
+
+    if (agentDriving && s.phase === 'playing') {
+      // the handler owns the operative here; offer the human a way back in
+      this.actionbarEl.innerHTML = `
+        <span class="agent-driving"><span class="pip"></span>Agent has control of the operative</span>
+        <span class="spacer"></span>
+        <span class="keyhint">watching only \u00b7 hover a tile to read its risk</span>
+        <button id="btn-takeover">Take control [C]</button>
+      `;
+      this.bind('btn-takeover', () => this.callbacks.onSetMode('coop'));
+      return;
+    }
+
+    const playing = s.phase === 'playing' && !agentDriving;
     const onLoot = s.floor.loot.some((l) => !l.taken && l.x === s.player.x && l.y === s.player.y);
     const adjacentTerminal = s.floor.terminals.some(
       (t) =>
