@@ -159,8 +159,8 @@ body {
 
 .stat.alert.stage-2 .stat-value,
 .stat.alert.stage-2 .meter span {
-  color: var(--orange, #ff9d3c);
-  background: var(--orange, #ff9d3c);
+  color: var(--amber);
+  background: var(--amber);
 }
 
 .stat.alert.stage-3 .stat-value {
@@ -653,4 +653,46 @@ button.toggled {
   border-radius: 50%;
   background: var(--violet);
   box-shadow: 0 0 10px var(--violet);
+}
+
+/* --- sound toggle -------------------------------------------------------- */
+/* Audio is opt-out, never forced: the control sits in the topbar so it is
+   reachable before the first sting rather than after it. */
+.mute {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cyan);
+  font: inherit;
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.mute:hover {
+  border-color: var(--cyan);
+}
+
+.mute:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+.mute.muted {
+  color: var(--text-dim);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 720px) {
+  .mute-label {
+    display: none;
+  }
 }

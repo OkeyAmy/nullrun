@@ -73,6 +73,8 @@ export const BALANCE = {
     staticVeilMultiplier: 2,
     /** Turns unseen before alarm starts falling. */
     decayDelayTurns: 2,
+    /** A guard this close that still hasn't seen you is a near miss. */
+    nearMissRange: 2,
   },
 
   /**

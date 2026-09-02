@@ -39,6 +39,14 @@ export class Renderer {
   /** Tiles never shrink below this, so big floors stay readable and scroll instead. */
   private minTileSize = 26;
   private viewport = { width: 0, height: 0 };
+  /** Screen-feedback state: a decaying shake and a decaying colour wash. */
+  private impact = 0;
+  private flash = 0;
+  private flashColour = '#ff5470';
+  private lastFrame = 0;
+  private reducedMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true;
 
   /** Tile the pointer is currently over, or null. */
   hover: Vec | null = null;
@@ -186,11 +194,36 @@ export class Renderer {
     return cells;
   }
 
+  /**
+   * Kick the screen. Being seen should register in the body before you have
+   * finished reading the log line that explains it.
+   */
+  punch(strength: number, colour: string, hold = 0.55): void {
+    this.impact = Math.min(1, Math.max(this.impact, strength));
+    this.flashColour = colour;
+    this.flash = Math.min(1, Math.max(this.flash, hold));
+  }
+
   draw(time: number): void {
     const { ctx } = this;
     const s = this.game.state;
     const floor = s.floor;
     const size = this.tileSize;
+
+    // decay the feedback, framerate-independent enough for a turn-based game
+    const elapsed = this.lastFrame ? Math.min(0.05, (time - this.lastFrame) / 1000) : 0;
+    this.lastFrame = time;
+    this.impact = Math.max(0, this.impact - elapsed * 4);
+    this.flash = Math.max(0, this.flash - elapsed * 2.2);
+
+    ctx.save();
+    if (this.impact > 0 && !this.reducedMotion) {
+      const amount = this.impact * 9;
+      ctx.translate(
+        (Math.random() * 2 - 1) * amount,
+        (Math.random() * 2 - 1) * amount,
+      );
+    }
 
     ctx.fillStyle = PALETTE.void;
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -432,6 +465,17 @@ export class Renderer {
       ctx.strokeStyle = PALETTE.operative;
       ctx.lineWidth = 1.5;
       ctx.strokeRect(this.px(this.hover.x) + 1, this.py(this.hover.y) + 1, size - 2, size - 2);
+    }
+
+    ctx.restore();
+
+    // a full-bleed wash over everything, so it reads even at the screen edge
+    if (this.flash > 0) {
+      ctx.save();
+      ctx.globalAlpha = this.flash * 0.42;
+      ctx.fillStyle = this.flashColour;
+      ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      ctx.restore();
     }
 
     this.drawScanlines();

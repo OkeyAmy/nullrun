@@ -68,9 +68,31 @@ function saveMeta(meta: MetaProgress): void {
   }
 }
 
+/**
+ * Discrete things that happen, as opposed to "the state changed". The engine
+ * already knew all of these; it just never said them out loud, which is why
+ * being spotted felt like a number going up instead of a disaster.
+ */
+export type GameEvent =
+  | 'step'
+  | 'sprint'
+  | 'hack'
+  | 'grab'
+  | 'door'
+  | 'spotted'
+  | 'near_miss'
+  | 'takedown'
+  | 'body_found'
+  | 'escalate'
+  | 'lockdown'
+  | 'blackout'
+  | 'floor_clear'
+  | 'run_failed';
+
 export class Game {
   state!: GameState;
   private listeners = new Set<() => void>();
+  private eventListeners = new Set<(event: GameEvent) => void>();
   private rng = new RNG(1);
 
   constructor() {
@@ -82,6 +104,23 @@ export class Game {
   onChange(fn: () => void): () => void {
     this.listeners.add(fn);
     return () => this.listeners.delete(fn);
+  }
+
+  /** Subscribe to discrete events — used for sound and screen feedback. */
+  onEvent(fn: (event: GameEvent) => void): () => void {
+    this.eventListeners.add(fn);
+    return () => this.eventListeners.delete(fn);
+  }
+
+  /** Announce something that happened. Never throws into the game loop. */
+  fire(event: GameEvent): void {
+    for (const fn of this.eventListeners) {
+      try {
+        fn(event);
+      } catch {
+        // presentation must never be able to break the simulation
+      }
+    }
   }
 
   private emit(): void {
@@ -120,6 +159,7 @@ export class Game {
       unlockedIds: meta.unlocked,
       escalation: 0,
       alertStage: 0,
+      nearMiss: false,
       log: [],
       seed,
       endReason: '',
@@ -202,6 +242,7 @@ export class Game {
     // a fresh floor, but the building already knows someone is inside
     s.escalation = index * BALANCE.alert.perFloorCleared;
     s.alertStage = this.stageFor(s.escalation);
+    s.nearMiss = false;
     this.refreshResources();
     updateOperativeVisibility(floor, s.player);
     this.log('system', `Floor ${index + 1} of ${BALANCE.run.floors}. Security posture increased.`);
@@ -236,6 +277,7 @@ export class Game {
     if (stage === 1) {
       for (const guard of s.floor.guards) guard.visionRange += 1;
       this.log('hostile', `${reason} Security widens its sweeps — every guard sees further.`);
+      this.fire('escalate');
       return;
     }
     if (stage === 2) {
@@ -262,9 +304,11 @@ export class Game {
         seesInBlackout: spec.seesInBlackout,
       });
       this.log('hostile', `${reason} A hunter has been sent in after you.`);
+      this.fire('escalate');
       return;
     }
     this.log('hostile', `${reason} FACILITY LOCKDOWN — the alarm will not cool down again.`);
+    this.fire('lockdown');
   }
 
   private bankIntel(): void {
@@ -335,6 +379,7 @@ export class Game {
 
   private failRun(reason: string): void {
     const s = this.state;
+    this.fire('run_failed');
     s.phase = 'run_failed';
     s.endReason = reason;
     this.bankIntel();
@@ -435,6 +480,7 @@ export class Game {
     }
     s.playerFacing = { dx: Math.sign(dx), dy: Math.sign(dy) };
     s.player = target;
+    this.fire('step');
     updateOperativeVisibility(s.floor, s.player);
     this.afterOperativeAction();
     return { ok: true, message: `Moved to ${target.x},${target.y}.` };
@@ -487,6 +533,7 @@ export class Game {
       return { ok: false, message: 'Not enough action points to move.' };
     }
 
+    this.fire(sprint ? 'sprint' : 'step');
     if (sprint) {
       const noise = hasImplant(s.implants, 'nullfield') ? 0 : BALANCE.noise.sprint;
       if (noise > 0) {
@@ -520,6 +567,7 @@ export class Game {
       return { ok: false, message: 'Out of action points.' };
     }
     tile.open = !tile.open;
+    this.fire('door');
     this.emitNoise(x, y, BALANCE.noise.toggleDoor);
     updateOperativeVisibility(s.floor, s.player);
     this.afterOperativeAction();
@@ -551,6 +599,7 @@ export class Game {
     terminal.hacked = true;
     this.emitNoise(terminal.x, terminal.y, this.hackNoise());
 
+    this.fire('hack');
     if (terminal.kind === 'data') {
       this.log('operative', `Data core ${terminal.id} siphoned.`);
       const remaining = this.dataCoresRemaining();
@@ -588,6 +637,7 @@ export class Game {
     }
     item.taken = true;
     s.intelThisRun += item.value;
+    this.fire('grab');
     this.afterOperativeAction();
     return {
       ok: true,
@@ -620,6 +670,7 @@ export class Game {
       return { ok: true, message: 'Final floor cleared. Run complete.' };
     }
 
+    this.fire('floor_clear');
     s.phase = 'choosing_implant';
     s.implantChoices = this.rollImplantChoices();
     this.emit();
@@ -790,6 +841,7 @@ export class Game {
       BALANCE.agent.powerOutTurns +
       (hasImplant(s.implants, 'coldboot') ? BALANCE.agent.coldBootBonusTurns : 0);
     s.powerOutTurns = turns;
+    this.fire('blackout');
     this.log('agent', `Grid cut for ${turns} turns — every cone shortened.`);
     this.emit();
     return {
@@ -870,11 +922,31 @@ export class Game {
       s.turnsUnseen = 0;
       s.alarm = Math.min(BALANCE.alarm.max, s.alarm + increase);
       this.raiseAlert(BALANCE.alert.perSighting, 'You were seen.');
+      this.fire('spotted');
       this.log('hostile', `Operative observed — alarm ${s.alarm}%.`);
       if (s.alarm >= BALANCE.alarm.max) {
         this.failRun('Alarm hit 100% — facility locked down with you inside.');
       }
     }
+  }
+
+  /**
+   * A guard standing close enough to touch that still has not seen you. The
+   * data was always there — it is the difference between "nothing happened"
+   * and the whole reason to play a stealth game.
+   */
+  private checkNearMiss(): void {
+    const s = this.state;
+    const close = s.floor.guards.some(
+      (guard) => guard.stunTurns === 0 && chebyshev(guard, s.player) <= BALANCE.alarm.nearMissRange,
+    );
+    if (!close) {
+      s.nearMiss = false;
+      return;
+    }
+    // only announce the moment it becomes true, or it drones every turn
+    if (!s.nearMiss) this.fire('near_miss');
+    s.nearMiss = true;
   }
 
   endTurn(): ActionResult {
@@ -899,8 +971,12 @@ export class Game {
     s.floor.scanned.fill(false);
 
     // alarm cools once nobody has eyes on you
+    const seenBefore = s.turnsUnseen;
     this.checkSightings();
     if (s.phase !== 'playing') return { ok: true, message: 'Turn ended; run is over.' };
+    // a guard that walked right past without seeing you is the best moment the
+    // engine produces, and it used to pass in complete silence
+    if (s.turnsUnseen >= seenBefore) this.checkNearMiss();
     s.turnsUnseen++;
     // under full lockdown the alarm never cools again, so hiding stops being an
     // escape and the only way out is out
@@ -959,6 +1035,7 @@ export class Game {
         // run down is the one sighting the facility never learns from
         if (guard.state !== 'hunting') {
           this.raiseAlert(BALANCE.alert.perSighting, `${guard.id} has eyes on you.`);
+          this.fire('spotted');
         }
         guard.state = 'hunting';
         guard.investigating = { ...s.player };

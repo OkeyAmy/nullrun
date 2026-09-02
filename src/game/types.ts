@@ -157,6 +157,8 @@ export interface GameState {
   escalation: number;
   /** Stage the escalation has reached, 0-3. Stored so transitions can be announced. */
   alertStage: number;
+  /** True while a guard is close enough to be a near miss, so it fires once. */
+  nearMiss: boolean;
   log: LogEntry[];
   seed: number;
   /** Set when the run ends, for the summary screen. */

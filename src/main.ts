@@ -1,5 +1,8 @@
 import './style.css';
+import { AudioKit } from './audio/audio';
+import { BALANCE } from './game/config';
 import { Game } from './game/game';
+import type { GameEvent } from './game/game';
 import { Renderer } from './render/renderer';
 import { Hud } from './ui/hud';
 import { ToolSurface } from './webmcp/tools';
@@ -9,6 +12,7 @@ const canvas = document.getElementById('board') as HTMLCanvasElement;
 const game = new Game();
 const renderer = new Renderer(canvas, game);
 const tools = new ToolSurface(game);
+const audio = new AudioKit();
 
 const hud = new Hud(game, tools, {
   onHack: () => report(game.hack()),
@@ -47,9 +51,49 @@ game.onChange(() => {
   renderer.invalidate();
   renderer.routePreview = null;
   renderer.centreOn(game.state.player.x, game.state.player.y);
+  audio.setTension(game.state.escalation / BALANCE.alert.max);
   hud.render();
   void tools.syncPhaseTools();
 });
+
+// Sound and screen feedback. The engine already knew all of these moments; it
+// just never said them out loud, so getting caught felt like a number moving.
+const SCREEN_FEEDBACK: Partial<Record<GameEvent, { strength: number; colour: string }>> = {
+  spotted: { strength: 1, colour: '#ff5470' },
+  lockdown: { strength: 0.9, colour: '#ff5470' },
+  run_failed: { strength: 1, colour: '#ff5470' },
+  escalate: { strength: 0.45, colour: '#ffc24d' },
+  body_found: { strength: 0.5, colour: '#ffc24d' },
+  takedown: { strength: 0.4, colour: '#7df9ff' },
+  near_miss: { strength: 0.18, colour: '#7df9ff' },
+  floor_clear: { strength: 0.3, colour: '#6dffa8' },
+  blackout: { strength: 0.25, colour: '#3a4a66' },
+};
+
+game.onEvent((event) => {
+  audio.play(event);
+  const feedback = SCREEN_FEEDBACK[event];
+  if (feedback) renderer.punch(feedback.strength, feedback.colour);
+});
+
+// --- sound toggle --------------------------------------------------------
+const muteButton = document.getElementById('mute') as HTMLButtonElement | null;
+
+function paintMuteButton(): void {
+  if (!muteButton) return;
+  muteButton.classList.toggle('muted', !audio.enabled);
+  muteButton.setAttribute('aria-pressed', String(!audio.enabled));
+  const glyph = muteButton.firstElementChild;
+  if (glyph) glyph.textContent = audio.enabled ? '♪' : '✕';
+}
+
+muteButton?.addEventListener('click', () => {
+  audio.setEnabled(!audio.enabled);
+  paintMuteButton();
+  // play something back so the toggle confirms itself
+  if (audio.enabled) audio.play('grab');
+});
+paintMuteButton();
 
 // --- input ---------------------------------------------------------------
 
@@ -218,7 +262,7 @@ async function boot(): Promise<void> {
   requestAnimationFrame(frame);
 
   // expose for debugging and for headless agent harnesses
-  Object.assign(window, { nullrun: { game, tools, renderer } });
+  Object.assign(window, { nullrun: { game, tools, renderer, audio } });
 }
 
 void boot();
