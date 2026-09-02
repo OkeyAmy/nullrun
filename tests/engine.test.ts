@@ -782,3 +782,108 @@ test('guards stay quiet when nothing about them changes', () => {
 
   assert.equal(spoken.length, 0, 'an undisturbed guard must not chatter every turn');
 });
+
+// --- implants that break rules rather than shave percentages -------------
+
+const { ALL_IMPLANTS } = await import('../src/game/implants.ts');
+
+function withImplant(game, id: string) {
+  const implant = ALL_IMPLANTS.find((i) => i.id === id);
+  assert.ok(implant, `no implant with id ${id}`);
+  game.state.implants = [...game.state.implants, implant];
+  return game;
+}
+
+test('Deadman Protocol leaves no body to be found', () => {
+  const game = withImplant(sandboxGame(), 'deadman');
+  game.state.player = { x: 2, y: 2 };
+  game.state.floor.guards = [guardAt('patrol-0', 3, 2)];
+
+  assert.equal(game.takedown().ok, true);
+  assert.equal(game.state.floor.guards.length, 0, 'the guard is still removed');
+  assert.equal(game.state.floor.bodies.length, 0, 'but there is nothing left lying around');
+});
+
+test('Chain Breaker turns a takedown from a debt into a discount', () => {
+  const game = withImplant(sandboxGame(), 'chainbreaker');
+  game.raiseAlert(50, 'test');
+  const before = game.state.escalation;
+
+  game.state.player = { x: 2, y: 2 };
+  game.state.floor.guards = [guardAt('patrol-0', 3, 2)];
+  assert.equal(game.takedown().ok, true);
+
+  assert.ok(
+    game.state.escalation < before,
+    `escalation must fall after a Chain Breaker takedown (${before} -> ${game.state.escalation})`,
+  );
+});
+
+test('Mirror Daemon scrubs the first sighting on a floor, and only the first', () => {
+  const game = withImplant(sandboxGame(), 'mirrordaemon');
+  game.state.mirrorAvailable = true;
+  game.state.player = { x: 1, y: 2 };
+  game.state.floor.guards = [guardAt('patrol-0', 5, 2, { dx: -1, dy: 0 })];
+
+  game.endTurn();
+  assert.equal(game.state.alarm, 0, 'the first sighting must leave no alarm at all');
+  assert.equal(game.state.mirrorAvailable, false, 'and must consume the charge');
+
+  // a second sighting has to land normally
+  game.state.floor.guards = [guardAt('patrol-1', 5, 2, { dx: -1, dy: 0 })];
+  game.endTurn();
+  assert.ok(game.state.alarm > 0, 'the second sighting must actually cost you');
+});
+
+test('Overclock buys action points with a harsher alarm', () => {
+  // sandboxGame hands out 99 AP for convenience, so compare the real budgets
+  // the engine computes rather than that stand-in
+  const plain = new Game();
+  const rigged = new Game();
+  withImplant(rigged, 'overclock');
+  rigged.refreshResources();
+
+  assert.equal(
+    rigged.state.maxAp,
+    plain.state.maxAp + 2,
+    'Overclock must add exactly two action points',
+  );
+
+  // and the same sighting, on the same hand-built floor, must cost more
+  const sighting = (game) => {
+    game.state.alarm = 0;
+    game.state.player = { x: 1, y: 2 };
+    game.state.floor.guards = [guardAt('patrol-0', 5, 2, { dx: -1, dy: 0 })];
+    game.endTurn();
+    return game.state.alarm;
+  };
+
+  const normalCost = sighting(sandboxGame());
+  const overclockedCost = sighting(withImplant(sandboxGame(), 'overclock'));
+
+  assert.ok(normalCost > 0, 'the control run must actually be spotted');
+  assert.ok(
+    overclockedCost > normalCost,
+    `overclocked sightings must hurt more (${normalCost} -> ${overclockedCost})`,
+  );
+});
+
+test('Phase Lattice walks the operative straight through a shut door', () => {
+  const plain = sandboxGame();
+  const doorAt = (game) => {
+    const floor = game.state.floor;
+    const tile = floor.tiles[2 * floor.width + 3];
+    tile.kind = 'door';
+    tile.open = false;
+    game.state.player = { x: 2, y: 2 };
+    return tile;
+  };
+
+  doorAt(plain);
+  assert.equal(plain.move(1, 0).ok, false, 'a shut door must normally stop you');
+
+  const phased = withImplant(sandboxGame(), 'phaselattice');
+  doorAt(phased);
+  assert.equal(phased.move(1, 0).ok, true, 'Phase Lattice must pass through it');
+  assert.deepEqual(phased.state.player, { x: 3, y: 2 });
+});

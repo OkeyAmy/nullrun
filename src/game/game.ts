@@ -165,6 +165,7 @@ export class Game {
       seed,
       endReason: '',
       reflexAvailable: false,
+      mirrorAvailable: false,
     };
     this.refreshResources();
     updateOperativeVisibility(floor, start);
@@ -399,15 +400,19 @@ export class Game {
     if (this.state.log.length > 200) this.state.log.shift();
   }
 
-  private refreshResources(): void {
+  refreshResources(): void {
     const s = this.state;
-    s.maxAp = BALANCE.operative.baseAp + (hasImplant(s.implants, 'ghostwire') ? 1 : 0);
+    s.maxAp =
+      BALANCE.operative.baseAp +
+      (hasImplant(s.implants, 'ghostwire') ? 1 : 0) +
+      (hasImplant(s.implants, 'overclock') ? 2 : 0);
     s.maxBandwidth =
       BALANCE.agent.baseBandwidth +
       (hasImplant(s.implants, 'wideband') ? BALANCE.agent.bandwidthPerWideband : 0);
     s.ap = s.maxAp;
     s.bandwidth = s.maxBandwidth;
     s.reflexAvailable = hasImplant(s.implants, 'reflex');
+    s.mirrorAvailable = hasImplant(s.implants, 'mirrordaemon');
   }
 
   private requirePlaying(): ActionResult | null {
@@ -470,10 +475,11 @@ export class Game {
       return { ok: false, message: 'That is the facility perimeter.' };
     }
     const tile = tileAt(s.floor, target.x, target.y);
-    if (tile?.kind === 'door' && !tile.open) {
+    const phasing = hasImplant(s.implants, 'phaselattice');
+    if (tile?.kind === 'door' && !tile.open && !phasing) {
       return { ok: false, message: 'Door is shut. Open it, or have the agent cycle it.' };
     }
-    if (!isWalkable(s.floor, target.x, target.y)) {
+    if (!isWalkable(s.floor, target.x, target.y) && !(phasing && tile?.kind === 'door')) {
       return { ok: false, message: 'Solid wall.' };
     }
     if (!this.spendAp(BALANCE.apCost.move)) {
@@ -527,7 +533,20 @@ export class Game {
         Math.sign(s.player.y - guard.y) === Math.sign(guard.facing.dy));
 
     s.floor.guards = s.floor.guards.filter((g) => g.id !== guard.id);
-    s.floor.bodies.push({ id: `body-${guard.id}`, x: guard.x, y: guard.y, found: false });
+    const leavesBody = !hasImplant(s.implants, 'deadman');
+    if (leavesBody) {
+      s.floor.bodies.push({ id: `body-${guard.id}`, x: guard.x, y: guard.y, found: false });
+    }
+    // Chain Breaker is the one thing in the game that walks escalation back:
+    // the whole point of a rule-breaker implant is that it breaks the rule
+    if (hasImplant(s.implants, 'chainbreaker')) {
+      const relief = Math.min(s.escalation, BALANCE.alert.chainBreakerRelief);
+      s.escalation -= relief;
+      s.alertStage = this.stageFor(s.escalation);
+      if (relief > 0) {
+        this.log('operative', `Chain Breaker: the floor quiets by ${relief}. Nobody is reporting in.`);
+      }
+    }
     this.fire('takedown');
 
     const noise = facingYou ? BALANCE.noise.takedownSeen : BALANCE.noise.takedown;
@@ -1027,6 +1046,25 @@ export class Game {
 
     if (spotted) {
       s.turnsUnseen = 0;
+
+      // Mirror Daemon scrubs the first sighting on a floor outright, which is
+      // what lets an aggressive build take one risk per floor for free
+      if (s.mirrorAvailable) {
+        s.mirrorAvailable = false;
+        for (const guard of s.floor.guards) {
+          if (guard.state === 'hunting') {
+            guard.state = 'patrol';
+            guard.investigating = null;
+          }
+        }
+        this.log('agent', 'Mirror Daemon: the sighting never reached anyone. Feed scrubbed.');
+        this.emit();
+        return;
+      }
+
+      if (hasImplant(s.implants, 'overclock')) {
+        increase = Math.round(increase * BALANCE.alarm.overclockMultiplier);
+      }
       s.alarm = Math.min(BALANCE.alarm.max, s.alarm + increase);
       this.raiseAlert(BALANCE.alert.perSighting, 'You were seen.');
       this.fire('spotted');
@@ -1182,7 +1220,9 @@ export class Game {
       }
     }
 
-    if (s.phase === 'playing') this.checkSightings();
+    // NOTE: no sighting check here. endTurn runs one immediately after this,
+    // once the blackout and door timers have ticked, and doing it in both
+    // places charged the alarm and the escalation twice for a single sighting.
   }
 
   /**

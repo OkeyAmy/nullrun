@@ -175,4 +175,6 @@ export interface GameState {
   endReason: string;
   /** Reflex implant: one free escape from capture. */
   reflexAvailable: boolean;
+  /** Mirror Daemon: one sighting per floor can still be scrubbed. */
+  mirrorAvailable: boolean;
 }

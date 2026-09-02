@@ -80,6 +80,8 @@ export const BALANCE = {
     decayDelayTurns: 2,
     /** A guard this close that still hasn't seen you is a near miss. */
     nearMissRange: 2,
+    /** Overclock trades margin for speed. */
+    overclockMultiplier: 1.5,
   },
 
   /**
@@ -98,6 +100,8 @@ export const BALANCE = {
     perBodyFound: 30,
     /** Escalation a floor starts with, per floor already cleared. */
     perFloorCleared: 8,
+    /** Chain Breaker inverts the takedown trade entirely. */
+    chainBreakerRelief: 20,
     /** Escalation at which each stage engages. */
     stageAt: [30, 60, 90],
   },
