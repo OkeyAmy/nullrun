@@ -30,12 +30,6 @@ function str(args: Args, key: string): string | null {
   return typeof value === 'string' && value.length ? value : null;
 }
 
-function fromResult(result: ActionResult): ToolResponse {
-  return result.ok
-    ? textResponse(result.message, result.detail)
-    : errorResponse(result.message);
-}
-
 const XY_SCHEMA = {
   type: 'object',
   properties: {
@@ -148,6 +142,144 @@ export class ToolSurface {
     this.game.beginInfiltration();
   }
 
+  /**
+   * What the handler should consider doing next.
+   *
+   * A tool result that only reports what happened leaves an agent with no
+   * reason to take another turn, so it stalls after one call. Every action
+   * answers with concrete follow-up calls derived from live state — the budget
+   * left, the threat standing on the operative, the objective still open.
+   */
+  private nextSteps(): Array<{ tool: string; why: string; args?: Record<string, unknown> }> {
+    const s = this.game.state;
+    const steps: Array<{ tool: string; why: string; args?: Record<string, unknown> }> = [];
+
+    if (s.phase === 'mode_select') {
+      steps.push({
+        tool: 'set_play_mode',
+        why: 'Choose who plays. Or just call any gameplay tool — the run starts itself.',
+        args: { mode: 'agent' },
+      });
+      return steps;
+    }
+    if (s.phase === 'briefing') {
+      steps.push({ tool: 'begin_infiltration', why: 'Start the floor.' });
+      return steps;
+    }
+    if (s.phase === 'choosing_implant') {
+      steps.push({
+        tool: 'choose_implant',
+        why: `Pick one of: ${s.implantChoices.map((i) => i.id).join(', ')}. The next floor starts immediately after.`,
+      });
+      return steps;
+    }
+    if (s.phase === 'run_failed' || s.phase === 'run_complete') {
+      steps.push({ tool: 'start_new_run', why: 'The run is over. Banked intel carries across.' });
+      return steps;
+    }
+
+    const floor = s.floor;
+    const known = (x: number, y: number) => floor.discovered[tileIndex(floor, x, y)];
+    const here = this.game.threatAt(s.player.x, s.player.y);
+    const adjacentTerminal = floor.terminals.find(
+      (t) => !t.hacked && Math.max(Math.abs(t.x - s.player.x), Math.abs(t.y - s.player.y)) <= 1,
+    );
+    const onLoot = floor.loot.find((l) => !l.taken && l.x === s.player.x && l.y === s.player.y);
+    const onPad = s.player.x === floor.extraction.x && s.player.y === floor.extraction.y;
+    const hunters = floor.guards.filter((g) => g.state === 'hunting' && g.stunTurns === 0);
+    const knownCores = floor.terminals.filter((t) => t.kind === 'data' && !t.hacked && known(t.x, t.y));
+
+    // urgent first: being seen or chased outranks the objective
+    if (hunters.length) {
+      steps.push({
+        tool: 'cycle_door',
+        why: `${hunters.map((g) => g.id).join(', ')} hunting. Sealing a door between you stops it pathing through for 3 turns.`,
+        args: { seal: true },
+      });
+    }
+    if (here.watchedBy.length) {
+      steps.push({
+        tool: 'assess_tile',
+        why: `You are watched by ${here.watchedBy.join(', ')} right now. Find an unwatched neighbouring tile before ending the turn — alarm rises every turn you are seen.`,
+      });
+      if (s.bandwidth >= BALANCE.agent.cost.cutPower) {
+        steps.push({ tool: 'cut_power', why: 'Shortens every cone to 40% for 3 turns.' });
+      }
+    }
+
+    if (adjacentTerminal) {
+      steps.push({
+        tool: 'hack_terminal',
+        why: `${adjacentTerminal.id} is within reach (${adjacentTerminal.kind === 'data' ? 'objective' : 'reveals the map and cuts the alarm'}).`,
+      });
+    }
+    if (onLoot) steps.push({ tool: 'grab_intel', why: 'An intel cache is on this tile.' });
+    if (onPad && this.game.objectiveComplete()) {
+      steps.push({ tool: 'extract', why: 'All cores siphoned and you are on the pad. This clears the floor.' });
+    }
+
+    if (this.game.dataCoresRemaining() > 0) {
+      if (!knownCores.length) {
+        steps.push({
+          tool: 'ping_scan',
+          why: 'No data core discovered yet. Sweep unexplored areas to find one before moving blind.',
+        });
+      } else {
+        const core = knownCores[0];
+        steps.push({
+          tool: 'plan_route',
+          why: `Route to core ${core.id} and read the per-step risk before walking it.`,
+          args: { x: core.x, y: core.y },
+        });
+      }
+    } else if (!onPad) {
+      steps.push({
+        tool: 'plan_route',
+        why: 'Cores are done. Route to the extraction pad.',
+        args: { x: floor.extraction.x, y: floor.extraction.y },
+      });
+    }
+
+    if (s.ap <= 0) {
+      steps.push({
+        tool: 'end_turn',
+        why: 'No action points left. Guards move, then AP and bandwidth refill.',
+      });
+    } else {
+      steps.push({
+        tool: 'move_operative',
+        why: `${s.ap} AP left. Prefer a destination whose risk is 0 — ending a turn inside a cone is how runs end.`,
+      });
+    }
+
+    return steps;
+  }
+
+  /** Attach the continuation signal to an action result. */
+  private respond(result: ActionResult): ToolResponse {
+    if (!result.ok) {
+      const recovery = this.nextSteps();
+      return errorResponse(
+        `${result.message}\n\nStill to do: ${recovery.map((s) => s.tool).join(', ') || 'none'}`,
+      );
+    }
+    const s = this.game.state;
+    const steps = this.nextSteps();
+    return textResponse(result.message, {
+      ...(result.detail ?? {}),
+      turn: s.turn,
+      actionPoints: s.ap,
+      bandwidth: s.bandwidth,
+      alarm: s.alarm,
+      phase: s.phase,
+      nextSteps: steps,
+      continue:
+        steps.length > 0
+          ? `The run is still live — keep going by calling ${steps[0].tool}.`
+          : 'Nothing further to do.',
+    });
+  }
+
   // -- tool definitions ---------------------------------------------------
 
   private coreTools(): ToolDescriptor[] {
@@ -188,7 +320,7 @@ export class ToolSurface {
       {
         name: 'get_situation',
         description:
-          'Read the complete tactical picture of the current floor: operative position and resources, alarm level, every discovered guard with facing and alert state, cameras, objectives, and the threat on the tile the operative is standing on. Call this before deciding anything.',
+          'Read the complete tactical picture of the current floor: operative position and resources, alarm level, every discovered guard with facing and alert state, cameras, objectives, and the threat on the tile the operative is standing on. Call this before deciding anything. The response ends with a nextSteps list telling you which tools are worth calling right now and why — keep acting on it until the floor is cleared or the run ends.',
         inputSchema: { type: 'object', properties: {} },
         execute: () => textResponse('Tactical snapshot.', this.situation()),
       },
@@ -293,7 +425,7 @@ export class ToolSurface {
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
           this.autostart();
-          return fromResult(game.moveTo(x, y, args.sprint === true));
+          return this.respond(game.moveTo(x, y, args.sprint === true));
         },
       },
       {
@@ -311,7 +443,7 @@ export class ToolSurface {
         },
         execute: (args: Args) => {
           this.autostart();
-          return fromResult(game.hack(str(args, 'terminal_id') ?? undefined));
+          return this.respond(game.hack(str(args, 'terminal_id') ?? undefined));
         },
       },
       {
@@ -321,7 +453,7 @@ export class ToolSurface {
         inputSchema: { type: 'object', properties: {} },
         execute: () => {
           this.autostart();
-          return fromResult(game.grab());
+          return this.respond(game.grab());
         },
       },
       {
@@ -334,7 +466,7 @@ export class ToolSurface {
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
           this.autostart();
-          return fromResult(game.toggleDoor(x, y));
+          return this.respond(game.toggleDoor(x, y));
         },
       },
       {
@@ -344,7 +476,7 @@ export class ToolSurface {
         inputSchema: { type: 'object', properties: {} },
         execute: () => {
           this.autostart();
-          return fromResult(game.extract());
+          return this.respond(game.extract());
         },
       },
       {
@@ -354,7 +486,7 @@ export class ToolSurface {
         inputSchema: { type: 'object', properties: {} },
         execute: () => {
           this.autostart();
-          return fromResult(game.endTurn());
+          return this.respond(game.endTurn());
         },
       },
 
@@ -369,7 +501,7 @@ export class ToolSurface {
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
           this.autostart();
-          return fromResult(game.ping(x, y));
+          return this.respond(game.ping(x, y));
         },
       },
       {
@@ -393,7 +525,7 @@ export class ToolSurface {
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
           this.autostart();
-          return fromResult(game.agentToggleDoor(x, y, args.seal === true));
+          return this.respond(game.agentToggleDoor(x, y, args.seal === true));
         },
       },
       {
@@ -409,7 +541,7 @@ export class ToolSurface {
           const id = str(args, 'camera_id');
           if (!id) return errorResponse('camera_id is required.');
           this.autostart();
-          return fromResult(game.loopCamera(id));
+          return this.respond(game.loopCamera(id));
         },
       },
       {
@@ -422,7 +554,7 @@ export class ToolSurface {
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
           this.autostart();
-          return fromResult(game.distraction(x, y));
+          return this.respond(game.distraction(x, y));
         },
       },
       {
@@ -432,7 +564,7 @@ export class ToolSurface {
         inputSchema: { type: 'object', properties: {} },
         execute: () => {
           this.autostart();
-          return fromResult(game.cutPower());
+          return this.respond(game.cutPower());
         },
       },
       {
@@ -456,7 +588,7 @@ export class ToolSurface {
             return errorResponse('guard_id, x and y are all required.');
           }
           this.autostart();
-          return fromResult(game.reroutePatrol(id, x, y));
+          return this.respond(game.reroutePatrol(id, x, y));
         },
       },
     ];
@@ -504,7 +636,7 @@ export class ToolSurface {
             if (!id) return errorResponse('implant_id is required.');
             const result = game.chooseImplant(id);
             void this.syncPhaseTools();
-            return fromResult(result);
+            return this.respond(result);
           },
         },
       ];
@@ -600,6 +732,11 @@ export class ToolSurface {
           ? s.implantChoices.map((i) => ({ id: i.id, name: i.name, effect: i.description }))
           : undefined,
       recentEvents: s.log.slice(-8).map((entry) => `[T${entry.turn}] ${entry.actor}: ${entry.text}`),
+      nextSteps: this.nextSteps(),
+      continue:
+        s.phase === 'run_failed' || s.phase === 'run_complete'
+          ? 'The run is over — call start_new_run to play again.'
+          : 'The run is live. Pick a tool from nextSteps and keep going until the floor is cleared or the run ends.',
     };
   }
 

@@ -289,3 +289,54 @@ test('read tools never start the run as a side effect', async () => {
   await context.call('assess_tile', { x: 3, y: 3 });
   assert.equal(game.state.phase, 'mode_select', 'reads must be side-effect free');
 });
+
+test('every action result tells the agent how to keep going', async () => {
+  const { surface } = await freshSurface();
+  await startFloor(surface, 'agent');
+
+  const result = await context.call('ping_scan', { x: 6, y: 6 });
+  const data = payload(result);
+
+  assert.ok(Array.isArray(data.nextSteps), 'an action must return a nextSteps list');
+  assert.ok((data.nextSteps as unknown[]).length > 0, 'nextSteps must not be empty mid-run');
+  assert.match(String(data.continue), /keep going/i);
+
+  for (const step of data.nextSteps as { tool: string; why: string }[]) {
+    assert.ok(context.find(step.tool), `nextSteps named "${step.tool}", which is not registered`);
+    assert.ok(step.why.length > 15, `nextSteps entry "${step.tool}" needs a real reason`);
+  }
+
+  // the budget an agent needs in order to plan the rest of the turn
+  assert.equal(data.actionPoints, surface['game'].state.ap);
+  assert.equal(data.bandwidth, surface['game'].state.bandwidth);
+});
+
+test('the continuation signal changes with the situation', async () => {
+  const { game, surface } = await freshSurface();
+  await startFloor(surface, 'agent');
+
+  // drain the turn: the agent should be told to end it
+  game.state.ap = 0;
+  const spent = payload(await context.call('ping_scan', { x: 4, y: 4 }));
+  const spentTools = (spent.nextSteps as { tool: string }[]).map((s) => s.tool);
+  assert.ok(spentTools.includes('end_turn'), 'with no AP the agent must be told to end the turn');
+
+  // a hunting guard should push door-sealing to the front
+  game.state.ap = game.state.maxAp;
+  game.state.floor.guards[0].state = 'hunting';
+  const chased = payload(await context.call('ping_scan', { x: 4, y: 4 }));
+  const chasedTools = (chased.nextSteps as { tool: string }[]).map((s) => s.tool);
+  assert.equal(chasedTools[0], 'cycle_door', 'a hunting guard must be the first thing raised');
+});
+
+test('a finished run still tells the agent what to do', async () => {
+  const { game, surface } = await freshSurface();
+  await startFloor(surface, 'agent');
+  game.state.phase = 'run_failed';
+  game.state.endReason = 'forced for the test';
+
+  const data = payload(await context.call('get_situation'));
+  const tools = (data.nextSteps as { tool: string }[]).map((s) => s.tool);
+  assert.deepEqual(tools, ['start_new_run']);
+  assert.match(String(data.continue), /start_new_run/);
+});

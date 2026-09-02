@@ -2,10 +2,10 @@
 
 **A turn-based stealth roguelite built to be played by a human and an AI agent *at the same time*, over [WebMCP](https://github.com/webmachinelearning/webmcp).**
 
-You are the operative on the ground. Your handler is an AI agent connected through
-`document.modelContext`. It does not press your buttons — it works the building. It sweeps the
-network, loops camera feeds, blows speakers to pull patrols, seals blast doors in a guard's face
-and spoofs patrol routes, while you move through the gaps it opens.
+You play the operative on the ground. Your handler is an AI agent wired in through
+`document.modelContext`, and it never touches your controls. It works the building instead:
+sweeping the network, looping camera feeds, blowing speakers to drag patrols off your path,
+slamming blast doors in a guard's face, rewriting patrol orders. You move through the gaps it opens.
 
 | | |
 | --- | --- |
@@ -20,9 +20,9 @@ and spoofs patrol routes, while you move through the gaps it opens.
 
 ## The 60-second version
 
-Most "AI-enabled" web apps expose the things a user could already click. NULLRUN gives the agent a
-**different set of verbs from the human**, backed by its own resource, so the two roles are not
-redundant — they are complementary.
+Most "AI-enabled" web apps hand the agent the same buttons the user already has. NULLRUN gives it a
+**different set of verbs**, paid for out of its own resource pool, so the two roles complement each
+other instead of overlapping.
 
 | | Operative (human) | Handler (agent) |
 | --- | --- | --- |
@@ -31,7 +31,7 @@ redundant — they are complementary.
 | Cannot do | see through walls, touch the grid | physically move, hack a terminal, carry anything |
 
 **Neither side can finish a floor alone.** The agent is a second player class, not an
-accessibility layer over the first.
+accessibility layer bolted onto the first.
 
 ![Mid-infiltration](docs/03-infiltration.png)
 
@@ -39,29 +39,32 @@ accessibility layer over the first.
 
 ## 1. Use case fit — why a game, and why this one
 
-The honest risk with a game submission is that agents have no reason to play. NULLRUN is built so
-the agent has a *job* the human physically cannot do, and so the medium suits the transport:
+The obvious objection to a game submission is that agents have no reason to play one. NULLRUN
+answers that by giving the agent work the human physically cannot do, in a format that suits how
+WebMCP actually behaves.
 
-**Turn-based is the integration, not a style choice.** A WebMCP tool call is a network round trip —
-call it 1–3 seconds. In a real-time game that is lag, and the agent integration degrades into a
-laggy side channel. In a turn-based tactical game every tool call is a first-class game action and
-latency stops mattering entirely. The genre was chosen *because of* the transport.
+**Turn-based is the integration, not a style choice.** Every tool call is a network round trip,
+realistically 1–3 seconds. Put that in a real-time game and it reads as lag; the agent becomes a
+sluggish side channel nobody wants to use. Put it in a turn-based tactical game and the same call
+becomes an ordinary game action, with latency that simply stops mattering. The genre followed from
+the transport.
 
-**The information asymmetry is the design.** The operative sees an 8-tile radius. The agent sees
-whatever it pings. Neither has the whole picture, which is what makes a handler worth having and
-what gives the tools something real to communicate.
+**Information asymmetry drives the whole thing.** Your operative sees 8 tiles. The agent sees
+whatever it has pinged. Because neither party holds the full picture, a handler is worth having and
+the tools have something real to say.
 
-**It generalises.** Strip the fiction and this is a pattern for any app where an agent should hold
-context, watch state and act on the system while a human works the surface: dashboards with an
-agent watching alerts, ops consoles, incident response, logistics. The game is a legible way to
-show a co-operative division of labour that a chat sidebar cannot express.
+**The shape generalises.** Drop the fiction and what remains is a template for any app where an
+agent should hold context, watch state and act on the system while a person works the surface:
+alert-watching dashboards, ops consoles, incident response, logistics. A game just makes that
+division of labour legible in a way a chat sidebar never does.
 
 ---
 
 ## 2. How the agent experience improves the product
 
-**Read tools return reasoning material, not pixels.** `plan_route` does not just return a path. It
-returns each step's risk, *which named guard or camera watches that step*, and where cover exists:
+**Read tools hand back reasoning material, not pixels.** `plan_route` returns more than a path. You
+get the risk attached to each step, the *name* of the guard or camera watching that step, and where
+cover sits:
 
 ```json
 {
@@ -71,32 +74,49 @@ returns each step's risk, *which named guard or camera watches that step*, and w
 }
 ```
 
-An agent can reason about that. It cannot reason about a screenshot. The same data drives the
-human's hover preview, so both players are looking at the same truth.
+An agent can act on that. No agent can act on a screenshot. The same numbers feed the human's hover
+preview, so both players read from one truth.
 
 ![Route risk preview](docs/04-route-risk.png)
 
-**Agents never touch the interface.** The opening screen and briefing are human affordances. A
-handler that calls any gameplay tool on a cold page starts the run itself — `ping_scan` on a fresh
-load just works. Read tools stay side-effect free, so `get_situation` never starts anything, and a
-human who already chose co-op keeps that choice.
+**Agents skip the interface entirely.** The opening screen and briefing exist for humans. If a
+handler calls a gameplay tool on a cold page, the run simply starts — `ping_scan` on a fresh load
+works. Read tools carry no side effects, so `get_situation` never kicks anything off, and a human
+who already picked co-op keeps that choice.
 
-**Tools exist only when they are usable.** `begin_infiltration` appears during the briefing and
-disappears once the floor starts. `choose_implant` exists only while a choice is pending.
-`start_new_run` only after a run ends. The agent's menu is never full of dead options.
+**Tools show up only when they can be used.** `begin_infiltration` lives in the briefing and
+vanishes the moment a floor starts. `choose_implant` exists while a choice is pending, and
+`start_new_run` only once a run is over. No dead options cluttering the agent's menu.
 
-**Costs are introspectable.** `list_abilities` reports every action's live cost and whether it is
-currently affordable, read from the same balance table the rules use — so what the agent is told
-cannot drift from what the engine does.
+**Costs are introspectable.** `list_abilities` reports what every action costs right now and whether
+it is affordable, reading from the balance table the rules use. What the agent is told cannot drift
+from what the engine does.
 
 **Failures name their own fix.** `"No walkable route to 14,9. A sealed door may be in the way — try
-cycle_door."` Errors are written for a reader who has to decide what to do next.
+cycle_door."` Every error is written for a reader who has to pick a next move.
 
-**Control can change hands mid-run.** `set_play_mode` is callable at any point, so "you take over"
-works halfway through a floor, not just at the menu.
+**Control changes hands mid-run.** `set_play_mode` works at any point, so "you take over" lands
+halfway through a floor rather than only at the menu.
 
-**One engine, both players.** Every tool calls the exact method the UI button calls. There is no
-agent-only code path that can silently drift from what a human sees.
+**Every result tells the agent how to keep going.** A tool that only reports what happened leaves a
+handler with no reason to take another turn, so it stalls after one call. Each action answers with
+the live budget and a `nextSteps` list built from actual state — a hunting guard pushes
+`cycle_door` to the front, an empty AP pool asks for `end_turn`, an undiscovered core suggests
+`ping_scan`. Every entry names a registered tool and says why:
+
+```json
+{
+  "actionPoints": 3, "bandwidth": 3, "alarm": 6, "turn": 1,
+  "continue": "The run is still live — keep going by calling ping_scan.",
+  "nextSteps": [
+    { "tool": "ping_scan", "why": "No data core discovered yet. Sweep unexplored areas to find one before moving blind." },
+    { "tool": "move_operative", "why": "3 AP left. Prefer a destination whose risk is 0 — ending a turn inside a cone is how runs end." }
+  ]
+}
+```
+
+**One engine serves both players.** Each tool calls the same method its UI button calls. No
+agent-only code path exists to quietly drift from what a human sees.
 
 ---
 
@@ -147,8 +167,8 @@ initializeWebMCPPolyfill();                       // @mcp-b/webmcp-polyfill
 return { mode: 'polyfill', context: document.modelContext };
 ```
 
-Tools register with an `AbortSignal` so phase-scoped sets can be swapped cleanly. The badge in the
-top right of the UI tells you which mode you are in.
+Registration passes an `AbortSignal`, which lets phase-scoped sets swap cleanly. A badge in the top
+right of the UI shows which mode you landed in.
 
 ### Architecture
 
@@ -173,32 +193,32 @@ flowchart LR
   ST --> TS
 ```
 
-Both players funnel into one engine and one state. All balance lives in `src/game/config.ts`, and
-the tools report from that same table.
+Both players funnel into one engine holding one state. Balance lives in `src/game/config.ts`, and
+the tools report straight from that table.
 
 ---
 
 ## Play modes
 
-The first screen asks who is at the controls. The answer is readable and settable by an agent, so a
-handler that connects mid-run knows its role.
+The first screen asks who is at the controls. An agent can read that answer and set it, so a
+handler joining mid-run knows its role.
 
-- **Human** — you move the operative and an AI handler works the network alongside you.
-- **AI** — the agent takes both roles and runs the whole infiltration itself.
+- **Human** — you move the operative while an AI handler works the network beside you.
+- **AI** — the agent takes both roles and runs the infiltration itself.
 
 ### Connecting your agent
 
-The page publishes its tools on `document.modelContext`, so a WebMCP-aware agent discovers them
-itself. There is nothing to paste and no key to configure. Per the spec's
+Tools are published on `document.modelContext`, so a WebMCP-aware agent finds them on its own.
+Nothing to paste, no key to configure. From the spec's
 [implementation status](https://github.com/webmachinelearning/webmcp/blob/main/implementation-status.md):
 
-- **ChatGPT Desktop** — WebMCP is supported. Open the URL and tell it to play. No flags.
-- **Chrome 149+ / Edge 150+** — origin trial is live (needs Early Preview Program enrolment and an
-  origin-trial token for the deployed origin).
+- **ChatGPT Desktop** — WebMCP is supported. Open the URL, tell it to play. No flags.
+- **Chrome 149+ / Edge 150+** — origin trial is live, which needs Early Preview Program enrolment
+  plus an origin-trial token for your deployed origin.
 - **nekuda WebMCP Workbench** — a [Chrome extension](https://chromewebstore.google.com/detail/nekuda-webmcp-workbench/amochnnbmnkjjlblolhpddkokhnalkjp)
-  that lists a page's tools and drives them with an agent (bring your own key). The quickest way to
-  play co-op today without origin-trial enrolment.
-- **Brave** — experimental, via Leo.
+  that lists a page's tools and drives them with an agent, bring your own key. Fastest way to play
+  co-op today without origin-trial enrolment.
+- **Brave** — experimental, through Leo.
 - **No agent handy** — pick *AI* and run `pnpm demo`.
 
 ---
@@ -206,14 +226,14 @@ itself. There is nothing to paste and no key to configure. Per the spec's
 ## The game
 
 Five floors of a procedurally generated facility. Siphon every data core, reach the extraction pad,
-choose an implant, descend. Intel banks between runs.
+pick an implant, descend. Intel banks between runs.
 
-- Guards have vision cones, hearing and three alert states (patrol → suspicious → hunting).
-- Cover breaks line of sight beyond 2 tiles. Sprinting makes noise that pulls patrols.
-- Being seen raises the alarm. At **100%** the facility locks down and the run ends.
-- A hunting guard that reaches you ends the run outright — unless you have a Reflex Governor.
-- Sealed doors genuinely re-route pathfinding: the guard AI and the route planner both respect them.
-- Nine implants (extra AP, silent sprint, wider scans, cheaper blackouts, faster alarm decay…).
+- Guards carry vision cones and hearing, and move through three alert states: patrol, suspicious, hunting.
+- Cover breaks line of sight past 2 tiles. Sprinting makes noise, and noise pulls patrols.
+- Being seen raises the alarm. Hit **100%** and the facility locks down with you inside.
+- A hunting guard that reaches you ends the run on the spot, unless a Reflex Governor is installed.
+- Sealed doors genuinely reroute pathfinding. Guard AI and route planner both respect them.
+- Nine implants: extra AP, silent sprint, wider scans, cheaper blackouts, faster alarm decay, and more.
 
 **Controls:** WASD/arrows move · click to path · hover to preview route risk · `E` hack · `F` lift
 intel · `Shift` sprint · `X` extract · `Space` end turn.
@@ -226,7 +246,7 @@ intel · `Shift` sprint · `X` extract · `Space` end turn.
 pnpm install
 pnpm dev            # http://localhost:5173
 
-pnpm test           # 36 tests: engine, WebMCP surface, invariants, fuzzing
+pnpm test           # 39 tests: engine, WebMCP surface, invariants, fuzzing
 pnpm smoke          # drives the real page in Chromium, incl. document.modelContext
 pnpm demo           # a handler plays the game using only the WebMCP tools
 pnpm evals:build    # regenerate the 313-case eval matrix
@@ -235,18 +255,19 @@ pnpm assets         # rebuild the tile atlas from the Kenney source art
 pnpm build
 ```
 
-`pnpm smoke`, `pnpm demo` and `pnpm evals` expect a dev server on port 5183
-(`npx vite --port 5183`), or pass a URL as the first argument.
+`pnpm smoke`, `pnpm demo` and `pnpm evals` want a dev server on port 5183
+(`npx vite --port 5183`), or take a URL as their first argument.
 
 ---
 
 ## Verification
 
-The strongest completeness check is `pnpm demo`: a handler that has **only** the public tool
-surface — no DOM access, no engine access — plays the game. It pings to locate cores, reads
-`plan_route` risk, loops cameras, fires distractions, seals doors on hunters, and refuses to end a
-turn inside a vision cone. It currently clears **two floors** on the default seed in ~160 tool
-calls. If a script with only the tools can clear floors, the surface is complete.
+`pnpm demo` is the sharpest completeness check available. A handler with **only** the public tool
+surface, no DOM access and no engine access, sits down and plays. It pings to find cores, reads
+`plan_route` risk, loops cameras, fires distractions, seals doors on hunters, and refuses to finish
+a turn standing in a vision cone. On the default seed it clears **two floors** in roughly 160 tool
+calls. A script that can clear floors armed with nothing but the tools tells you the surface is
+complete.
 
 ```
 T3 floor 1 · ap 3 · bw 4 · alarm 0% · cores left 1
@@ -259,7 +280,7 @@ T5 floor 1 · ap 3 · bw 4 · alarm 0% · cores left 1
   → trigger_distraction (pull guard-1 off the route): Distraction fired at 19,17; 1 guard investigating.
 ```
 
-Beyond that, the suite is deliberately broad rather than a handful of happy paths:
+Past that, the suite goes wide on purpose rather than parading a few happy paths:
 
 | Sweep | Scale |
 | --- | --- |
@@ -273,46 +294,46 @@ Beyond that, the suite is deliberately broad rather than a handful of happy path
 | Eval execution | all 313 executed against the live page via `executeTool`, plus a 19-check success-path pass proving every tool can *succeed*, not merely respond |
 | Browser smoke | 15 checks on the real page: rendering, HUD survival under input, control occlusion, agent tool calls, zero console errors |
 
-Assertions were mutation-checked — the code was deliberately broken to confirm the tests fail.
-Where a single-line mutation survived, the test was strengthened until it caught the change.
+Assertions were mutation-checked: the code was deliberately broken to confirm the tests notice.
+Where a single-line mutation slipped through, the test got strengthened until it caught the change.
 
 ### Bugs this verification actually caught
 
-- **A tool aborted its own registration mid-call.** A phase change triggered inside `execute()`
-  cancelled the registration of the very tool that caused it, so the caller got
-  `"Tool unregistered"` instead of its result. Phase syncs now yield a task first.
-- **Closed doors made objectives unreachable.** Pathfinding treated any shut door as a wall, so
-  generated floors reported cores and extraction as unreachable. Unlocked doors are now pathable
-  and opened in passing; only *sealed* doors block.
-- **The canvas painted over the action bar.** A positioned wrapper let an over-tall canvas cover
-  every enabled button. Fixed with containment plus a `ResizeObserver`, and an occlusion hit-test
-  now runs in the smoke check.
-- **`set_play_mode` vanished once playing**, so control could never be handed to an agent
-  mid-run — found by the eval pass, and fixed by making it a core tool.
+- **A tool aborted its own registration mid-call.** A phase change fired inside `execute()`
+  cancelled the registration belonging to the very tool that triggered it, so callers received
+  `"Tool unregistered"` in place of their result. Phase syncs now yield a task first.
+- **Closed doors made objectives unreachable.** Pathfinding treated every shut door as a wall, which
+  left generated floors reporting cores and extraction as unreachable. Unlocked doors are now
+  pathable and get opened in passing; only *sealed* ones block.
+- **The canvas painted over the action bar.** A positioned wrapper let an over-tall canvas swallow
+  every enabled button. Containment plus a `ResizeObserver` fixed it, and an occlusion hit-test now
+  runs inside the smoke check.
+- **`set_play_mode` vanished once playing**, which meant control could never pass to an agent
+  mid-run. The eval pass surfaced it; promoting it to a core tool fixed it.
 
-Two invariants I wrote were wrong and the *tests* were corrected, not the code: seeing a wall face
-is legitimate, and the fuzz sweep needed a real timeout.
+Two of my own invariants turned out to be wrong, and the *tests* were corrected rather than the
+code: seeing a wall face is perfectly legitimate, and the fuzz sweep needed a real timeout.
 
 ---
 
 ## Design decisions worth knowing
 
-- **Turn-based** so tool latency is a non-issue (see §1).
-- **Asymmetric verbs** so the agent is not a redundant remote control.
-- **Fog of war for both players** so `ping_scan` has a reason to exist.
-- **One balance table** (`src/game/config.ts`) that both the rules and the tool descriptions read
-  from, so agent-facing documentation cannot drift.
-- **Art pipeline, not committed blobs.** `tools/build-atlas.sh` recolours CC0 Kenney sprites into
-  the game palette through a luminance ramp, so the palette is reproducible and editable.
+- **Turn-based** so tool latency stops being a problem at all (see §1).
+- **Asymmetric verbs** so the agent never degenerates into a redundant remote control.
+- **Fog of war on both sides**, which is what gives `ping_scan` a reason to exist.
+- **A single balance table** (`src/game/config.ts`) feeding both the rules and the tool
+  descriptions, so agent-facing documentation cannot drift out of sync.
+- **An art pipeline instead of committed blobs.** `tools/build-atlas.sh` pushes CC0 Kenney sprites
+  through a luminance ramp into the game palette, keeping the palette reproducible and editable.
 
 ## Limitations
 
-- Chrome/Edge need origin-trial enrolment; without it the page falls back to the polyfill. The
-  fallback registers identical tools, so behaviour is the same — only discovery differs.
-- The scripted handler in `pnpm demo` is a heuristic, not an LLM. It exists to prove the tool
-  surface is sufficient and to give a repeatable demo; a real agent plays better.
-- Guard AI is deliberately readable (patrol → investigate → hunt) rather than clever; the tactical
-  interest comes from the two-player division of labour.
+- Chrome and Edge need origin-trial enrolment. Without it the page falls back to the polyfill, which
+  registers identical tools, so behaviour matches and only discovery differs.
+- The handler behind `pnpm demo` is a heuristic, not an LLM. Its job is proving the tool surface is
+  sufficient and giving a repeatable demo. A real agent plays better.
+- Guard AI stays deliberately readable (patrol, investigate, hunt) rather than clever. The tactical
+  interest comes from two players splitting the work.
 
 ## Credits
 
