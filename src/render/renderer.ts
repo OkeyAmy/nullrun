@@ -34,6 +34,11 @@ export class Renderer {
   private originX = 0;
   private originY = 0;
   private coneCache: ConeCell[] | null = null;
+  /** Viewport offset when the facility is larger than the canvas. */
+  private pan = { x: 0, y: 0 };
+  /** Tiles never shrink below this, so big floors stay readable and scroll instead. */
+  private minTileSize = 26;
+  private viewport = { width: 0, height: 0 };
 
   /** Tile the pointer is currently over, or null. */
   hover: Vec | null = null;
@@ -71,13 +76,77 @@ export class Renderer {
     this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
     const floor = this.game.state.floor;
-    this.tileSize = Math.max(
-      8,
-      Math.floor(Math.min(width / floor.width, height / floor.height)),
-    );
-    this.originX = Math.floor((width - this.tileSize * floor.width) / 2);
-    this.originY = Math.floor((height - this.tileSize * floor.height) / 2);
+    this.viewport = { width, height };
+    const fitted = Math.floor(Math.min(width / floor.width, height / floor.height));
+    // shrinking a 45-wide floor to fit a phone makes it unreadable; keep tiles
+    // legible and let the player drag the facility around instead
+    this.tileSize = Math.max(this.minTileSize, fitted);
+    this.applyPan();
     this.invalidate();
+  }
+
+  /** True when the facility does not fit on screen and can be dragged. */
+  get pannable(): boolean {
+    // before the first resize the viewport is 0×0, which would make everything
+    // look pannable and let a stray centreOn clamp against a meaningless size
+    if (this.viewport.width === 0 || this.viewport.height === 0) return false;
+    const floor = this.game.state.floor;
+    return (
+      this.tileSize * floor.width > this.viewport.width ||
+      this.tileSize * floor.height > this.viewport.height
+    );
+  }
+
+  /** Recompute the origin: centre when it fits, otherwise clamp the pan. */
+  private applyPan(): void {
+    const floor = this.game.state.floor;
+    const mapW = this.tileSize * floor.width;
+    const mapH = this.tileSize * floor.height;
+    const { width, height } = this.viewport;
+
+    if (mapW <= width) {
+      this.pan.x = 0;
+      this.originX = Math.floor((width - mapW) / 2);
+    } else {
+      this.pan.x = Math.min(0, Math.max(width - mapW, this.pan.x));
+      this.originX = Math.floor(this.pan.x);
+    }
+
+    if (mapH <= height) {
+      this.pan.y = 0;
+      this.originY = Math.floor((height - mapH) / 2);
+    } else {
+      this.pan.y = Math.min(0, Math.max(height - mapH, this.pan.y));
+      this.originY = Math.floor(this.pan.y);
+    }
+  }
+
+  panBy(dx: number, dy: number): void {
+    if (!this.pannable) return;
+    this.pan.x += dx;
+    this.pan.y += dy;
+    this.applyPan();
+  }
+
+  /** Keep a tile in view — used to follow the operative after it moves. */
+  centreOn(x: number, y: number): void {
+    if (!this.pannable) return;
+    const px = x * this.tileSize;
+    const py = y * this.tileSize;
+    const margin = this.tileSize * 3;
+
+    const left = -this.pan.x;
+    const right = left + this.viewport.width;
+    const top = -this.pan.y;
+    const bottom = top + this.viewport.height;
+
+    if (px < left + margin) this.pan.x = -(px - margin);
+    else if (px > right - margin) this.pan.x = -(px - this.viewport.width + margin);
+
+    if (py < top + margin) this.pan.y = -(py - margin);
+    else if (py > bottom - margin) this.pan.y = -(py - this.viewport.height + margin);
+
+    this.applyPan();
   }
 
   tileFromPointer(clientX: number, clientY: number): Vec | null {

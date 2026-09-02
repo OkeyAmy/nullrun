@@ -19,8 +19,12 @@ export type Facing = { dx: number; dy: number };
 
 export type GuardState = 'patrol' | 'suspicious' | 'hunting';
 
+/** Behavioural family a guard belongs to. See game/archetypes.ts. */
+export type GuardArchetype = 'patrol' | 'sentry' | 'hunter' | 'drone' | 'bloodhound';
+
 export interface Guard {
   id: string;
+  archetype: GuardArchetype;
   x: number;
   y: number;
   facing: Facing;
@@ -34,6 +38,11 @@ export interface Guard {
   visionRange: number;
   coneHalfAngleDeg: number;
   stunTurns: number;
+  patrolSpeed: number;
+  huntSpeed: number;
+  stationary: boolean;
+  deafToNoise: boolean;
+  seesInBlackout: boolean;
 }
 
 export interface Camera {
@@ -142,6 +151,8 @@ export interface GameState {
   implantChoices: Implant[];
   intelThisRun: number;
   bankedIntel: number;
+  /** Implant ids permanently bought with banked intel; installed on every run. */
+  unlockedIds: string[];
   log: LogEntry[];
   seed: number;
   /** Set when the run ends, for the summary screen. */

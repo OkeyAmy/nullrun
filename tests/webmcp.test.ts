@@ -72,6 +72,16 @@ function payload(result: ToolResult): Record<string, unknown> {
   return JSON.parse(text.slice(start)) as Record<string, unknown>;
 }
 
+
+/** Archetype fields every hand-built guard fixture needs. */
+const GUARD_DEFAULTS = {
+  patrolSpeed: 1,
+  huntSpeed: 2,
+  stationary: false,
+  deafToNoise: false,
+  seesInBlackout: false,
+} as const;
+
 async function freshSurface() {
   const game = new Game();
   const surface = new ToolSurface(game);
@@ -225,6 +235,7 @@ test('plan_route names the guard watching the route it returns', async () => {
   game.state.floor.guards = [
     {
       id: 'guard-test',
+      archetype: 'patrol' as const,
       x: player.x,
       y: player.y + 2,
       facing: { dx: 0, dy: -1 },
@@ -236,6 +247,7 @@ test('plan_route names the guard watching the route it returns', async () => {
       visionRange: 6,
       coneHalfAngleDeg: 60,
       stunTurns: 0,
+      ...GUARD_DEFAULTS,
     },
   ];
 

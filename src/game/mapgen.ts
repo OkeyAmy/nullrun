@@ -1,3 +1,4 @@
+import { ARCHETYPES, archetypePool } from './archetypes';
 import { RNG } from './rng';
 import type { Camera, FloorState, Guard, Loot, Terminal, Tile, Vec } from './types';
 
@@ -209,14 +210,19 @@ export function generateFloor(seed: number, cfg: FloorConfig): FloorState {
 
   const guards: Guard[] = [];
   const patrolPool = rooms.length > 1 ? rooms.slice(1) : rooms;
+  const pool = archetypePool(cfg.index);
   for (let i = 0; i < cfg.guards; i++) {
     const home = rng.pick(patrolPool);
     const spot = takeSpot([home]) ?? roomCenter(home);
+    // the first guard on every floor is a plain patrol, so a floor never opens
+    // with an unfamiliar unit before the player has seen the baseline
+    const spec = ARCHETYPES[i === 0 ? 'patrol' : rng.pick(pool)];
     const waypointRooms = rng.shuffle(patrolPool).slice(0, rng.int(2, Math.min(4, patrolPool.length)));
-    const route = waypointRooms.map(roomCenter);
+    const route = spec.stationary ? [{ x: spot.x, y: spot.y }] : waypointRooms.map(roomCenter);
     if (!route.length) route.push(roomCenter(home));
     guards.push({
-      id: `guard-${i}`,
+      id: `${spec.id}-${i}`,
+      archetype: spec.id,
       x: spot.x,
       y: spot.y,
       facing: rng.pick([
@@ -230,9 +236,14 @@ export function generateFloor(seed: number, cfg: FloorConfig): FloorState {
       state: 'patrol',
       investigating: null,
       patience: 0,
-      visionRange: 7,
-      coneHalfAngleDeg: 45,
+      visionRange: spec.visionRange,
+      coneHalfAngleDeg: spec.coneHalfAngleDeg,
       stunTurns: 0,
+      patrolSpeed: spec.patrolSpeed,
+      huntSpeed: spec.huntSpeed,
+      stationary: spec.stationary,
+      deafToNoise: spec.deafToNoise,
+      seesInBlackout: spec.seesInBlackout,
     });
   }
 

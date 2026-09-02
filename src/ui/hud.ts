@@ -26,6 +26,8 @@ const TOOL_CATEGORIES: Record<string, ToolCategory> = {
   begin_infiltration: 'meta',
   choose_implant: 'meta',
   start_new_run: 'meta',
+  list_upgrades: 'meta',
+  purchase_upgrade: 'meta',
 };
 
 export interface HudCallbacks {
@@ -37,6 +39,7 @@ export interface HudCallbacks {
   onBegin(): void;
   onSetMode(mode: 'coop' | 'agent'): void;
   onChooseImplant(id: string): void;
+  onPurchaseUpgrade(id: string): void;
   onNewRun(): void;
 }
 
@@ -192,7 +195,7 @@ export class Hud {
 
   private renderOverlay(): void {
     const s = this.game.state;
-    const key = `${s.phase}:${s.mode}:${s.floor.index}:${s.implantChoices.map((i) => i.id).join(',')}`;
+    const key = `${s.phase}:${s.mode}:${s.floor.index}:${s.bankedIntel}:${s.unlockedIds.length}:${s.implantChoices.map((i) => i.id).join(',')}`;
     if (key === this.lastOverlayKey) return;
     this.lastOverlayKey = key;
 
@@ -318,6 +321,9 @@ export class Hud {
   private renderRunEnd(): void {
     const s = this.game.state;
     const won = s.phase === 'run_complete';
+    const upgrades = this.game.availableUpgrades();
+    const cost = this.game.upgradeCost();
+
     this.overlayEl.innerHTML = `
       <div class="card">
         <h2 style="color:${won ? 'var(--green)' : 'var(--red)'}">${won ? 'Extraction confirmed' : 'Run burned'}</h2>
@@ -326,14 +332,42 @@ export class Hud {
           <div><span>Floors cleared</span><strong>${won ? BALANCE.run.floors : s.floor.index}</strong></div>
           <div><span>Intel this run</span><strong>${s.intelThisRun}</strong></div>
           <div><span>Banked intel</span><strong>${s.bankedIntel}</strong></div>
-          <div><span>Implants</span><strong>${s.implants.length}</strong></div>
+          <div><span>Permanent</span><strong>${s.unlockedIds.length}</strong></div>
         </div>
+
+        <p class="sub" style="margin:20px 0 8px">
+          Blackmarket &nbsp;·&nbsp; next implant ${cost} intel &nbsp;·&nbsp; banked ${s.bankedIntel}
+        </p>
+        <p class="hint" style="margin-bottom:12px">
+          Anything you buy here is welded in permanently and starts installed on every future run.
+        </p>
+        <div class="choices">
+          ${
+            upgrades.length
+              ? upgrades
+                  .map(
+                    (u) =>
+                      `<button class="choice" data-buy="${u.id}" ${u.affordable ? '' : 'disabled'}>
+                        <strong>${u.name} &nbsp;·&nbsp; ${u.cost} intel</strong>${escapeHtml(u.description)}
+                      </button>`,
+                  )
+                  .join('')
+              : '<p class="hint">Everything is bought. You are as loaded as the market gets.</p>'
+          }
+        </div>
+
         <div class="card-actions">
           <button id="btn-newrun" class="primary">New run</button>
         </div>
       </div>
     `;
     this.bind('btn-newrun', this.callbacks.onNewRun);
+    for (const button of this.overlayEl.querySelectorAll<HTMLElement>('[data-buy]')) {
+      button.addEventListener('click', () => {
+        const id = button.dataset.buy;
+        if (id) this.callbacks.onPurchaseUpgrade(id);
+      });
+    }
   }
 }
 

@@ -8,6 +8,8 @@ export interface Observer {
   facing: { dx: number; dy: number };
   visionRange: number;
   coneHalfAngleDeg: number;
+  /** Thermal units keep their full range through a blackout. */
+  seesInBlackout?: boolean;
 }
 
 export interface VisionContext {
@@ -15,8 +17,12 @@ export interface VisionContext {
   powerOutTurns: number;
 }
 
-export function effectiveRange(base: number, ctx: VisionContext): number {
-  if (ctx.powerOutTurns > 0) {
+export function effectiveRange(
+  base: number,
+  ctx: VisionContext,
+  seesInBlackout = false,
+): number {
+  if (ctx.powerOutTurns > 0 && !seesInBlackout) {
     return Math.max(1, Math.round(base * BALANCE.vision.powerOutRangeMultiplier));
   }
   return base;
@@ -29,7 +35,7 @@ export function inVisionCone(
   target: Vec,
   ctx: VisionContext,
 ): boolean {
-  const range = effectiveRange(observer.visionRange, ctx);
+  const range = effectiveRange(observer.visionRange, ctx, observer.seesInBlackout);
   const dx = target.x - observer.x;
   const dy = target.y - observer.y;
   const distance = Math.hypot(dx, dy);
@@ -85,7 +91,7 @@ export function cameraSees(
 
 /** Every tile an observer currently covers — used for rendering cones and scoring risk. */
 export function coneTiles(floor: FloorState, observer: Observer, ctx: VisionContext): Vec[] {
-  const range = effectiveRange(observer.visionRange, ctx);
+  const range = effectiveRange(observer.visionRange, ctx, observer.seesInBlackout);
   const out: Vec[] = [];
   for (let y = observer.y - range; y <= observer.y + range; y++) {
     for (let x = observer.x - range; x <= observer.x + range; x++) {

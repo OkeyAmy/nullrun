@@ -18,6 +18,16 @@ const { BALANCE } = await import('../src/game/config.ts');
 const { tileThreat } = await import('../src/game/vision.ts');
 import type { FloorState, Tile } from '../src/game/types.ts';
 
+
+/** Archetype fields every hand-built guard fixture needs. */
+const GUARD_DEFAULTS = {
+  patrolSpeed: 1,
+  huntSpeed: 2,
+  stationary: false,
+  deafToNoise: false,
+  seesInBlackout: false,
+} as const;
+
 /** A hand-built 9x5 room so mechanics tests don't depend on generated layout. */
 function sandboxFloor(): FloorState {
   const width = 9;
@@ -156,6 +166,7 @@ test('sealing a door stops a hunting guard from pathing through it', () => {
   floor.guards = [
     {
       id: 'guard-0',
+      archetype: 'patrol' as const,
       x: 7,
       y: 2,
       facing: { dx: -1, dy: 0 },
@@ -167,6 +178,7 @@ test('sealing a door stops a hunting guard from pathing through it', () => {
       visionRange: 1,
       coneHalfAngleDeg: 10,
       stunTurns: 0,
+      ...GUARD_DEFAULTS,
     },
   ];
   game.state.player = { x: 1, y: 2 };
@@ -194,6 +206,7 @@ test('a distraction redirects guards to the noise instead of their patrol', () =
   game.state.floor.guards = [
     {
       id: 'guard-0',
+      archetype: 'patrol' as const,
       x: 2,
       y: 2,
       facing: { dx: 1, dy: 0 },
@@ -205,6 +218,7 @@ test('a distraction redirects guards to the noise instead of their patrol', () =
       visionRange: 1,
       coneHalfAngleDeg: 10,
       stunTurns: 0,
+      ...GUARD_DEFAULTS,
     },
   ];
 
@@ -220,6 +234,7 @@ test('cutting power shortens vision so a watched tile stops being watched', () =
   game.state.floor.guards = [
     {
       id: 'guard-0',
+      archetype: 'patrol' as const,
       x: 1,
       y: 2,
       facing: { dx: 1, dy: 0 },
@@ -231,6 +246,7 @@ test('cutting power shortens vision so a watched tile stops being watched', () =
       visionRange: 6,
       coneHalfAngleDeg: 45,
       stunTurns: 0,
+      ...GUARD_DEFAULTS,
     },
   ];
   const target = { x: 6, y: 2 };
@@ -258,6 +274,7 @@ test('the run fails when the alarm is driven to its maximum', () => {
   game.state.floor.guards = [
     {
       id: 'guard-0',
+      archetype: 'patrol' as const,
       x: 3,
       y: 2,
       facing: { dx: -1, dy: 0 },
@@ -269,6 +286,7 @@ test('the run fails when the alarm is driven to its maximum', () => {
       visionRange: 6,
       coneHalfAngleDeg: 45,
       stunTurns: 0,
+      ...GUARD_DEFAULTS,
     },
   ];
   game.state.player = { x: 1, y: 2 };
@@ -283,6 +301,7 @@ test('a hunting guard that reaches the operative ends the run', () => {
   game.state.floor.guards = [
     {
       id: 'guard-0',
+      archetype: 'patrol' as const,
       x: 3,
       y: 2,
       facing: { dx: -1, dy: 0 },
@@ -294,6 +313,7 @@ test('a hunting guard that reaches the operative ends the run', () => {
       visionRange: 1,
       coneHalfAngleDeg: 10,
       stunTurns: 0,
+      ...GUARD_DEFAULTS,
     },
   ];
   game.state.player = { x: 1, y: 2 };
@@ -310,6 +330,7 @@ test('plan_route reports per-step risk and names the observer', () => {
   game.state.floor.guards = [
     {
       id: 'guard-0',
+      archetype: 'patrol' as const,
       x: 4,
       y: 1,
       facing: { dx: 0, dy: 1 },
@@ -321,6 +342,7 @@ test('plan_route reports per-step risk and names the observer', () => {
       visionRange: 5,
       coneHalfAngleDeg: 45,
       stunTurns: 0,
+      ...GUARD_DEFAULTS,
     },
   ];
   game.state.player = { x: 1, y: 2 };
@@ -339,4 +361,169 @@ test('assess_tile terrain lookup matches the underlying grid', () => {
   assert.equal(tileAt(game.state.floor, 0, 0)?.kind, 'wall');
   assert.equal(tileAt(game.state.floor, 4, 2)?.kind, 'floor');
   assert.equal(tileAt(game.state.floor, -1, 2), null);
+});
+
+// --- meta progression: banked intel has to buy something ------------------
+
+test('banked intel buys a permanent implant that starts installed next run', () => {
+  localStorage.clear();
+  const game = new Game();
+  const cost = game.upgradeCost();
+
+  // bank enough to shop with
+  game.state.bankedIntel = cost + 10;
+  game.state.phase = 'run_failed';
+  game.state.endReason = 'test';
+
+  const target = game.availableUpgrades()[0];
+  assert.ok(target, 'the blackmarket must have stock on a fresh profile');
+
+  const bought = game.purchaseUpgrade(target.id);
+  assert.equal(bought.ok, true, bought.message);
+  assert.equal(game.state.bankedIntel, 10, 'the price must be deducted');
+  assert.ok(game.state.unlockedIds.includes(target.id));
+
+  // and it must actually be installed on the next run
+  game.newRun(99);
+  assert.ok(
+    game.state.implants.some((i) => i.id === target.id),
+    'a bought implant must start installed on the next run',
+  );
+  localStorage.clear();
+});
+
+test('an unaffordable or duplicate purchase is refused', () => {
+  localStorage.clear();
+  const game = new Game();
+  game.state.phase = 'run_failed';
+  game.state.bankedIntel = 0;
+
+  const target = game.availableUpgrades()[0];
+  const broke = game.purchaseUpgrade(target.id);
+  assert.equal(broke.ok, false, 'buying with no intel must fail');
+  assert.match(broke.message, /costs|banked/i);
+
+  game.state.bankedIntel = 10_000;
+  assert.equal(game.purchaseUpgrade(target.id).ok, true);
+  const again = game.purchaseUpgrade(target.id);
+  assert.equal(again.ok, false, 'buying the same implant twice must fail');
+  localStorage.clear();
+});
+
+test('upgrade prices rise with each implant owned', () => {
+  localStorage.clear();
+  const game = new Game();
+  game.state.phase = 'run_failed';
+  game.state.bankedIntel = 100_000;
+
+  const first = game.upgradeCost();
+  game.purchaseUpgrade(game.availableUpgrades()[0].id);
+  const second = game.upgradeCost();
+  assert.ok(second > first, `price must escalate: ${first} -> ${second}`);
+  localStorage.clear();
+});
+
+test('the blackmarket is shut while a run is in progress', () => {
+  localStorage.clear();
+  const game = new Game();
+  game.setMode('agent');
+  game.state.bankedIntel = 100_000;
+  assert.equal(game.state.phase, 'playing');
+
+  const result = game.purchaseUpgrade(game.availableUpgrades()[0].id);
+  assert.equal(result.ok, false, 'shopping mid-run must be refused');
+  localStorage.clear();
+});
+
+// --- guard archetypes -----------------------------------------------------
+
+test('a thermal drone keeps its full cone through a blackout', () => {
+  const game = sandboxGame();
+  const base = {
+    x: 1, y: 2, facing: { dx: 1, dy: 0 }, route: [], routeIdx: 0,
+    state: 'patrol' as const, investigating: null, patience: 0,
+    visionRange: 6, coneHalfAngleDeg: 45, stunTurns: 0,
+    patrolSpeed: 1, huntSpeed: 2, stationary: false, deafToNoise: false,
+  };
+  game.state.floor.guards = [
+    { id: 'patrol-0', archetype: 'patrol' as const, ...base, seesInBlackout: false },
+    { id: 'drone-0', archetype: 'drone' as const, ...base, seesInBlackout: true },
+  ];
+
+  const lit = tileThreat(game.state.floor, { x: 6, y: 2 }, { powerOutTurns: 0 }).watchedBy;
+  assert.deepEqual(lit.sort(), ['drone-0', 'patrol-0'], 'both should see down a lit corridor');
+
+  const dark = tileThreat(game.state.floor, { x: 6, y: 2 }, { powerOutTurns: 3 }).watchedBy;
+  assert.deepEqual(dark, ['drone-0'], 'only the thermal unit should see through a blackout');
+});
+
+test('a sentry cannot be lured by a distraction or rerouted', () => {
+  const game = sandboxGame();
+  game.state.floor.guards = [
+    {
+      id: 'sentry-0', archetype: 'sentry' as const, x: 3, y: 2,
+      facing: { dx: 1, dy: 0 }, route: [{ x: 3, y: 2 }], routeIdx: 0,
+      state: 'patrol', investigating: null, patience: 0,
+      visionRange: 9, coneHalfAngleDeg: 70, stunTurns: 0,
+      patrolSpeed: 0, huntSpeed: 0, stationary: true,
+      deafToNoise: true, seesInBlackout: false,
+    },
+  ];
+
+  game.distraction(6, 3);
+  assert.equal(game.state.floor.guards[0].state, 'patrol', 'a deaf sentry must ignore noise');
+
+  const rerouted = game.reroutePatrol('sentry-0', 6, 3);
+  assert.equal(rerouted.ok, false, 'a bolted-down sentry cannot be rerouted');
+  assert.match(rerouted.message, /fixed|cannot be moved/i);
+});
+
+test('a stationary sentry never leaves its tile', () => {
+  const game = sandboxGame();
+  game.state.floor.guards = [
+    {
+      id: 'sentry-0', archetype: 'sentry' as const, x: 3, y: 2,
+      facing: { dx: 1, dy: 0 }, route: [{ x: 7, y: 2 }], routeIdx: 0,
+      state: 'patrol', investigating: null, patience: 0,
+      visionRange: 9, coneHalfAngleDeg: 70, stunTurns: 0,
+      patrolSpeed: 0, huntSpeed: 0, stationary: true,
+      deafToNoise: true, seesInBlackout: false,
+    },
+  ];
+  game.state.player = { x: 1, y: 1 };
+
+  for (let i = 0; i < 6; i++) game.endTurn();
+  const sentry = game.state.floor.guards[0];
+  assert.deepEqual({ x: sentry.x, y: sentry.y }, { x: 3, y: 2 }, 'a sentry must stay put');
+});
+
+test('a bloodhound hears noise from further away than a patrol', () => {
+  const make = (id: string, archetype: 'patrol' | 'bloodhound') => ({
+    id, archetype, x: 2, y: 2, facing: { dx: 1, dy: 0 }, route: [{ x: 2, y: 2 }],
+    routeIdx: 0, state: 'patrol' as const, investigating: null, patience: 0,
+    visionRange: 1, coneHalfAngleDeg: 10, stunTurns: 0,
+    patrolSpeed: 1, huntSpeed: 2, stationary: false,
+    deafToNoise: false, seesInBlackout: false,
+  });
+
+  // a noise just outside normal hearing: only the bloodhound should react
+  // the sandbox player starts next to (2,2), and a guard always notices what is
+  // standing beside it — park the operative out of reach so only hearing is tested
+  const patrolGame = sandboxGame();
+  patrolGame.state.player = { x: 7, y: 1 };
+  patrolGame.state.floor.guards = [make('patrol-0', 'patrol')];
+  patrolGame.emitNoise(7, 2, 4);
+  patrolGame.endTurn();
+  assert.equal(patrolGame.state.floor.guards[0].state, 'patrol', 'patrol should not hear it');
+
+  const houndGame = sandboxGame();
+  houndGame.state.player = { x: 7, y: 1 };
+  houndGame.state.floor.guards = [make('bloodhound-0', 'bloodhound')];
+  houndGame.emitNoise(7, 2, 4);
+  houndGame.endTurn();
+  assert.notEqual(
+    houndGame.state.floor.guards[0].state,
+    'patrol',
+    'a bloodhound must hear noise a patrol misses',
+  );
 });

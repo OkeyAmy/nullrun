@@ -174,7 +174,17 @@ export class ToolSurface {
       return steps;
     }
     if (s.phase === 'run_failed' || s.phase === 'run_complete') {
-      steps.push({ tool: 'start_new_run', why: 'The run is over. Banked intel carries across.' });
+      const affordable = this.game.availableUpgrades().filter((u) => u.affordable);
+      if (affordable.length) {
+        steps.push({
+          tool: 'purchase_upgrade',
+          why: `${s.bankedIntel} intel banked — enough for a permanent implant (${affordable[0].cost}). It starts installed on every future run.`,
+        });
+      }
+      steps.push({
+        tool: 'start_new_run',
+        why: 'Begin the next run. Banked intel and anything bought carries across.',
+      });
       return steps;
     }
 
@@ -392,6 +402,8 @@ export class ToolSurface {
             implants: s.implants.map((i) => ({ id: i.id, name: i.name, effect: i.description })),
             intelThisRun: s.intelThisRun,
             bankedIntel: s.bankedIntel,
+            permanentImplants: s.unlockedIds,
+            nextUpgradeCost: game.upgradeCost(),
             endReason: s.endReason || undefined,
             seed: s.seed,
           });
@@ -639,6 +651,41 @@ export class ToolSurface {
 
     if (phase === 'run_failed' || phase === 'run_complete') {
       return [
+        {
+          name: 'list_upgrades',
+          description:
+            'List the permanent implants the blackmarket is selling between runs, with the price of the next one and whether banked intel covers it. Anything bought here starts installed on every future run — this is the only thing banked intel is for.',
+          inputSchema: { type: 'object', properties: {} },
+          execute: () =>
+            textResponse('Blackmarket stock.', {
+              bankedIntel: game.state.bankedIntel,
+              nextCost: game.upgradeCost(),
+              alreadyOwned: game.state.unlockedIds,
+              forSale: game.availableUpgrades(),
+            }),
+        },
+        {
+          name: 'purchase_upgrade',
+          description:
+            'Spend banked intel on a permanent implant, which is then installed at the start of every future run. Prices rise with each one you own. Only available between runs.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              implant_id: {
+                type: 'string',
+                description: 'Id of the implant to buy permanently.',
+                enum: ALL_IMPLANTS.map((i) => i.id),
+              },
+            },
+            required: ['implant_id'],
+          },
+          execute: (args: Args) => {
+            const id = str(args, 'implant_id');
+            if (!id) return errorResponse('implant_id is required.');
+            const result = game.purchaseUpgrade(id);
+            return result.ok ? this.respond(result) : errorResponse(result.message);
+          },
+        },
         {
           name: 'start_new_run',
           description:

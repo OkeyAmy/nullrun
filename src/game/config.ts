@@ -8,6 +8,10 @@ export const BALANCE = {
     floors: 5,
     /** Intel is banked between runs and unlocks starting implants. */
     intelPerFloorClear: 50,
+    /** Blackmarket: price of the first permanent implant... */
+    upgradeBaseCost: 120,
+    /** ...and how much each one you already own adds to the next price. */
+    upgradeCostPerOwned: 90,
   },
 
   operative: {

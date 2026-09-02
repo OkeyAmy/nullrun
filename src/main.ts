@@ -22,6 +22,7 @@ const hud = new Hud(game, tools, {
   onBegin: () => game.beginInfiltration(),
   onSetMode: (mode) => report(game.setMode(mode)),
   onChooseImplant: (id) => report(game.chooseImplant(id)),
+  onPurchaseUpgrade: (id) => report(game.purchaseUpgrade(id)),
   onNewRun: () => game.newRun(),
 });
 
@@ -45,6 +46,7 @@ function humanCanAct(): boolean {
 game.onChange(() => {
   renderer.invalidate();
   renderer.routePreview = null;
+  renderer.centreOn(game.state.player.x, game.state.player.y);
   hud.render();
   void tools.syncPhaseTools();
 });
@@ -106,7 +108,46 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
+// --- dragging the facility around ----------------------------------------
+// Big floors no longer shrink to fit, so the map can be larger than the canvas.
+// A press-and-move pans it; a press without movement is still a click.
+const drag = { active: false, moved: 0, lastX: 0, lastY: 0 };
+const DRAG_THRESHOLD = 4;
+
+canvas.addEventListener('pointerdown', (event) => {
+  drag.active = true;
+  drag.moved = 0;
+  drag.lastX = event.clientX;
+  drag.lastY = event.clientY;
+  canvas.setPointerCapture(event.pointerId);
+});
+
+function endDrag(event: PointerEvent): void {
+  if (!drag.active) return;
+  drag.active = false;
+  if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+  canvas.style.cursor = 'crosshair';
+}
+
+canvas.addEventListener('pointerup', endDrag);
+canvas.addEventListener('pointercancel', endDrag);
+
 canvas.addEventListener('mousemove', (event) => {
+  if (drag.active) {
+    const dx = event.clientX - drag.lastX;
+    const dy = event.clientY - drag.lastY;
+    drag.lastX = event.clientX;
+    drag.lastY = event.clientY;
+    drag.moved += Math.abs(dx) + Math.abs(dy);
+    if (drag.moved > DRAG_THRESHOLD && renderer.pannable) {
+      canvas.style.cursor = 'grabbing';
+      renderer.panBy(dx, dy);
+      renderer.hover = null;
+      renderer.routePreview = null;
+      return;
+    }
+  }
+
   const tile = renderer.tileFromPointer(event.clientX, event.clientY);
   renderer.hover = tile;
   if (!tile || game.state.phase !== 'playing') {
@@ -123,6 +164,8 @@ canvas.addEventListener('mouseleave', () => {
 });
 
 canvas.addEventListener('click', (event) => {
+  // a drag that happened to end over a tile must not also order a move
+  if (drag.moved > DRAG_THRESHOLD) return;
   if (!humanCanAct()) return;
   const tile = renderer.tileFromPointer(event.clientX, event.clientY);
   if (!tile) return;

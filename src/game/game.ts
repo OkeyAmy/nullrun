@@ -1,4 +1,5 @@
 import { BALANCE } from './config';
+import { ARCHETYPES, hearingMultiplier } from './archetypes';
 import { hasImplant, ALL_IMPLANTS } from './implants';
 import {
   chebyshev,
@@ -97,6 +98,7 @@ export class Game {
     const previousMode = this.state?.mode ?? null;
     const openingPhase: RunPhase =
       previousMode === 'agent' ? 'playing' : previousMode ? 'briefing' : 'mode_select';
+    const owned = ALL_IMPLANTS.filter((i) => meta.unlocked.includes(i.id));
     this.state = {
       phase: openingPhase,
       mode: previousMode,
@@ -111,15 +113,17 @@ export class Game {
       alarm: 0,
       turnsUnseen: 0,
       powerOutTurns: 0,
-      implants: [],
+      implants: owned,
       implantChoices: [],
       intelThisRun: 0,
       bankedIntel: meta.bankedIntel,
+      unlockedIds: meta.unlocked,
       log: [],
       seed,
       endReason: '',
       reflexAvailable: false,
     };
+    this.refreshResources();
     updateOperativeVisibility(floor, start);
     this.log('system', `Facility seed ${seed}. Floor 1 of ${BALANCE.run.floors}. Go dark.`);
     this.emit();
@@ -204,6 +208,65 @@ export class Game {
     meta.bankedIntel += this.state.intelThisRun;
     saveMeta(meta);
     this.state.bankedIntel = meta.bankedIntel;
+  }
+
+  /** Price of the next permanent implant, rising with how many you own. */
+  upgradeCost(): number {
+    return (
+      BALANCE.run.upgradeBaseCost +
+      BALANCE.run.upgradeCostPerOwned * this.state.unlockedIds.length
+    );
+  }
+
+  /** Implants that can still be bought, with the price of the next one. */
+  availableUpgrades(): Array<Implant & { cost: number; affordable: boolean }> {
+    const cost = this.upgradeCost();
+    return ALL_IMPLANTS.filter((i) => !this.state.unlockedIds.includes(i.id)).map((i) => ({
+      ...i,
+      cost,
+      affordable: this.state.bankedIntel >= cost,
+    }));
+  }
+
+  /**
+   * Spend banked intel on a permanent implant. This is the only thing intel is
+   * for — without it a finished run leaves nothing behind and there is no
+   * reason to start another.
+   */
+  purchaseUpgrade(id: string): ActionResult {
+    const s = this.state;
+    if (s.phase === 'playing') {
+      return { ok: false, message: 'The blackmarket is only open between runs.' };
+    }
+    const implant = ALL_IMPLANTS.find((i) => i.id === id);
+    if (!implant) return { ok: false, message: `No implant with id "${id}".` };
+    if (s.unlockedIds.includes(id)) {
+      return { ok: false, message: `${implant.name} is already permanently installed.` };
+    }
+    const cost = this.upgradeCost();
+    if (s.bankedIntel < cost) {
+      return {
+        ok: false,
+        message: `${implant.name} costs ${cost} intel; you have banked ${s.bankedIntel}.`,
+      };
+    }
+
+    // the live state is the authority here — upgradeCost() and
+    // availableUpgrades() both price off it, so debiting the stored copy
+    // instead would let the two drift apart and charge the wrong amount
+    s.bankedIntel -= cost;
+    s.unlockedIds = [...s.unlockedIds, id];
+    const meta = loadMeta();
+    meta.bankedIntel = s.bankedIntel;
+    meta.unlocked = s.unlockedIds;
+    saveMeta(meta);
+    this.log('system', `Blackmarket: ${implant.name} permanently installed.`);
+    this.emit();
+    return {
+      ok: true,
+      message: `Bought ${implant.name} for ${cost} intel. It is installed at the start of every future run. ${implant.description}`,
+      detail: { bankedIntel: s.bankedIntel, nextCost: this.upgradeCost() },
+    };
   }
 
   private failRun(reason: string): void {
@@ -631,7 +694,10 @@ export class Game {
     const radius = BALANCE.agent.distractionNoiseRadius;
     this.emitNoise(x, y, radius);
     const pulled = s.floor.guards.filter(
-      (g) => g.stunTurns === 0 && Math.hypot(g.x - x, g.y - y) <= radius,
+      (g) =>
+        g.stunTurns === 0 &&
+        !g.deafToNoise &&
+        Math.hypot(g.x - x, g.y - y) <= radius * hearingMultiplier(g.archetype),
     );
     for (const guard of pulled) {
       guard.state = 'suspicious';
@@ -678,6 +744,12 @@ export class Game {
     if (!guard) return { ok: false, message: `No guard "${guardId}" on this floor.` };
     if (guard.state === 'hunting') {
       return { ok: false, message: `${guardId} is actively hunting — patrol orders are ignored.` };
+    }
+    if (guard.stationary) {
+      return {
+        ok: false,
+        message: `${guardId} is a fixed ${ARCHETYPES[guard.archetype].name} and cannot be moved. Route around it, or blind it another way.`,
+      };
     }
     if (!isWalkable(s.floor, x, y)) return { ok: false, message: 'That waypoint is not walkable.' };
     const cost = BALANCE.agent.cost.reroutePatrol;
@@ -797,7 +869,12 @@ export class Game {
       }
 
       // react to noise first — this is what makes agent distractions work
-      const heard = s.floor.noises.find((n) => Math.hypot(guard.x - n.x, guard.y - n.y) <= n.radius);
+      const hearing = hearingMultiplier(guard.archetype);
+      const heard = guard.deafToNoise
+        ? undefined
+        : s.floor.noises.find(
+            (n) => Math.hypot(guard.x - n.x, guard.y - n.y) <= n.radius * hearing,
+          );
       if (heard && guard.state !== 'hunting') {
         guard.state = 'suspicious';
         guard.investigating = { x: heard.x, y: heard.y };
@@ -810,7 +887,7 @@ export class Game {
         guard.patience = BALANCE.guard.patience;
       }
 
-      const speed = guard.state === 'hunting' ? BALANCE.guard.huntSpeed : BALANCE.guard.patrolSpeed;
+      const speed = guard.state === 'hunting' ? guard.huntSpeed : guard.patrolSpeed;
       for (let step = 0; step < speed; step++) {
         this.stepGuard(guard);
         if (chebyshev(guard, s.player) === 0) break;
@@ -841,6 +918,18 @@ export class Game {
 
   private stepGuard(guard: Guard): void {
     const s = this.state;
+    if (guard.stationary) {
+      // bolted down: it can only sweep its arc
+      guard.facing = this.rotate(guard.facing);
+      if (guard.state !== 'patrol') {
+        guard.patience--;
+        if (guard.patience <= 0) {
+          guard.state = 'patrol';
+          guard.investigating = null;
+        }
+      }
+      return;
+    }
     let target: Vec | null = null;
 
     if (guard.state === 'hunting' || guard.state === 'suspicious') {
@@ -929,8 +1018,12 @@ export class Game {
   // -- descriptions used by the agent-facing tools -------------------------
 
   describeGuard(guard: Guard): Record<string, unknown> {
+    const spec = ARCHETYPES[guard.archetype];
     return {
       id: guard.id,
+      archetype: guard.archetype,
+      unit: spec.name,
+      threat: spec.threat,
       position: { x: guard.x, y: guard.y },
       facing: this.facingName(guard.facing),
       state: guard.state,
