@@ -15,7 +15,8 @@
     "demo": "node tools/agent-demo.mjs",
     "evals:build": "node tools/build-evals.mjs",
     "evals": "node tools/run-evals.mjs",
-    "evals:cli": "webmcp-evals smoke -u http://localhost:5183/ -e evals.json"
+    "evals:cli": "webmcp-evals smoke -u http://localhost:5183/ -e evals.json",
+    "build:pages": "tsc --noEmit && GITHUB_PAGES=1 vite build"
   },
   "dependencies": {
     "@mcp-b/webmcp-polyfill": "^5.1.0"
