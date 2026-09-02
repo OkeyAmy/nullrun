@@ -42,9 +42,25 @@ check(
 );
 await page.screenshot({ path: '.smoke/0-mode-select.png' });
 
+// picking AI must drop straight into the floor — a spectator has no briefing to click
+await page.click('.overlay [data-mode="agent"]');
+await page.waitForTimeout(300);
+check(
+  'choosing AI starts the floor with no briefing step',
+  (await page.evaluate(() => window.nullrun.game.state.phase)) === 'playing' &&
+    (await page.locator('.overlay').isHidden()),
+);
+
+// back to a clean slate, then take the human path
+await page.evaluate(() => {
+  localStorage.clear();
+  window.nullrun.game.state.mode = null;
+  window.nullrun.game.newRun(20260903);
+});
+await page.waitForTimeout(250);
 await page.click('.overlay [data-mode="coop"]');
 await page.waitForTimeout(200);
-check('briefing follows the mode choice', await page.locator('.overlay .card h2').isVisible());
+check('choosing Human shows the briefing to read', await page.locator('#btn-begin').isVisible());
 await page.screenshot({ path: '.smoke/1-briefing.png' });
 
 const bridgeMode = await page.evaluate(() => window.nullrun.tools.bridge.mode);

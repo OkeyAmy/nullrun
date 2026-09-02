@@ -73,8 +73,11 @@ const dist = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 
 console.log(`NULLRUN handler — seed ${seed}, driving via document.modelContext\n`);
 
-await act('set_play_mode', { mode: 'agent' }, 'the handler takes both roles');
-await act('begin_infiltration', {}, 'start the floor');
+// choosing AI starts the floor outright; only co-op stops at a briefing
+const opening = await act('set_play_mode', { mode: 'agent' }, 'the handler takes both roles');
+if (!/already live/.test(opening.text)) {
+  await act('begin_infiltration', {}, 'start the floor');
+}
 
 let turn = 0;
 let lastPingRing = 0;

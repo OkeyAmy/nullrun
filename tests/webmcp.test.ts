@@ -83,8 +83,11 @@ async function freshSurface() {
 async function startFloor(surface: InstanceType<typeof ToolSurface>, mode: 'coop' | 'agent' = 'coop') {
   await context.call('set_play_mode', { mode });
   await surface.syncPhaseTools();
-  await context.call('begin_infiltration');
-  await surface.syncPhaseTools();
+  // picking AI drops straight into the floor; co-op still stops at the briefing
+  if (context.find('begin_infiltration')) {
+    await context.call('begin_infiltration');
+    await surface.syncPhaseTools();
+  }
 }
 
 test('the page registers its tool surface on document.modelContext', async () => {
@@ -339,4 +342,56 @@ test('a finished run still tells the agent what to do', async () => {
   const tools = (data.nextSteps as { tool: string }[]).map((s) => s.tool);
   assert.deepEqual(tools, ['start_new_run']);
   assert.match(String(data.continue), /start_new_run/);
+});
+
+test('choosing AI starts the floor immediately, with no briefing to click', async () => {
+  const { game, surface } = await freshSurface();
+  assert.equal(game.state.phase, 'mode_select');
+
+  const result = await context.call('set_play_mode', { mode: 'agent' });
+  await surface.syncPhaseTools();
+
+  assert.equal(game.state.phase, 'playing', 'AI mode must not stop at the briefing');
+  const data = payload(result);
+  assert.equal(data.phase, 'playing');
+  const tools = (data.nextSteps as { tool: string }[]).map((s) => s.tool);
+  assert.ok(
+    !tools.includes('begin_infiltration'),
+    'AI mode must not ask an agent to begin a floor that is already live',
+  );
+  assert.ok(tools.length > 0, 'the agent must be handed something to do straight away');
+});
+
+test('choosing Human still shows the briefing to read', async () => {
+  const { game, surface } = await freshSurface();
+  await context.call('set_play_mode', { mode: 'coop' });
+  await surface.syncPhaseTools();
+
+  assert.equal(game.state.phase, 'briefing', 'a human should get the briefing');
+  assert.ok(context.find('begin_infiltration'), 'begin_infiltration must be available to start it');
+});
+
+test('a repeat run in AI mode does not park the agent at a briefing', async () => {
+  const { game, surface } = await freshSurface();
+  await context.call('set_play_mode', { mode: 'agent' });
+  await surface.syncPhaseTools();
+  assert.equal(game.state.phase, 'playing');
+
+  game.newRun(4242);
+  await surface.syncPhaseTools();
+
+  assert.equal(game.state.mode, 'agent', 'the mode choice should carry across runs');
+  assert.equal(game.state.phase, 'playing', 'an agent run must not stop at the briefing');
+});
+
+test('a repeat run in Human mode still offers the briefing', async () => {
+  const { game, surface } = await freshSurface();
+  await context.call('set_play_mode', { mode: 'coop' });
+  await surface.syncPhaseTools();
+
+  game.newRun(4242);
+  await surface.syncPhaseTools();
+
+  assert.equal(game.state.mode, 'coop');
+  assert.equal(game.state.phase, 'briefing');
 });

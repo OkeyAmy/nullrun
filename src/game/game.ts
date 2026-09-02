@@ -14,6 +14,7 @@ import { RNG } from './rng';
 import type {
   Camera,
   PlayMode,
+  RunPhase,
   FloorState,
   GameState,
   Guard,
@@ -91,9 +92,13 @@ export class Game {
     this.rng = new RNG(seed);
     const floor = this.buildFloor(seed, 0);
     const start = floorStart(floor);
+    // a repeat run keeps the previous answer, and must honour it the same way
+    // setMode does: agent runs never stop at the human briefing
     const previousMode = this.state?.mode ?? null;
+    const openingPhase: RunPhase =
+      previousMode === 'agent' ? 'playing' : previousMode ? 'briefing' : 'mode_select';
     this.state = {
-      phase: previousMode ? 'briefing' : 'mode_select',
+      phase: openingPhase,
       mode: previousMode,
       floor,
       player: start,
@@ -132,7 +137,14 @@ export class Game {
     }
     const previous = s.mode;
     s.mode = mode;
-    if (s.phase === 'mode_select') s.phase = 'briefing';
+    // The briefing exists so a human can read the objective before moving. A
+    // spectator has no reason to click through it, and the agent cannot see it
+    // at all, so picking AI drops straight into the floor.
+    if (mode === 'agent') {
+      if (s.phase === 'mode_select' || s.phase === 'briefing') s.phase = 'playing';
+    } else if (s.phase === 'mode_select') {
+      s.phase = 'briefing';
+    }
     const handover = previous && previous !== mode;
     this.log(
       'system',
@@ -147,7 +159,10 @@ export class Game {
     this.emit();
     return {
       ok: true,
-      message: `Play mode set to "${mode}".`,
+      message:
+        s.phase === 'playing'
+          ? `Play mode set to "${mode}". The floor is already live — start acting.`
+          : `Play mode set to "${mode}".`,
       detail: { mode, phase: s.phase },
     };
   }

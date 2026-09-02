@@ -203,8 +203,10 @@ the tools report straight from that table.
 The first screen asks who is at the controls. An agent can read that answer and set it, so a
 handler joining mid-run knows its role.
 
-- **Human** — you move the operative while an AI handler works the network beside you.
-- **AI** — the agent takes both roles and runs the infiltration itself. Human input is genuinely
+- **Human** — you move the operative while an AI handler works the network beside you. You get the briefing first, since you are the one who has to read the objective.
+- **AI** — the agent takes both roles and runs the infiltration itself. Picking this starts the
+  floor outright: a spectator has no reason to click through a briefing and an agent cannot see one,
+  so there is no "now press begin" step to strand either of them. Human input is genuinely
   switched off here: keyboard and clicks stop reaching the operative, so the two of you cannot
   fight over the same body. The action bar becomes a spectator strip, and `C` (or the **Take
   control** button) hands the operative straight back to you mid-floor.
@@ -249,7 +251,7 @@ intel · `Shift` sprint · `X` extract · `Space` end turn · `C` take control b
 pnpm install
 pnpm dev            # http://localhost:5173
 
-pnpm test           # 39 tests: engine, WebMCP surface, invariants, fuzzing
+pnpm test           # 43 tests: engine, WebMCP surface, invariants, fuzzing
 pnpm smoke          # drives the real page in Chromium, incl. document.modelContext
 pnpm demo           # a handler plays the game using only the WebMCP tools
 pnpm evals:build    # regenerate the 313-case eval matrix
@@ -295,7 +297,7 @@ Past that, the suite goes wide on purpose rather than parading a few happy paths
 | Determinism | same seed rebuilds an identical floor; 120 seeds give near-unique layouts |
 | Tool-choice evals | **313 generated cases across 18 tools** (`tools/build-evals.mjs`) |
 | Eval execution | all 313 executed against the live page via `executeTool`, plus a 19-check success-path pass proving every tool can *succeed*, not merely respond |
-| Browser smoke | 19 checks on the real page: rendering, HUD survival under input, control occlusion, mode input-gating in both directions, agent tool calls, zero console errors |
+| Browser smoke | 21 checks on the real page: both mode entry paths, rendering, HUD survival under input, control occlusion, mode input-gating in both directions, agent tool calls, zero console errors |
 
 Assertions were mutation-checked: the code was deliberately broken to confirm the tests notice.
 Where a single-line mutation slipped through, the test got strengthened until it caught the change.

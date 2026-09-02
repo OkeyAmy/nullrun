@@ -309,12 +309,7 @@ export class ToolSurface {
           }
           const result = game.setMode(mode);
           void this.syncPhaseTools();
-          return result.ok
-            ? textResponse(result.message, {
-                ...(result.detail ?? {}),
-                nextStep: 'Call begin_infiltration to start the floor.',
-              })
-            : errorResponse(result.message);
+          return result.ok ? this.respond(result) : errorResponse(result.message);
         },
       },
       {
