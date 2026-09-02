@@ -83,7 +83,7 @@ itself — there is nothing to paste and no key to configure:
 **Handler, costs bandwidth** — `ping_scan`, `cycle_door` (open **or seal**), `loop_camera`,
 `trigger_distraction`, `cut_power`, `reroute_patrol`
 
-**Phase-scoped** — `begin_infiltration`, `choose_implant`, `start_new_run`
+**Phase-scoped** — `set_play_mode`, `begin_infiltration`, `choose_implant`, `start_new_run`
 
 ## The game
 
@@ -100,7 +100,7 @@ guard AI and the route planner both respect them.
 ```bash
 pnpm install
 pnpm dev        # http://localhost:5173
-pnpm test       # 22 engine + WebMCP integration tests
+pnpm test       # 24 engine + WebMCP integration tests
 pnpm smoke      # drives the real page in Chromium, incl. document.modelContext
 pnpm demo       # a handler plays the game using only the WebMCP tools
 pnpm build
