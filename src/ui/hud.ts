@@ -226,7 +226,7 @@ export class Hud {
               a tab and ask it to play — it discovers the ${this.tools.registered.length} tools itself.</li>
           <li><strong>ChatGPT browser</strong>: open the page and tell it to call
               <code>get_situation</code>, then play.</li>
-          <li><strong>No agent handy?</strong> Pick “AI plays everything” and run
+          <li><strong>No agent handy?</strong> Pick “AI” above and run
               <code>pnpm demo</code> — a scripted handler drives the game through the same tools.</li>
         </ul>
         <p class="sub" style="margin-top:14px">An agent can answer this screen itself by calling <code>set_play_mode</code>.</p>
