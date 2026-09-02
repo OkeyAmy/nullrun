@@ -494,6 +494,25 @@ export class ToolSurface {
         },
       },
       {
+        name: 'take_down_guard',
+        description:
+          `Put an adjacent guard down permanently. Costs ${BALANCE.apCost.takedown} AP — most of a turn — and leaves a body where the guard fell. If another guard sees that body the facility escalates permanently, so a takedown buys you a route now and charges you for it later. Coming at a guard that is facing you or already hunting makes noise; coming up behind one is silent. Prefer routing around a guard when you can.`,
+        inputSchema: {
+          type: 'object',
+          properties: {
+            guard_id: {
+              type: 'string',
+              description:
+                'Which adjacent guard to take down. Omit to take down whichever is in reach.',
+            },
+          },
+        },
+        execute: (args: Args) => {
+          this.autostart();
+          return this.respond(game.takedown(str(args, 'guard_id') || undefined));
+        },
+      },
+      {
         name: 'operate_door',
         description:
           'Have the operative physically open or shut an adjacent door. Costs AP and makes noise — the agent ability cycle_door is quieter and works at range.',
@@ -787,6 +806,14 @@ export class ToolSurface {
         extractionAt: { ...floor.extraction },
       },
       guards: floor.guards.filter((g) => known(g.x, g.y)).map((g) => game.describeGuard(g)),
+      bodies: floor.bodies.filter((body) => known(body.x, body.y)).map((body) => ({
+        id: body.id,
+        position: { x: body.x, y: body.y },
+        found: body.found,
+        note: body.found
+          ? 'Already discovered — the escalation it caused is permanent.'
+          : 'Not yet discovered. A guard with line of sight to it will escalate the facility.',
+      })),
       cameras: floor.cameras.filter((c) => known(c.x, c.y)).map((c) => game.describeCamera(c)),
       terminals: floor.terminals
         .filter((t) => known(t.x, t.y))

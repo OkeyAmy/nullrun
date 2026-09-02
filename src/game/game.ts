@@ -486,6 +486,99 @@ export class Game {
     return { ok: true, message: `Moved to ${target.x},${target.y}.` };
   }
 
+  /**
+   * Put a guard down.
+   *
+   * Guards used to be pure terrain — the only verb available against them was
+   * "avoid". This is the one offensive option, and it is deliberately a trade
+   * rather than an answer: it costs most of a turn, and it leaves a body that
+   * another guard can find, which raises the alert permanently. Taking someone
+   * head-on is louder than coming up behind them.
+   */
+  takedown(guardId?: string): ActionResult {
+    const blocked = this.requirePlaying();
+    if (blocked) return blocked;
+    const s = this.state;
+
+    const reachable = s.floor.guards.filter((g) => chebyshev(s.player, g) <= 1);
+    if (!reachable.length) {
+      return { ok: false, message: 'Nobody within reach — you have to be standing next to them.' };
+    }
+    const guard = guardId ? reachable.find((g) => g.id === guardId) : reachable[0];
+    if (!guard) {
+      return {
+        ok: false,
+        message: `${guardId} is not within reach. In range: ${reachable.map((g) => g.id).join(', ')}.`,
+      };
+    }
+    if (!this.spendAp(BALANCE.apCost.takedown)) {
+      return {
+        ok: false,
+        message: `A takedown costs ${BALANCE.apCost.takedown} AP; you have ${s.ap}.`,
+      };
+    }
+
+    // coming at someone who is already looking your way is a struggle, not a
+    // takedown: it works, but the whole floor gets a hint
+    const facingYou =
+      guard.state === 'hunting' ||
+      (Math.sign(s.player.x - guard.x) === Math.sign(guard.facing.dx) &&
+        Math.sign(s.player.y - guard.y) === Math.sign(guard.facing.dy));
+
+    s.floor.guards = s.floor.guards.filter((g) => g.id !== guard.id);
+    s.floor.bodies.push({ id: `body-${guard.id}`, x: guard.x, y: guard.y, found: false });
+    this.fire('takedown');
+
+    const noise = facingYou ? BALANCE.noise.takedownSeen : BALANCE.noise.takedown;
+    if (noise > 0) this.emitNoise(guard.x, guard.y, noise);
+
+    this.log(
+      'operative',
+      facingYou
+        ? `${guard.id} put down the hard way — that was heard.`
+        : `${guard.id} taken down clean.`,
+    );
+    this.afterOperativeAction();
+    return {
+      ok: true,
+      message: facingYou
+        ? `${guard.id} is down, but it saw you coming and the struggle made noise (radius ${noise}). The body is at ${guard.x},${guard.y} — move it out of the patrol path or another guard will find it.`
+        : `${guard.id} is down, quietly. The body is lying at ${guard.x},${guard.y}; if another guard sees it the facility escalates permanently.`,
+      detail: {
+        guard: guard.id,
+        clean: !facingYou,
+        body: { x: guard.x, y: guard.y },
+        noiseRadius: noise,
+      },
+    };
+  }
+
+  /**
+   * Guards notice their colleagues lying on the floor. This is what makes a
+   * takedown a decision instead of a free removal.
+   */
+  private checkBodyDiscovery(): void {
+    const s = this.state;
+    if (!s.floor.bodies.length) return;
+    const ctx = this.visionCtx;
+
+    for (const body of s.floor.bodies) {
+      if (body.found) continue;
+      const finder = s.floor.guards.find(
+        (guard) => guard.stunTurns === 0 && guardSees(s.floor, guard, body, ctx),
+      );
+      if (!finder) continue;
+
+      body.found = true;
+      finder.state = 'hunting';
+      finder.investigating = { x: body.x, y: body.y };
+      finder.patience = BALANCE.guard.patience;
+      this.fire('body_found');
+      this.raiseAlert(BALANCE.alert.perBodyFound, `${finder.id} found a body.`);
+      this.log('hostile', `${finder.id} has found ${body.id}. They know someone is inside.`);
+    }
+  }
+
   /** Walk a BFS path toward a tile, spending AP per step. Stops when AP runs out. */
   moveTo(x: number, y: number, sprint = false): ActionResult {
     const blocked = this.requirePlaying();
@@ -969,6 +1062,9 @@ export class Game {
       .map((n) => ({ ...n, ttl: n.ttl - 1 }))
       .filter((n) => n.ttl > 0);
     s.floor.scanned.fill(false);
+
+    this.checkBodyDiscovery();
+    if (s.phase !== 'playing') return { ok: true, message: 'Turn ended; run is over.' };
 
     // alarm cools once nobody has eyes on you
     const seenBefore = s.turnsUnseen;

@@ -50,6 +50,7 @@ function sandboxFloor(): FloorState {
     height,
     tiles,
     guards: [],
+    bodies: [],
     cameras: [],
     terminals: [],
     loot: [],
@@ -643,5 +644,110 @@ test('a deeper floor starts hotter than the one above it', () => {
   assert.ok(
     game.state.escalation > shallow,
     `floor 2 must open hotter than floor 1 opened (${game.state.escalation} vs ${shallow})`,
+  );
+});
+
+// --- takedowns and the bodies they leave ---------------------------------
+// Guards used to be pure terrain. The point of this verb is that it is a
+// trade, so these pin down both halves: it removes a guard, and it costs.
+
+function guardAt(id: string, x: number, y: number, facing = { dx: 1, dy: 0 }) {
+  return {
+    id, archetype: 'patrol' as const, x, y, facing,
+    route: [{ x, y }], routeIdx: 0, state: 'patrol' as const,
+    investigating: null, patience: 0, visionRange: 7, coneHalfAngleDeg: 45,
+    stunTurns: 0, ...GUARD_DEFAULTS,
+  };
+}
+
+test('a takedown removes the guard and leaves a body where it fell', () => {
+  const game = sandboxGame();
+  game.state.player = { x: 2, y: 2 };
+  game.state.floor.guards = [guardAt('patrol-0', 3, 2)];
+
+  const result = game.takedown();
+
+  assert.equal(result.ok, true, result.message);
+  assert.equal(game.state.floor.guards.length, 0, 'the guard must be gone');
+  assert.equal(game.state.floor.bodies.length, 1, 'and must leave exactly one body');
+  assert.deepEqual(
+    { x: game.state.floor.bodies[0].x, y: game.state.floor.bodies[0].y },
+    { x: 3, y: 2 },
+    'the body lies where the guard was standing',
+  );
+  assert.equal(game.state.floor.bodies[0].found, false, 'nobody has found it yet');
+});
+
+test('a takedown costs action points and needs someone in reach', () => {
+  const game = sandboxGame();
+  // one spare point, so spending the cost does not drop us to zero and trip
+  // the auto-end-turn that would refill AP before we could read it
+  const budget = BALANCE.apCost.takedown + 1;
+  game.state.ap = budget;
+  game.state.maxAp = budget;
+  game.state.player = { x: 2, y: 2 };
+
+  const nobody = game.takedown();
+  assert.equal(nobody.ok, false, 'a takedown with nobody adjacent must fail');
+  assert.equal(game.state.ap, budget, 'a failed takedown must not charge you');
+
+  game.state.floor.guards = [guardAt('patrol-0', 3, 2)];
+  assert.equal(game.takedown().ok, true);
+  assert.equal(game.state.ap, 1, 'the takedown must spend exactly its AP cost');
+});
+
+test('taking a guard head-on makes noise; coming up behind it does not', () => {
+  // facing +x with the operative to its east: it is looking straight at you
+  const seen = sandboxGame();
+  seen.state.player = { x: 4, y: 2 };
+  seen.state.floor.guards = [guardAt('patrol-0', 3, 2, { dx: 1, dy: 0 })];
+  assert.equal(seen.takedown().ok, true);
+  assert.equal(
+    seen.state.floor.noises.length,
+    1,
+    'a struggle in full view of the guard must be heard',
+  );
+
+  // same geometry, guard looking the other way
+  const clean = sandboxGame();
+  clean.state.player = { x: 4, y: 2 };
+  clean.state.floor.guards = [guardAt('patrol-0', 3, 2, { dx: -1, dy: 0 })];
+  assert.equal(clean.takedown().ok, true);
+  assert.equal(clean.state.floor.noises.length, 0, 'a takedown from behind must be silent');
+});
+
+test('a guard that sees a body escalates the facility permanently', () => {
+  const game = sandboxGame();
+  game.state.player = { x: 1, y: 1 };
+  game.state.floor.bodies = [{ id: 'body-patrol-0', x: 6, y: 2, found: false }];
+  // a witness standing next to the body, looking right at it
+  game.state.floor.guards = [guardAt('patrol-1', 5, 2, { dx: 1, dy: 0 })];
+
+  const before = game.state.escalation;
+  game.endTurn();
+
+  assert.equal(game.state.floor.bodies[0].found, true, 'the body must be discovered');
+  assert.ok(
+    game.state.escalation >= before + BALANCE.alert.perBodyFound,
+    `finding a body must add ${BALANCE.alert.perBodyFound} escalation`,
+  );
+  assert.equal(game.state.floor.guards[0].state, 'hunting', 'the witness starts hunting');
+});
+
+test('a body is only ever discovered once', () => {
+  const game = sandboxGame();
+  game.state.player = { x: 1, y: 1 };
+  game.state.floor.bodies = [{ id: 'body-patrol-0', x: 6, y: 2, found: false }];
+  game.state.floor.guards = [guardAt('patrol-1', 5, 2, { dx: 1, dy: 0 })];
+
+  game.endTurn();
+  const afterFirst = game.state.escalation;
+  game.endTurn();
+  game.endTurn();
+
+  // later turns may still tick the clock, but never re-charge for this body
+  assert.ok(
+    game.state.escalation < afterFirst + BALANCE.alert.perBodyFound,
+    'the same body must not escalate the facility twice',
   );
 });

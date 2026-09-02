@@ -273,6 +273,7 @@ export function generateFloor(seed: number, cfg: FloorConfig): FloorState {
     height: h,
     tiles,
     guards,
+    bodies: [],
     cameras,
     terminals,
     loot,

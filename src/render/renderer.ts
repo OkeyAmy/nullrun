@@ -396,6 +396,34 @@ export class Renderer {
       );
     }
 
+    // bodies, under the living — a found one is marked so the cost is legible
+    for (const body of floor.bodies) {
+      const i = tileIndex(floor, body.x, body.y);
+      if (!floor.discovered[i]) continue;
+      const bx = this.px(body.x);
+      const by = this.py(body.y);
+      ctx.save();
+      ctx.globalAlpha = 0.85;
+      ctx.fillStyle = body.found ? PALETTE.guardHunting : PALETTE.guardStunned;
+      ctx.beginPath();
+      ctx.ellipse(
+        bx + size / 2,
+        by + size * 0.62,
+        size * 0.34,
+        size * 0.19,
+        0,
+        0,
+        Math.PI * 2,
+      );
+      ctx.fill();
+      if (body.found) {
+        ctx.strokeStyle = PALETTE.guardHunting;
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(bx + 2, by + 2, size - 4, size - 4);
+      }
+      ctx.restore();
+    }
+
     for (const guard of floor.guards) {
       const i = tileIndex(floor, guard.x, guard.y);
       if (!floor.discovered[i]) continue;

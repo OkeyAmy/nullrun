@@ -45,6 +45,15 @@ export interface Guard {
   seesInBlackout: boolean;
 }
 
+/** A guard you put down. Left where it fell, and findable. */
+export interface Body {
+  id: string;
+  x: number;
+  y: number;
+  /** Once another guard sees it, the facility knows for good. */
+  found: boolean;
+}
+
 export interface Camera {
   id: string;
   x: number;
@@ -110,6 +119,7 @@ export interface FloorState {
   height: number;
   tiles: Tile[];
   guards: Guard[];
+  bodies: Body[];
   cameras: Camera[];
   terminals: Terminal[];
   loot: Loot[];

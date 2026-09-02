@@ -36,6 +36,7 @@ const TOOL_CATEGORIES: Record<string, ToolCategory> = {
 export interface HudCallbacks {
   onHack(): void;
   onGrab(): void;
+  onTakedown(): void;
   onExtract(): void;
   onEndTurn(): void;
   onToggleSprint(): void;
@@ -179,10 +180,14 @@ export class Hud {
     );
     const onExtraction =
       s.player.x === s.floor.extraction.x && s.player.y === s.floor.extraction.y;
+    const adjacentGuard = s.floor.guards.some(
+      (g) => Math.max(Math.abs(g.x - s.player.x), Math.abs(g.y - s.player.y)) <= 1,
+    );
 
     this.actionbarEl.innerHTML = `
       <button id="btn-hack" ${!playing || !adjacentTerminal ? 'disabled' : ''}>Hack [E]</button>
       <button id="btn-grab" ${!playing || !onLoot ? 'disabled' : ''}>Lift intel [F]</button>
+      <button id="btn-takedown" class="danger" ${!playing || !adjacentGuard ? 'disabled' : ''} title="Costs ${BALANCE.apCost.takedown} AP and leaves a body that can be found">Take down [T]</button>
       <button id="btn-sprint" class="${this.sprintMode ? 'toggled' : ''}" ${!playing ? 'disabled' : ''}>Sprint [Shift]</button>
       <button id="btn-extract" class="primary" ${!playing || !onExtraction || !this.game.objectiveComplete() ? 'disabled' : ''}>Extract [X]</button>
       <span class="spacer"></span>
@@ -192,6 +197,7 @@ export class Hud {
 
     this.bind('btn-hack', this.callbacks.onHack);
     this.bind('btn-grab', this.callbacks.onGrab);
+    this.bind('btn-takedown', this.callbacks.onTakedown);
     this.bind('btn-sprint', this.callbacks.onToggleSprint);
     this.bind('btn-extract', this.callbacks.onExtract);
     this.bind('btn-end', this.callbacks.onEndTurn);

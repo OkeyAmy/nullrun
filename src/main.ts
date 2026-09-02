@@ -17,6 +17,7 @@ const audio = new AudioKit();
 const hud = new Hud(game, tools, {
   onHack: () => report(game.hack()),
   onGrab: () => report(game.grab()),
+  onTakedown: () => report(game.takedown()),
   onExtract: () => report(game.extract()),
   onEndTurn: () => report(game.endTurn()),
   onToggleSprint: () => {
@@ -138,6 +139,10 @@ window.addEventListener('keydown', (event) => {
     case 'f':
     case 'F':
       report(game.grab());
+      break;
+    case 't':
+    case 'T':
+      report(game.takedown());
       break;
     case 'x':
     case 'X':
