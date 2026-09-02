@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.smoke/
+.tmp-assets/
+.remember/
+*.local
+.DS_Store
+.vite/
