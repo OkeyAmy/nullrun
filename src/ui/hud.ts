@@ -102,7 +102,7 @@ export class Hud {
       <div class="stat alarm ${critical ? 'critical' : ''}">
         <div class="stat-label">Alarm</div>
         <div class="stat-value">${s.alarm}%</div>
-        <div class="meter"><span style="width:${alarmPct}%"></span></div>
+        <div class="meter"><span style="transform:scaleX(${alarmPct / 100})"></span></div>
       </div>
       ${s.powerOutTurns > 0 ? this.stat('Blackout', `${s.powerOutTurns}t`) : ''}
     `;

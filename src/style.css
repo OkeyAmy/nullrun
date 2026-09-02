@@ -132,8 +132,11 @@ body {
 .meter span {
   display: block;
   height: 100%;
+  width: 100%;
   background: var(--amber);
-  transition: width 0.25s ease;
+  /* scaled rather than resized so the alarm bar animates on the compositor */
+  transform-origin: left center;
+  transition: transform 0.25s ease;
 }
 
 .stat.alarm.critical .meter span {
