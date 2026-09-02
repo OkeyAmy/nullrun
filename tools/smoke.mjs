@@ -37,8 +37,8 @@ await page.waitForTimeout(150);
 // --- briefing -------------------------------------------------------------
 check('opening screen is shown', await page.locator('.overlay .card h2').isVisible());
 check(
-  'the opening screen offers all three play modes',
-  (await page.locator('.overlay [data-mode]').count()) === 3,
+  'the opening screen offers both play modes',
+  (await page.locator('.overlay [data-mode]').count()) === 2,
 );
 await page.screenshot({ path: '.smoke/0-mode-select.png' });
 

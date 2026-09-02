@@ -134,11 +134,9 @@ export class Game {
     if (s.phase === 'mode_select') s.phase = 'briefing';
     this.log(
       'system',
-      mode === 'solo'
-        ? 'Solo infiltration — no handler on the line.'
-        : mode === 'coop'
-          ? 'Co-op: operative on the ground, agent handler on the network.'
-          : 'Agent-run infiltration — the handler has the operative too.',
+      mode === 'coop'
+        ? 'Co-op: operative on the ground, agent handler on the network.'
+        : 'Agent-run infiltration — the handler has the operative too.',
     );
     this.emit();
     return {
@@ -146,18 +144,6 @@ export class Game {
       message: `Play mode set to "${mode}".`,
       detail: { mode, phase: s.phase },
     };
-  }
-
-  /** Handler abilities are offline in solo mode; everything else is unaffected. */
-  private requireHandler(): ActionResult | null {
-    if (this.state.mode === 'solo') {
-      return {
-        ok: false,
-        message:
-          'Handler is offline: this run was started in solo mode. Call set_play_mode with "coop" to bring an agent on the line.',
-      };
-    }
-    return null;
   }
 
   beginInfiltration(): void {
@@ -521,8 +507,6 @@ export class Game {
   ping(x: number, y: number): ActionResult {
     const blocked = this.requirePlaying();
     if (blocked) return blocked;
-    const offline = this.requireHandler();
-    if (offline) return offline;
     const s = this.state;
     if (!inBounds(s.floor, x, y)) return { ok: false, message: 'Ping target is off-map.' };
     const cost = BALANCE.agent.cost.ping;
@@ -570,8 +554,6 @@ export class Game {
   agentToggleDoor(x: number, y: number, seal: boolean): ActionResult {
     const blocked = this.requirePlaying();
     if (blocked) return blocked;
-    const offline = this.requireHandler();
-    if (offline) return offline;
     const s = this.state;
     const tile = tileAt(s.floor, x, y);
     if (!tile || tile.kind !== 'door') return { ok: false, message: 'No door at that tile.' };
@@ -603,8 +585,6 @@ export class Game {
   loopCamera(cameraId: string): ActionResult {
     const blocked = this.requirePlaying();
     if (blocked) return blocked;
-    const offline = this.requireHandler();
-    if (offline) return offline;
     const s = this.state;
     const camera = s.floor.cameras.find((c) => c.id === cameraId);
     if (!camera) return { ok: false, message: `No camera "${cameraId}" on this floor.` };
@@ -621,8 +601,6 @@ export class Game {
   distraction(x: number, y: number): ActionResult {
     const blocked = this.requirePlaying();
     if (blocked) return blocked;
-    const offline = this.requireHandler();
-    if (offline) return offline;
     const s = this.state;
     if (!inBounds(s.floor, x, y)) return { ok: false, message: 'Target is off-map.' };
     const cost = BALANCE.agent.cost.distraction;
@@ -651,8 +629,6 @@ export class Game {
   cutPower(): ActionResult {
     const blocked = this.requirePlaying();
     if (blocked) return blocked;
-    const offline = this.requireHandler();
-    if (offline) return offline;
     const s = this.state;
     const discount = hasImplant(s.implants, 'coldboot') ? 1 : 0;
     const cost = Math.max(1, BALANCE.agent.cost.cutPower - discount);
@@ -676,8 +652,6 @@ export class Game {
   reroutePatrol(guardId: string, x: number, y: number): ActionResult {
     const blocked = this.requirePlaying();
     if (blocked) return blocked;
-    const offline = this.requireHandler();
-    if (offline) return offline;
     const s = this.state;
     const guard = s.floor.guards.find((g) => g.id === guardId);
     if (!guard) return { ok: false, message: `No guard "${guardId}" on this floor.` };

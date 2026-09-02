@@ -57,9 +57,8 @@ The first screen asks who is at the controls, and the answer is readable and set
 (`set_play_mode`, and `get_situation` reports `playMode` plus a `yourRole` sentence so a handler
 that connects mid-run knows what it is expected to do):
 
-- **Human + AI handler** — the intended experience. You move the operative, the agent works the network.
-- **AI plays everything** — the agent takes both roles and runs the whole infiltration.
-- **Solo human** — no handler; the agent ability tools go offline and say so when called.
+- **Human** — you move the operative and an AI handler works the network alongside you.
+- **AI** — the agent takes both roles and runs the whole infiltration itself.
 
 ### Connecting your agent
 
@@ -69,7 +68,7 @@ itself — there is nothing to paste and no key to configure:
 - **Claude in Chrome** (or another WebMCP-aware browser agent): open the page in a tab and ask it
   to play. It calls `get_situation` and goes from there.
 - **ChatGPT browser**: open the page and tell it to start with `get_situation`.
-- **No agent handy**: pick *AI plays everything* and run `pnpm demo` — a scripted handler
+- **No agent handy**: pick *AI* and run `pnpm demo` — a scripted handler
   (`tools/agent-demo.mjs`) plays through the same public tools, never touching the DOM or the
   engine. It currently clears two floors on the default seed in ~160 tool calls.
 
@@ -100,7 +99,7 @@ guard AI and the route planner both respect them.
 ```bash
 pnpm install
 pnpm dev        # http://localhost:5173
-pnpm test       # 24 engine + WebMCP integration tests
+pnpm test       # 23 engine + WebMCP integration tests
 pnpm smoke      # drives the real page in Chromium, incl. document.modelContext
 pnpm demo       # a handler plays the game using only the WebMCP tools
 pnpm build

@@ -80,7 +80,7 @@ async function freshSurface() {
 }
 
 /** Answer the opening screen and start the floor, the way an agent would. */
-async function startFloor(surface: InstanceType<typeof ToolSurface>, mode = 'coop') {
+async function startFloor(surface: InstanceType<typeof ToolSurface>, mode: 'coop' | 'agent' = 'coop') {
   await context.call('set_play_mode', { mode });
   await surface.syncPhaseTools();
   await context.call('begin_infiltration');
@@ -159,19 +159,6 @@ test('the opening screen gates the run behind set_play_mode', async () => {
     undefined,
     'begin_infiltration must disappear once the floor has started',
   );
-});
-
-test('solo mode takes the handler abilities offline but leaves reads working', async () => {
-  const { surface } = await freshSurface();
-  await startFloor(surface, 'solo');
-
-  const blocked = await context.call('cut_power');
-  assert.equal(blocked.isError, true, 'handler abilities must be refused in solo mode');
-  assert.match(blocked.content[0].text, /solo mode/i);
-
-  const situation = await context.call('get_situation');
-  assert.notEqual(situation.isError, true, 'reads must still work in solo mode');
-  assert.equal(payload(situation).playMode, 'solo');
 });
 
 test('get_situation tells a connecting agent what its role is', async () => {

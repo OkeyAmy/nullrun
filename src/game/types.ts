@@ -83,7 +83,7 @@ export interface Implant {
  * Who is at the controls. Chosen before a run and readable by the agent, so a
  * connected handler knows whether it is advising a human or playing solo.
  */
-export type PlayMode = 'solo' | 'coop' | 'agent';
+export type PlayMode = 'coop' | 'agent';
 
 export type RunPhase =
   | 'mode_select'

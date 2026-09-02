@@ -35,7 +35,7 @@ export interface HudCallbacks {
   onEndTurn(): void;
   onToggleSprint(): void;
   onBegin(): void;
-  onSetMode(mode: 'solo' | 'coop' | 'agent'): void;
+  onSetMode(mode: 'coop' | 'agent'): void;
   onChooseImplant(id: string): void;
   onNewRun(): void;
 }
@@ -204,20 +204,15 @@ export class Hud {
         <p class="sub">Who is at the controls?</p>
         <div class="choices">
           <button class="choice" data-mode="coop">
-            <strong>Human + AI handler &nbsp;·&nbsp; the real thing</strong>
-            You move the operative. A connected AI agent works the facility network —
-            scanning, looping cameras, sealing doors, cutting power. Neither of you can
-            finish a floor alone.
+            <strong>Human</strong>
+            You move the operative, and an AI handler works the facility network alongside you —
+            scanning, looping cameras, sealing doors, cutting power. Neither of you can finish a
+            floor alone.
           </button>
           <button class="choice" data-mode="agent">
-            <strong>AI plays everything</strong>
+            <strong>AI</strong>
             The agent takes both roles and runs the whole infiltration through its tools.
             Watch the handler console to follow what it does.
-          </button>
-          <button class="choice" data-mode="solo">
-            <strong>Solo human</strong>
-            No handler on the line. Agent abilities are offline — harder, and the way to
-            feel what the agent is actually contributing.
           </button>
         </div>
         <p class="sub" style="margin:18px 0 8px">Connecting your agent</p>
@@ -239,7 +234,7 @@ export class Hud {
     `;
     for (const button of this.overlayEl.querySelectorAll<HTMLElement>('[data-mode]')) {
       button.addEventListener('click', () => {
-        const picked = button.dataset.mode as 'solo' | 'coop' | 'agent' | undefined;
+        const picked = button.dataset.mode as 'coop' | 'agent' | undefined;
         if (picked) this.callbacks.onSetMode(picked);
       });
     }
