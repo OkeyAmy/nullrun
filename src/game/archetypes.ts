@@ -119,3 +119,58 @@ export function archetypePool(floorIndex: number): GuardArchetype[] {
   ];
   return pools[Math.min(floorIndex, pools.length - 1)];
 }
+
+/**
+ * What each unit says when its state changes.
+ *
+ * Guards used to change state in complete silence, which made them read as
+ * moving walls rather than people. A line of dialogue is the cheapest way to
+ * make a facility feel staffed — and it doubles as feedback, because hearing
+ * "I've got eyes on" tells you what the state machine just did.
+ */
+export interface BarkSet {
+  /** Something got its attention. */
+  suspicious: string[];
+  /** It has seen you. */
+  hunting: string[];
+  /** It gave up and went back to the route. */
+  lost: string[];
+}
+
+const SHARED_LOST = [
+  'Nothing here. Resuming pattern.',
+  'Must have been the building settling.',
+  'Back to the route.',
+];
+
+export const BARKS: Record<GuardArchetype, BarkSet> = {
+  patrol: {
+    suspicious: [
+      'Did anyone else hear that?',
+      'Something moved. Checking it out.',
+      'Hold on — checking a noise.',
+    ],
+    hunting: ['Contact! Intruder on the floor!', 'I see you!', 'Got a runner — moving to intercept!'],
+    lost: SHARED_LOST,
+  },
+  sentry: {
+    suspicious: ['Movement on my arc.', 'Something crossed my line.', 'Sweeping wider.'],
+    hunting: ['Target acquired — I am not moving, but I see you.', 'Eyes on the intruder!'],
+    lost: ['Arc is clear.', 'Lost the contact. Still watching.', 'Back to sweep.'],
+  },
+  hunter: {
+    suspicious: ['Picking up a trail.', 'Someone has been through here.', 'Cutting them off.'],
+    hunting: ['Found you. You will not outrun me.', 'Closing! Nowhere to go!', 'Running them down!'],
+    lost: ['Trail went cold. I will find it again.', 'They doubled back somewhere.', 'Still sweeping.'],
+  },
+  drone: {
+    suspicious: ['Thermal anomaly. Investigating.', 'Heat signature, unconfirmed.', 'Scanning sector.'],
+    hunting: ['Signature locked. Tracking.', 'Thermal lock — target painted.', 'Following the heat.'],
+    lost: ['Signature lost.', 'Thermal trace dispersed.', 'Resuming sweep pattern.'],
+  },
+  bloodhound: {
+    suspicious: ['I heard that.', 'Footsteps. Close.', 'Something is breathing in here.'],
+    hunting: ['Got the scent — you are mine!', 'I hear you running!', 'Right behind you!'],
+    lost: ['Lost the sound.', 'Too quiet now.', 'It went silent on me.'],
+  },
+};

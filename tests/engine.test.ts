@@ -751,3 +751,34 @@ test('a body is only ever discovered once', () => {
     'the same body must not escalate the facility twice',
   );
 });
+
+// --- guards that sound like people ---------------------------------------
+
+test('a guard says something when it notices you', () => {
+  const game = sandboxGame();
+  game.state.player = { x: 1, y: 2 };
+  game.state.floor.guards = [guardAt('patrol-0', 5, 2, { dx: -1, dy: 0 })];
+
+  const before = game.state.log.length;
+  game.endTurn();
+  const added = game.state.log.slice(before);
+
+  assert.ok(
+    added.some((entry) => entry.text.includes('patrol-0:') && entry.text.includes('"')),
+    `a state change must produce a spoken line, got: ${added.map((e) => e.text).join(' | ')}`,
+  );
+});
+
+test('guards stay quiet when nothing about them changes', () => {
+  const game = sandboxGame();
+  // far away, facing away, vision too short to ever see the operative
+  const deaf = { ...guardAt('patrol-0', 7, 3, { dx: 1, dy: 0 }), visionRange: 1, coneHalfAngleDeg: 5 };
+  game.state.player = { x: 1, y: 1 };
+  game.state.floor.guards = [deaf];
+
+  const before = game.state.log.length;
+  game.endTurn();
+  const spoken = game.state.log.slice(before).filter((e) => e.text.includes('patrol-0: "'));
+
+  assert.equal(spoken.length, 0, 'an undisturbed guard must not chatter every turn');
+});

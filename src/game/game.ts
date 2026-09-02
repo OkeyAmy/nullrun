@@ -1,5 +1,5 @@
 import { BALANCE } from './config';
-import { ARCHETYPES, hearingMultiplier } from './archetypes';
+import { ARCHETYPES, BARKS, hearingMultiplier } from './archetypes';
 import { hasImplant, ALL_IMPLANTS } from './implants';
 import {
   chebyshev,
@@ -19,6 +19,7 @@ import type {
   FloorState,
   GameState,
   Guard,
+  GuardState,
   Implant,
   LogEntry,
   Terminal,
@@ -935,6 +936,19 @@ export class Game {
       (hasImplant(s.implants, 'coldboot') ? BALANCE.agent.coldBootBonusTurns : 0);
     s.powerOutTurns = turns;
     this.fire('blackout');
+    // the facility notices the grid dropping even though it cannot see you;
+    // this is comment, not a penalty — cutting power must stay worth doing
+    const witness = s.floor.guards.find((g) => g.stunTurns === 0);
+    if (witness) {
+      this.log(
+        'hostile',
+        `${witness.id}: "${
+          witness.seesInBlackout
+            ? 'Grid is down. Thermal is unaffected — keep sweeping.'
+            : 'Lights just went. Switching to hand-lamps.'
+        }"`,
+      );
+    }
     this.log('agent', `Grid cut for ${turns} turns — every cone shortened.`);
     this.emit();
     return {
@@ -1112,6 +1126,8 @@ export class Game {
         continue;
       }
 
+      const wasState = guard.state;
+
       // react to noise first — this is what makes agent distractions work
       const hearing = hearingMultiplier(guard.archetype);
       const heard = guard.deafToNoise
@@ -1144,6 +1160,8 @@ export class Game {
         if (chebyshev(guard, s.player) === 0) break;
       }
 
+      this.barkOnChange(guard, wasState);
+
       // capture check — a hunting guard that reaches you ends the run
       if (guard.state === 'hunting' && chebyshev(guard, s.player) <= 1) {
         if (s.reflexAvailable) {
@@ -1165,6 +1183,23 @@ export class Game {
     }
 
     if (s.phase === 'playing') this.checkSightings();
+  }
+
+  /**
+   * Say something when a guard's state changes. Guards used to switch between
+   * patrolling and hunting you in total silence, which is what made them read
+   * as furniture instead of staff.
+   */
+  private barkOnChange(guard: Guard, wasState: GuardState): void {
+    if (guard.state === wasState) return;
+    const lines = BARKS[guard.archetype];
+    if (guard.state === 'hunting') {
+      this.log('hostile', `${guard.id}: "${this.rng.pick(lines.hunting)}"`);
+    } else if (guard.state === 'suspicious') {
+      this.log('hostile', `${guard.id}: "${this.rng.pick(lines.suspicious)}"`);
+    } else if (wasState !== 'patrol') {
+      this.log('hostile', `${guard.id}: "${this.rng.pick(lines.lost)}"`);
+    }
   }
 
   private stepGuard(guard: Guard): void {
