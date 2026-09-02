@@ -153,6 +153,10 @@ export interface GameState {
   bankedIntel: number;
   /** Implant ids permanently bought with banked intel; installed on every run. */
   unlockedIds: string[];
+  /** Facility escalation. Only ever rises inside a floor. See BALANCE.alert. */
+  escalation: number;
+  /** Stage the escalation has reached, 0-3. Stored so transitions can be announced. */
+  alertStage: number;
   log: LogEntry[];
   seed: number;
   /** Set when the run ends, for the summary screen. */

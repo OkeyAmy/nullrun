@@ -527,3 +527,121 @@ test('a bloodhound hears noise from further away than a patrol', () => {
     'a bloodhound must hear noise a patrol misses',
   );
 });
+
+// --- the escalation clock ------------------------------------------------
+// The alarm decays back to nothing, so without a ratchet the best way to play
+// was to stand still and wait it out. These pin the ratchet down.
+
+test('escalation rises on its own even when the operative does nothing', () => {
+  const game = sandboxGame();
+  assert.equal(game.state.escalation, 0, 'a fresh sandbox floor starts quiet');
+
+  // turn 1 -> 8; the tick lands the turn the counter reaches turnsPerTick
+  for (let i = 0; i < BALANCE.alert.turnsPerTick - 1; i++) game.endTurn();
+
+  assert.equal(game.state.turn, BALANCE.alert.turnsPerTick);
+  assert.equal(
+    game.state.escalation,
+    BALANCE.alert.perTick,
+    'one full sweep cycle of loitering must cost exactly one tick',
+  );
+});
+
+test('escalation never falls, however long you hide', () => {
+  const game = sandboxGame();
+  let previous = game.state.escalation;
+
+  for (let i = 0; i < 30; i++) {
+    game.endTurn();
+    assert.ok(
+      game.state.escalation >= previous,
+      `escalation dropped from ${previous} to ${game.state.escalation} on turn ${game.state.turn}`,
+    );
+    previous = game.state.escalation;
+  }
+
+  assert.ok(previous > 0, 'thirty turns of waiting must have cost something');
+});
+
+test('being seen escalates the facility on top of the alarm', () => {
+  const game = sandboxGame();
+  game.state.floor.guards = [
+    {
+      id: 'patrol-0', archetype: 'patrol' as const, x: 2, y: 2,
+      facing: { dx: -1, dy: 0 }, route: [{ x: 2, y: 2 }], routeIdx: 0,
+      state: 'patrol' as const, investigating: null, patience: 0,
+      visionRange: 7, coneHalfAngleDeg: 45, stunTurns: 0,
+      ...GUARD_DEFAULTS,
+    },
+  ];
+  game.state.player = { x: 1, y: 2 };
+
+  const before = game.state.escalation;
+  game.endTurn();
+
+  assert.ok(
+    game.state.escalation >= before + BALANCE.alert.perSighting,
+    `a sighting must add at least ${BALANCE.alert.perSighting} escalation`,
+  );
+});
+
+test('the first stage widens every guard cone by one tile', () => {
+  const game = sandboxGame();
+  game.state.floor.guards = [
+    {
+      id: 'patrol-0', archetype: 'patrol' as const, x: 6, y: 2,
+      facing: { dx: 1, dy: 0 }, route: [{ x: 6, y: 2 }], routeIdx: 0,
+      state: 'patrol' as const, investigating: null, patience: 0,
+      visionRange: 7, coneHalfAngleDeg: 45, stunTurns: 0,
+      ...GUARD_DEFAULTS,
+    },
+  ];
+
+  game.raiseAlert(BALANCE.alert.stageAt[0], 'test');
+
+  assert.equal(game.state.alertStage, 1);
+  assert.equal(game.state.floor.guards[0].visionRange, 8, 'stage 1 must widen the sweep');
+});
+
+test('the second stage sends a hunter in after you', () => {
+  const game = sandboxGame();
+  const before = game.state.floor.guards.length;
+
+  game.raiseAlert(BALANCE.alert.stageAt[1], 'test');
+
+  assert.equal(game.state.alertStage, 2);
+  assert.equal(game.state.floor.guards.length, before + 1, 'a reinforcement must arrive');
+  const sent = game.state.floor.guards.at(-1);
+  assert.equal(sent.archetype, 'hunter');
+  assert.notEqual(sent.state, 'patrol', 'a reinforcement arrives already looking for you');
+});
+
+test('lockdown stops the alarm cooling down, so hiding is no longer an escape', () => {
+  const game = sandboxGame();
+  game.raiseAlert(BALANCE.alert.stageAt[2], 'test');
+  assert.equal(game.state.alertStage, 3, 'the final stage must be reached');
+
+  game.state.alarm = 50;
+  for (let i = 0; i < 6; i++) game.endTurn();
+
+  assert.equal(game.state.alarm, 50, 'under lockdown the alarm must not decay at all');
+});
+
+test('a deeper floor starts hotter than the one above it', () => {
+  const game = sandboxGame();
+  const shallow = game.state.escalation;
+
+  // clear the floor and drop through to the next one; extraction hands you an
+  // implant choice first, and picking it is what actually starts the next floor
+  game.state.floor.loot = [];
+  game.state.floor.terminals = [];
+  game.state.player = { ...game.state.floor.extraction };
+  assert.equal(game.extract().ok, true, 'a cleared floor must let you extract');
+  game.chooseImplant(game.state.implantChoices[0].id);
+
+  assert.equal(game.state.floor.index, 1, 'the run must have advanced a floor');
+  assert.ok(
+    game.state.escalation > shallow,
+    `floor 2 must open hotter than floor 1 opened (${game.state.escalation} vs ${shallow})`,
+  );
+});

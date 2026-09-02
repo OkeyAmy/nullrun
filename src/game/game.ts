@@ -118,6 +118,8 @@ export class Game {
       intelThisRun: 0,
       bankedIntel: meta.bankedIntel,
       unlockedIds: meta.unlocked,
+      escalation: 0,
+      alertStage: 0,
       log: [],
       seed,
       endReason: '',
@@ -197,10 +199,72 @@ export class Game {
     s.turnsUnseen = 0;
     s.powerOutTurns = 0;
     s.phase = 'playing';
+    // a fresh floor, but the building already knows someone is inside
+    s.escalation = index * BALANCE.alert.perFloorCleared;
+    s.alertStage = this.stageFor(s.escalation);
     this.refreshResources();
     updateOperativeVisibility(floor, s.player);
     this.log('system', `Floor ${index + 1} of ${BALANCE.run.floors}. Security posture increased.`);
     this.emit();
+  }
+
+  /** Stage a given escalation has reached: 0 quiet, 3 locked down. */
+  private stageFor(escalation: number): number {
+    return BALANCE.alert.stageAt.filter((threshold) => escalation >= threshold).length;
+  }
+
+  /**
+   * Push the facility's escalation up. Nothing brings it back down inside a
+   * floor, which is the whole point — the alarm decays to nothing if you sit
+   * still, so without this the best way to play was to wait, and waiting is
+   * not a game.
+   */
+  raiseAlert(amount: number, reason: string): void {
+    const s = this.state;
+    if (s.escalation >= BALANCE.alert.max) return;
+    s.escalation = Math.min(BALANCE.alert.max, s.escalation + amount);
+    const stage = this.stageFor(s.escalation);
+    if (stage > s.alertStage) {
+      s.alertStage = stage;
+      this.applyAlertStage(stage, reason);
+    }
+  }
+
+  /** Each stage makes the floor materially harder, and says so out loud. */
+  private applyAlertStage(stage: number, reason: string): void {
+    const s = this.state;
+    if (stage === 1) {
+      for (const guard of s.floor.guards) guard.visionRange += 1;
+      this.log('hostile', `${reason} Security widens its sweeps — every guard sees further.`);
+      return;
+    }
+    if (stage === 2) {
+      const entry = floorStart(s.floor);
+      const spec = ARCHETYPES.hunter;
+      s.floor.guards.push({
+        id: `reinforcement-${s.floor.guards.length}`,
+        archetype: spec.id,
+        x: entry.x,
+        y: entry.y,
+        facing: { dx: 0, dy: 1 },
+        route: [{ ...s.player }],
+        routeIdx: 0,
+        state: 'suspicious',
+        investigating: { ...s.player },
+        patience: spec.patience,
+        visionRange: spec.visionRange,
+        coneHalfAngleDeg: spec.coneHalfAngleDeg,
+        stunTurns: 0,
+        patrolSpeed: spec.patrolSpeed,
+        huntSpeed: spec.huntSpeed,
+        stationary: spec.stationary,
+        deafToNoise: spec.deafToNoise,
+        seesInBlackout: spec.seesInBlackout,
+      });
+      this.log('hostile', `${reason} A hunter has been sent in after you.`);
+      return;
+    }
+    this.log('hostile', `${reason} FACILITY LOCKDOWN — the alarm will not cool down again.`);
   }
 
   private bankIntel(): void {
@@ -805,6 +869,7 @@ export class Game {
     if (spotted) {
       s.turnsUnseen = 0;
       s.alarm = Math.min(BALANCE.alarm.max, s.alarm + increase);
+      this.raiseAlert(BALANCE.alert.perSighting, 'You were seen.');
       this.log('hostile', `Operative observed — alarm ${s.alarm}%.`);
       if (s.alarm >= BALANCE.alarm.max) {
         this.failRun('Alarm hit 100% — facility locked down with you inside.');
@@ -837,7 +902,10 @@ export class Game {
     this.checkSightings();
     if (s.phase !== 'playing') return { ok: true, message: 'Turn ended; run is over.' };
     s.turnsUnseen++;
-    if (s.turnsUnseen > BALANCE.alarm.decayDelayTurns) {
+    // under full lockdown the alarm never cools again, so hiding stops being an
+    // escape and the only way out is out
+    const lockedDown = s.alertStage >= BALANCE.alert.stageAt.length;
+    if (s.turnsUnseen > BALANCE.alarm.decayDelayTurns && !lockedDown) {
       const multiplier = hasImplant(s.implants, 'staticveil')
         ? BALANCE.alarm.staticVeilMultiplier
         : 1;
@@ -845,6 +913,10 @@ export class Game {
     }
 
     s.turn++;
+    // the clock: security tightens on its own schedule whether or not you move
+    if (s.turn % BALANCE.alert.turnsPerTick === 0) {
+      this.raiseAlert(BALANCE.alert.perTick, 'Another sweep cycle has passed.');
+    }
     s.ap = s.maxAp;
     s.bandwidth = s.maxBandwidth;
     updateOperativeVisibility(s.floor, s.player);
@@ -882,6 +954,12 @@ export class Game {
       }
 
       if (guardSees(s.floor, guard, s.player, ctx)) {
+        // a guard catching sight of you during its own turn counts every bit as
+        // much as the sweep at the end of yours — escalate here too, or being
+        // run down is the one sighting the facility never learns from
+        if (guard.state !== 'hunting') {
+          this.raiseAlert(BALANCE.alert.perSighting, `${guard.id} has eyes on you.`);
+        }
         guard.state = 'hunting';
         guard.investigating = { ...s.player };
         guard.patience = BALANCE.guard.patience;

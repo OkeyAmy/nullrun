@@ -4,6 +4,9 @@ import type { ToolSurface } from '../webmcp/tools';
 
 type ToolCategory = 'read' | 'operative' | 'agent' | 'meta';
 
+/** Names for the facility's escalation stages, shown instead of a bare number. */
+const ALERT_NAMES = ['Quiet', 'Tightened', 'Hunting', 'LOCKDOWN'];
+
 const TOOL_CATEGORIES: Record<string, ToolCategory> = {
   get_situation: 'read',
   assess_tile: 'read',
@@ -94,6 +97,7 @@ export class Hud {
     const s = this.game.state;
     const alarmPct = Math.round((s.alarm / BALANCE.alarm.max) * 100);
     const critical = s.alarm >= 60;
+    const escalationPct = Math.round((s.escalation / BALANCE.alert.max) * 100);
 
     this.statsEl.innerHTML = `
       ${this.stat('Floor', `${s.floor.index + 1}/${BALANCE.run.floors}`)}
@@ -106,6 +110,11 @@ export class Hud {
         <div class="stat-label">Alarm</div>
         <div class="stat-value">${s.alarm}%</div>
         <div class="meter"><span style="transform:scaleX(${alarmPct / 100})"></span></div>
+      </div>
+      <div class="stat alert stage-${s.alertStage}">
+        <div class="stat-label">Alert</div>
+        <div class="stat-value">${ALERT_NAMES[s.alertStage]}</div>
+        <div class="meter"><span style="transform:scaleX(${escalationPct / 100})"></span></div>
       </div>
       ${s.powerOutTurns > 0 ? this.stat('Blackout', `${s.powerOutTurns}t`) : ''}
     `;

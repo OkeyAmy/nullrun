@@ -75,6 +75,26 @@ export const BALANCE = {
     decayDelayTurns: 2,
   },
 
+  /**
+   * The facility's own escalation, and the reason loitering is no longer free.
+   * The alarm asks "is anyone looking at me right now" and decays back to
+   * nothing; this only ever rises inside a floor, so every turn spent waiting
+   * is spent against a deadline.
+   */
+  alert: {
+    max: 100,
+    /** Turns of loitering before security tightens on its own. */
+    turnsPerTick: 8,
+    perTick: 10,
+    perSighting: 12,
+    /** A body on the floor is the loudest evidence there is. */
+    perBodyFound: 30,
+    /** Escalation a floor starts with, per floor already cleared. */
+    perFloorCleared: 8,
+    /** Escalation at which each stage engages. */
+    stageAt: [30, 60, 90],
+  },
+
   guard: {
     visionRange: 7,
     coneHalfAngleDeg: 45,

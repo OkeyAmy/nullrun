@@ -265,6 +265,35 @@ export class ToolSurface {
     return steps;
   }
 
+  /** Stage names an agent can reason about, rather than a bare number. */
+  private alertReport(): Record<string, unknown> {
+    const s = this.game.state;
+    const names = ['quiet', 'tightened', 'hunting', 'lockdown'];
+    const nextAt = BALANCE.alert.stageAt[s.alertStage];
+    return {
+      escalation: s.escalation,
+      stage: s.alertStage,
+      posture: names[s.alertStage],
+      nextStageAt: nextAt ?? null,
+      risesEveryTurns: BALANCE.alert.turnsPerTick,
+      note: 'Escalation only ever rises inside a floor. Waiting costs it; being seen costs more.',
+    };
+  }
+
+  /**
+   * The clock is useless to an agent that cannot feel it, so every result says
+   * how close the next tightening is.
+   */
+  private withAlertWarning(message: string): string {
+    const s = this.game.state;
+    const nextAt = BALANCE.alert.stageAt[s.alertStage];
+    if (nextAt === undefined) {
+      return `${message} The facility is in full lockdown — the alarm will not cool down again.`;
+    }
+    const turnsLeft = BALANCE.alert.turnsPerTick - (s.turn % BALANCE.alert.turnsPerTick);
+    return `${message} Escalation ${s.escalation}/${nextAt} to the next tightening; the next sweep cycle lands in ${turnsLeft} turn(s).`;
+  }
+
   /** Attach the continuation signal to an action result. */
   private respond(result: ActionResult): ToolResponse {
     if (!result.ok) {
@@ -275,12 +304,13 @@ export class ToolSurface {
     }
     const s = this.game.state;
     const steps = this.nextSteps();
-    return textResponse(result.message, {
+    return textResponse(this.withAlertWarning(result.message), {
       ...(result.detail ?? {}),
       turn: s.turn,
       actionPoints: s.ap,
       bandwidth: s.bandwidth,
       alarm: s.alarm,
+      alert: this.alertReport(),
       phase: s.phase,
       nextSteps: steps,
       continue:

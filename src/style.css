@@ -143,6 +143,47 @@ body {
   background: var(--red);
 }
 
+/* the escalation clock: unlike the alarm this only ever climbs, so it warms
+   from cyan through amber to red and never walks back */
+.stat.alert .stat-value {
+  color: var(--cyan);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.stat.alert.stage-1 .stat-value,
+.stat.alert.stage-1 .meter span {
+  color: var(--amber);
+  background: var(--amber);
+}
+
+.stat.alert.stage-2 .stat-value,
+.stat.alert.stage-2 .meter span {
+  color: var(--orange, #ff9d3c);
+  background: var(--orange, #ff9d3c);
+}
+
+.stat.alert.stage-3 .stat-value {
+  color: var(--red);
+  animation: alert-pulse 1.1s ease-in-out infinite;
+}
+
+.stat.alert.stage-3 .meter span {
+  background: var(--red);
+}
+
+@keyframes alert-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat.alert.stage-3 .stat-value {
+    animation: none;
+  }
+}
+
 .bridge {
   display: flex;
   align-items: center;
