@@ -60,14 +60,25 @@ that connects mid-run knows what it is expected to do):
 - **Human** — you move the operative and an AI handler works the network alongside you.
 - **AI** — the agent takes both roles and runs the whole infiltration itself.
 
+An agent never has to touch the interface. The opening screen and the briefing are human
+affordances — if a handler calls any gameplay tool first, the run starts for it automatically
+(`ping_scan` on a cold page begins an agent run). Read tools stay side-effect free, so
+`get_situation` never starts anything. A human who has already chosen co-op keeps that choice.
+
 ### Connecting your agent
 
 The page publishes its tools on `document.modelContext`, so any WebMCP-aware agent discovers them
 itself — there is nothing to paste and no key to configure:
 
-- **Claude in Chrome** (or another WebMCP-aware browser agent): open the page in a tab and ask it
-  to play. It calls `get_situation` and goes from there.
-- **ChatGPT browser**: open the page and tell it to start with `get_situation`.
+Per the spec's [implementation status](https://github.com/webmachinelearning/webmcp/blob/main/implementation-status.md):
+
+- **ChatGPT Desktop** — WebMCP is supported; open the URL and tell it to play. No flags.
+- **Chrome 149+ / Edge 150+** — origin trial is live (requires Early Preview Program enrolment and
+  an origin-trial token for the deployed origin).
+- **nekuda WebMCP Workbench** — a [Chrome extension](https://chromewebstore.google.com/detail/nekuda-webmcp-workbench/amochnnbmnkjjlblolhpddkokhnalkjp)
+  that lists a page's tools and drives them with an agent (bring your own key). The quickest way to
+  play co-op today without origin-trial enrolment.
+- **Brave** — experimental, via Leo.
 - **No agent handy**: pick *AI* and run `pnpm demo` — a scripted handler
   (`tools/agent-demo.mjs`) plays through the same public tools, never touching the DOM or the
   engine. It currently clears two floors on the default seed in ~160 tool calls.
@@ -99,9 +110,11 @@ guard AI and the route planner both respect them.
 ```bash
 pnpm install
 pnpm dev        # http://localhost:5173
-pnpm test       # 23 engine + WebMCP integration tests
+pnpm test       # 36 tests: engine, WebMCP surface, invariants and fuzzing
 pnpm smoke      # drives the real page in Chromium, incl. document.modelContext
 pnpm demo       # a handler plays the game using only the WebMCP tools
+pnpm evals:build  # regenerate the 313-case eval matrix
+pnpm evals        # execute all 313 against the live page + a success-path pass
 pnpm build
 ```
 
@@ -117,6 +130,19 @@ intel · `Shift` sprint · `X` extract · `Space` end turn.
 
 `pnpm demo` is itself the strongest completeness check: if a script that only has the public tool
 surface can clear floors, the surface is complete.
+
+The suite is deliberately broad rather than a handful of happy paths:
+
+| Sweep | Scale |
+| --- | --- |
+| Floor invariants across seeds | 300 seeds x 5 floors — connectivity, no entity in geometry, every core reachable |
+| Fuzzed play | 200 runs x 120 random tool actions, asserting state invariants after every single one |
+| Resource safety | 120 runs checking AP/bandwidth can never rise mid-turn |
+| Vision consistency | every tile of 40 floors — a reported watcher must have real line of sight and range |
+| Blackout monotonicity | ~24,000 tile comparisons: cutting power can only ever remove watchers |
+| Determinism / variety | same seed rebuilds byte-identical floors; 120 seeds produce near-unique layouts |
+| Tool-choice evals | 313 generated cases across 18 tools (`pnpm evals:build`) |
+| Eval execution | all 313 executed against the live page via `executeTool`, plus a 19-check success-path pass proving every tool can actually succeed, not merely respond |
 
 `pnpm test` covers the simulation and the agent path — that sealing a door actually stops a guard
 across the whole seal window, that cutting power removes a watcher, that the alarm ends a run,

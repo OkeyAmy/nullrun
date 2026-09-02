@@ -1,0 +1,5854 @@
+[
+  {
+    "name": "get_situation — What's the situation in there?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What's the situation in there?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Give me the full tactical picture before we move.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Give me the full tactical picture before we move."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Where is everyone and what does the floor look like?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Where is everyone and what does the floor look like?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Brief me on the current state.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Brief me on the current state."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — What's happening right now?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What's happening right now?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Show me guards, cameras and objectives.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Show me guards, cameras and objectives."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — I need to know what we are looking at.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "I need to know what we are looking at."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Read me the room.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Read me the room."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Status report on the floor.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Status report on the floor."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — What can we see from here?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What can we see from here?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Tell me where the operative is and what is watching them.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Tell me where the operative is and what is watching them."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — How bad is it in there at the moment?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How bad is it in there at the moment?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Let's see the board.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Let's see the board."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — What is the alarm level and who has eyes on us?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What is the alarm level and who has eyes on us?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_situation — Fill me in.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Fill me in."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_situation",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — What can we actually afford this turn?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What can we actually afford this turn?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — What does each action cost?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What does each action cost?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — List the abilities and their costs.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "List the abilities and their costs."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — How much bandwidth does cutting power take?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How much bandwidth does cutting power take?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — What are my options and what do they cost me?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What are my options and what do they cost me?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — Remind me of the action economy.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Remind me of the action economy."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — Can we afford a distraction right now?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Can we afford a distraction right now?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — What is affordable with the points we have left?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What is affordable with the points we have left?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — Break down the costs for me.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Break down the costs for me."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "list_abilities — Which abilities are available at the moment?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Which abilities are available at the moment?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "list_abilities",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_run_status — How far into the run are we?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How far into the run are we?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_run_status",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_run_status — What implants do we have?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What implants do we have?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_run_status",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_run_status — How much intel have we banked?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How much intel have we banked?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_run_status",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_run_status — Which floor is this and how many are left?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Which floor is this and how many are left?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_run_status",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_run_status — Give me the run summary.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Give me the run summary."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_run_status",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_run_status — How is the run going overall?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How is the run going overall?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_run_status",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_run_status — What have we picked up so far this run?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What have we picked up so far this run?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_run_status",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "get_run_status — Progress check on the whole run.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Progress check on the whole run."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "get_run_status",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Is the tile at 12,9 safe to stand on?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Is the tile at 12,9 safe to stand on?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 12,
+          "y": 9
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Check 20,13 — does anything have eyes on it?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Check 20,13 — does anything have eyes on it?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 20,
+          "y": 13
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — What is at 17,18?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What is at 17,18?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 17,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Would 24,17 give us cover?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Would 24,17 give us cover?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 24,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Tell me about the square at 14,17.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Tell me about the square at 14,17."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 14,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Can we hide at 5,13?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Can we hide at 5,13?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 5,
+          "y": 13
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Is 12,8 walkable, and is it watched?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Is 12,8 walkable, and is it watched?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 12,
+          "y": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Look at 20,12 before we commit to it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Look at 20,12 before we commit to it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 20,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Anything watching 10,7 right now?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Anything watching 10,7 right now?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 10,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Is that spot at 5,18 exposed?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Is that spot at 5,18 exposed?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 5,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Is the tile at 25,1 safe to stand on?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Is the tile at 25,1 safe to stand on?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 25,
+          "y": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Check 27,15 — does anything have eyes on it?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Check 27,15 — does anything have eyes on it?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 27,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — What is at 24,16?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What is at 24,16?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 24,
+          "y": 16
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Would 3,7 give us cover?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Would 3,7 give us cover?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 3,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Tell me about the square at 5,13.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Tell me about the square at 5,13."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 5,
+          "y": 13
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Can we hide at 6,2?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Can we hide at 6,2?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 6,
+          "y": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Is 25,1 walkable, and is it watched?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Is 25,1 walkable, and is it watched?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 25,
+          "y": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Look at 18,10 before we commit to it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Look at 18,10 before we commit to it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 18,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Anything watching 5,1 right now?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Anything watching 5,1 right now?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 5,
+          "y": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Is that spot at 8,12 exposed?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Is that spot at 8,12 exposed?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 8,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Is the tile at 28,17 safe to stand on?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Is the tile at 28,17 safe to stand on?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 28,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Check 26,7 — does anything have eyes on it?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Check 26,7 — does anything have eyes on it?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 26,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — What is at 23,9?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What is at 23,9?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 23,
+          "y": 9
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Would 10,5 give us cover?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Would 10,5 give us cover?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 10,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Tell me about the square at 28,6.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Tell me about the square at 28,6."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 28,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "assess_tile — Can we hide at 1,10?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Can we hide at 1,10?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "assess_tile",
+        "arguments": {
+          "x": 1,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Work out how we would get to 11,10 — do not move yet.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Work out how we would get to 11,10 — do not move yet."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 11,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Plan a route to 9,14 and tell me how exposed it is.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Plan a route to 9,14 and tell me how exposed it is."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 9,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — What would the walk to 5,13 cost us?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What would the walk to 5,13 cost us?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 5,
+          "y": 13
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — How risky is the path to 27,8?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How risky is the path to 27,8?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 27,
+          "y": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Map me a way to 10,4 without moving.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Map me a way to 10,4 without moving."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 10,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Before we go, what does the route to 15,11 look like?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Before we go, what does the route to 15,11 look like?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 15,
+          "y": 11
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Which parts of the way to 11,17 are watched?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Which parts of the way to 11,17 are watched?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 11,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Show me the path to 16,14 and its danger points.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Show me the path to 16,14 and its danger points."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 16,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — How many action points to reach 3,17?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How many action points to reach 3,17?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 3,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Check the route to 25,9 first.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Check the route to 25,9 first."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 25,
+          "y": 9
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Work out how we would get to 3,6 — do not move yet.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Work out how we would get to 3,6 — do not move yet."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 3,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Plan a route to 6,6 and tell me how exposed it is.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Plan a route to 6,6 and tell me how exposed it is."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 6,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — What would the walk to 18,8 cost us?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What would the walk to 18,8 cost us?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 18,
+          "y": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — How risky is the path to 4,10?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How risky is the path to 4,10?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 4,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Map me a way to 4,4 without moving.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Map me a way to 4,4 without moving."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 4,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Before we go, what does the route to 8,1 look like?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Before we go, what does the route to 8,1 look like?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 8,
+          "y": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Which parts of the way to 1,14 are watched?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Which parts of the way to 1,14 are watched?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 1,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Show me the path to 16,10 and its danger points.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Show me the path to 16,10 and its danger points."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 16,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — How many action points to reach 1,7?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How many action points to reach 1,7?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 1,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Check the route to 14,13 first.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Check the route to 14,13 first."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 14,
+          "y": 13
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Work out how we would get to 10,5 — do not move yet.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Work out how we would get to 10,5 — do not move yet."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 10,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Plan a route to 27,4 and tell me how exposed it is.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Plan a route to 27,4 and tell me how exposed it is."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 27,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — What would the walk to 18,11 cost us?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What would the walk to 18,11 cost us?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 18,
+          "y": 11
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — How risky is the path to 5,3?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "How risky is the path to 5,3?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 5,
+          "y": 3
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Map me a way to 1,12 without moving.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Map me a way to 1,12 without moving."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 1,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "plan_route — Before we go, what does the route to 25,2 look like?",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Before we go, what does the route to 25,2 look like?"
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "plan_route",
+        "arguments": {
+          "x": 25,
+          "y": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Move the operative to 7,6.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Move the operative to 7,6."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 7,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Walk over to 26,5.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Walk over to 26,5."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 26,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Get us to 15,1.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get us to 15,1."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 15,
+          "y": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Head for 9,11.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Head for 9,11."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 9,
+          "y": 11
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Take the operative to 12,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Take the operative to 12,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 12,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Advance to 18,18.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Advance to 18,18."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 18,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Go to 28,9.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Go to 28,9."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 28,
+          "y": 9
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Reposition to 18,12.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Reposition to 18,12."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 18,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Move up to 3,1.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Move up to 3,1."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 3,
+          "y": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Step across to 27,12.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Step across to 27,12."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 27,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Move the operative to 19,14.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Move the operative to 19,14."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 19,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Walk over to 18,14.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Walk over to 18,14."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 18,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Get us to 26,7.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get us to 26,7."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 26,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Head for 21,6.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Head for 21,6."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 21,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Take the operative to 11,5.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Take the operative to 11,5."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 11,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Advance to 8,3.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Advance to 8,3."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 8,
+          "y": 3
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Go to 22,9.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Go to 22,9."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 22,
+          "y": 9
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Reposition to 2,15.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Reposition to 2,15."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 2,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Move up to 10,14.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Move up to 10,14."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 10,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Step across to 13,13.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Step across to 13,13."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 13,
+          "y": 13
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Move the operative to 5,6.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Move the operative to 5,6."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 5,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Walk over to 13,6.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Walk over to 13,6."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 13,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Get us to 8,10.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get us to 8,10."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 8,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Head for 6,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Head for 6,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 6,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Take the operative to 2,5.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Take the operative to 2,5."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 2,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative — Advance to 18,14.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Advance to 18,14."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 18,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Sprint to 2,5, I do not care about the noise.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Sprint to 2,5, I do not care about the noise."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 2,
+          "y": 5,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Dash to 2,10 as fast as possible.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Dash to 2,10 as fast as possible."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 2,
+          "y": 10,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Run to 24,10 — speed matters more than stealth.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Run to 24,10 — speed matters more than stealth."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 24,
+          "y": 10,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Bolt for 3,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bolt for 3,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 3,
+          "y": 4,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Leg it to 5,1.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Leg it to 5,1."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 5,
+          "y": 1,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Sprint over to 28,17 right now.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Sprint over to 28,17 right now."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 28,
+          "y": 17,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Move fast to 4,18, noise is acceptable.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Move fast to 4,18, noise is acceptable."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 4,
+          "y": 18,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Sprint to 18,13, I do not care about the noise.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Sprint to 18,13, I do not care about the noise."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 18,
+          "y": 13,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Dash to 3,14 as fast as possible.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Dash to 3,14 as fast as possible."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 3,
+          "y": 14,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Run to 13,8 — speed matters more than stealth.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Run to 13,8 — speed matters more than stealth."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 13,
+          "y": 8,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Bolt for 27,10.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bolt for 27,10."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 27,
+          "y": 10,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Leg it to 17,11.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Leg it to 17,11."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 17,
+          "y": 11,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Sprint over to 16,1 right now.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Sprint over to 16,1 right now."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 16,
+          "y": 1,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Move fast to 23,4, noise is acceptable.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Move fast to 23,4, noise is acceptable."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 23,
+          "y": 4,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Sprint to 13,2, I do not care about the noise.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Sprint to 13,2, I do not care about the noise."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 13,
+          "y": 2,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "move_operative_sprint — Dash to 23,6 as fast as possible.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Dash to 23,6 as fast as possible."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "move_operative",
+        "arguments": {
+          "x": 23,
+          "y": 6,
+          "sprint": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "hack_terminal — We are next to the data core — siphon it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "We are next to the data core — siphon it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "hack_terminal",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "hack_terminal — Hack the terminal beside us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Hack the terminal beside us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "hack_terminal",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "hack_terminal — Take the core.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Take the core."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "hack_terminal",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "hack_terminal — Splice that terminal.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Splice that terminal."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "hack_terminal",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "hack_terminal — Pull the data off it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pull the data off it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "hack_terminal",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "hack_terminal — Break into the terminal next to the operative.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Break into the terminal next to the operative."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "hack_terminal",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "hack_terminal — Grab the data from this core.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Grab the data from this core."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "hack_terminal",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "hack_terminal — Work the terminal we are standing next to.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Work the terminal we are standing next to."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "hack_terminal",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "grab_intel — Pick up the intel on this tile.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pick up the intel on this tile."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "grab_intel",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "grab_intel — Lift that cache.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Lift that cache."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "grab_intel",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "grab_intel — Take the intel we are standing on.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Take the intel we are standing on."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "grab_intel",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "grab_intel — Bag it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bag it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "grab_intel",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "grab_intel — Collect the intel here.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Collect the intel here."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "grab_intel",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "grab_intel — Grab what is on the floor here.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Grab what is on the floor here."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "grab_intel",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "grab_intel — Pocket the cache.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pocket the cache."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "grab_intel",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "end_turn — That is everything for this turn.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "That is everything for this turn."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "end_turn",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "end_turn — Hand it over to the guards.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Hand it over to the guards."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "end_turn",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "end_turn — End the turn.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "End the turn."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "end_turn",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "end_turn — We are done, let them move.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "We are done, let them move."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "end_turn",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "end_turn — Pass the turn.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pass the turn."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "end_turn",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "end_turn — Nothing else this turn.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Nothing else this turn."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "end_turn",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "end_turn — Finish up and let the patrols move.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Finish up and let the patrols move."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "end_turn",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "end_turn — That is my turn done.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "That is my turn done."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "end_turn",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "extract — We are on the pad and the cores are done — get out.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "We are on the pad and the cores are done — get out."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "extract",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "extract — Extract.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Extract."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "extract",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "extract — Pull us out.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pull us out."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "extract",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "extract — Leave the floor.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Leave the floor."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "extract",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "extract — Time to go, extract now.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Time to go, extract now."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "extract",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "extract — Get the operative out of there.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get the operative out of there."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "extract",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "extract — Call it, we are leaving.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Call it, we are leaving."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "extract",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — We are blind near 10,16 — sweep the network there.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "We are blind near 10,16 — sweep the network there."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 10,
+          "y": 16
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Scan around 1,17.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Scan around 1,17."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 1,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Ping the area at 18,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Ping the area at 18,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 18,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — What is over at 20,6? Sweep it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What is over at 20,6? Sweep it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 20,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Run a network sweep centred on 4,6.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Run a network sweep centred on 4,6."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 4,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Light up the area around 20,10 for me.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Light up the area around 20,10 for me."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 20,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Probe 15,4 so we can see what is there.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Probe 15,4 so we can see what is there."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 15,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Find out what is sitting around 24,11.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Find out what is sitting around 24,11."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 24,
+          "y": 11
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — We are blind near 3,12 — sweep the network there.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "We are blind near 3,12 — sweep the network there."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 3,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Scan around 15,12.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Scan around 15,12."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 15,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Ping the area at 26,12.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Ping the area at 26,12."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 26,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — What is over at 15,14? Sweep it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What is over at 15,14? Sweep it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 15,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Run a network sweep centred on 7,5.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Run a network sweep centred on 7,5."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 7,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Light up the area around 24,6 for me.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Light up the area around 24,6 for me."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 24,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Probe 23,15 so we can see what is there.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Probe 23,15 so we can see what is there."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 23,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Find out what is sitting around 26,17.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Find out what is sitting around 26,17."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 26,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — We are blind near 20,8 — sweep the network there.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "We are blind near 20,8 — sweep the network there."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 20,
+          "y": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Scan around 19,13.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Scan around 19,13."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 19,
+          "y": 13
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Ping the area at 22,7.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Ping the area at 22,7."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 22,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — What is over at 16,12? Sweep it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "What is over at 16,12? Sweep it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 16,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Run a network sweep centred on 23,13.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Run a network sweep centred on 23,13."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 23,
+          "y": 13
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Light up the area around 27,15 for me.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Light up the area around 27,15 for me."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 27,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Probe 9,16 so we can see what is there.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Probe 9,16 so we can see what is there."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 9,
+          "y": 16
+        }
+      }
+    ]
+  },
+  {
+    "name": "ping_scan — Find out what is sitting around 25,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Find out what is sitting around 25,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "ping_scan",
+        "arguments": {
+          "x": 25,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Blow a speaker at 21,17 to pull the patrol off our route.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Blow a speaker at 21,17 to pull the patrol off our route."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 21,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Make a noise over at 7,8.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Make a noise over at 7,8."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 7,
+          "y": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Distract them towards 18,7.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Distract them towards 18,7."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 18,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Draw the guards to 8,7.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Draw the guards to 8,7."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 8,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Set something off at 9,9.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Set something off at 9,9."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 9,
+          "y": 9
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Pull attention over to 15,2.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pull attention over to 15,2."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 15,
+          "y": 2
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Bang something at 18,4 so they walk away from us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bang something at 18,4 so they walk away from us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 18,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Get the patrol looking at 15,18.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get the patrol looking at 15,18."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 15,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Blow a speaker at 12,6 to pull the patrol off our route.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Blow a speaker at 12,6 to pull the patrol off our route."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 12,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Make a noise over at 14,15.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Make a noise over at 14,15."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 14,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Distract them towards 11,1.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Distract them towards 11,1."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 11,
+          "y": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Draw the guards to 7,15.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Draw the guards to 7,15."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 7,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Set something off at 9,15.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Set something off at 9,15."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 9,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Pull attention over to 4,7.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pull attention over to 4,7."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 4,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Bang something at 18,5 so they walk away from us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bang something at 18,5 so they walk away from us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 18,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Get the patrol looking at 1,5.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get the patrol looking at 1,5."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 1,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Blow a speaker at 20,10 to pull the patrol off our route.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Blow a speaker at 20,10 to pull the patrol off our route."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 20,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Make a noise over at 13,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Make a noise over at 13,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 13,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Distract them towards 2,6.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Distract them towards 2,6."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 2,
+          "y": 6
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Draw the guards to 15,10.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Draw the guards to 15,10."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 15,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Set something off at 16,3.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Set something off at 16,3."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 16,
+          "y": 3
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Pull attention over to 23,14.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pull attention over to 23,14."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 23,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Bang something at 10,8 so they walk away from us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bang something at 10,8 so they walk away from us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 10,
+          "y": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "trigger_distraction — Get the patrol looking at 4,18.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get the patrol looking at 4,18."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "trigger_distraction",
+        "arguments": {
+          "x": 4,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "cut_power — Kill the lights.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Kill the lights."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cut_power",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "cut_power — Cut the grid across the floor.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Cut the grid across the floor."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cut_power",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "cut_power — Take the power out so the cones shrink.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Take the power out so the cones shrink."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cut_power",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "cut_power — Blackout, now.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Blackout, now."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cut_power",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "cut_power — Drop the power.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Drop the power."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cut_power",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "cut_power — Shut the facility power down for a few turns.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Shut the facility power down for a few turns."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cut_power",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "cut_power — Darkness please — cut it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Darkness please — cut it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cut_power",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "cut_power — Kill power so nobody can see far.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Kill power so nobody can see far."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cut_power",
+        "arguments": {}
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — cam-3 is watching the corridor — blind it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "cam-3 is watching the corridor — blind it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Loop the feed on cam-2.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Loop the feed on cam-2."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Take cam-1 offline.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Take cam-1 offline."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-1"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Kill the camera cam-2.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Kill the camera cam-2."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Put cam-3 on a loop so it stops seeing us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Put cam-3 on a loop so it stops seeing us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Deal with cam-3.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Deal with cam-3."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Blind cam-3 before we cross.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Blind cam-3 before we cross."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Disable cam-3.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Disable cam-3."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-3"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — cam-2 is watching the corridor — blind it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "cam-2 is watching the corridor — blind it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Loop the feed on cam-1.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Loop the feed on cam-1."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-1"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Put cam-2 on a loop so it stops seeing us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Put cam-2 on a loop so it stops seeing us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Blind cam-2 before we cross.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Blind cam-2 before we cross."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Disable cam-2.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Disable cam-2."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-2"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "loop_camera — Loop the feed on cam-0.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Loop the feed on cam-0."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "loop_camera",
+        "arguments": {
+          "camera_id": {
+            "$contains": "cam-0"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — A guard is chasing us through the door at 21,18 — lock it shut behind us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "A guard is chasing us through the door at 21,18 — lock it shut behind us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 21,
+          "y": 18,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Seal the door at 12,13.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Seal the door at 12,13."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 12,
+          "y": 13,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Lock 15,18 so they cannot follow.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Lock 15,18 so they cannot follow."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 15,
+          "y": 18,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Shut and hold the door at 18,5.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Shut and hold the door at 18,5."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 18,
+          "y": 5,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Bolt the door at 10,1 closed.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bolt the door at 10,1 closed."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 10,
+          "y": 1,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Jam the door at 13,8 so the patrol is stuck.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Jam the door at 13,8 so the patrol is stuck."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 13,
+          "y": 8,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Close off 3,6 behind us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Close off 3,6 behind us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 3,
+          "y": 6,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — A guard is chasing us through the door at 3,8 — lock it shut behind us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "A guard is chasing us through the door at 3,8 — lock it shut behind us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 3,
+          "y": 8,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Seal the door at 7,14.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Seal the door at 7,14."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 7,
+          "y": 14,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Lock 9,3 so they cannot follow.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Lock 9,3 so they cannot follow."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 9,
+          "y": 3,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Shut and hold the door at 3,12.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Shut and hold the door at 3,12."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 3,
+          "y": 12,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Bolt the door at 21,11 closed.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bolt the door at 21,11 closed."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 21,
+          "y": 11,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Jam the door at 16,16 so the patrol is stuck.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Jam the door at 16,16 so the patrol is stuck."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 16,
+          "y": 16,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Close off 5,14 behind us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Close off 5,14 behind us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 5,
+          "y": 14,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — A guard is chasing us through the door at 9,1 — lock it shut behind us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "A guard is chasing us through the door at 9,1 — lock it shut behind us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 9,
+          "y": 1,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Seal the door at 17,6.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Seal the door at 17,6."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 17,
+          "y": 6,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Lock 15,15 so they cannot follow.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Lock 15,15 so they cannot follow."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 15,
+          "y": 15,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Shut and hold the door at 21,1.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Shut and hold the door at 21,1."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 21,
+          "y": 1,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Bolt the door at 9,13 closed.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Bolt the door at 9,13 closed."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 9,
+          "y": 13,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Jam the door at 17,9 so the patrol is stuck.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Jam the door at 17,9 so the patrol is stuck."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 17,
+          "y": 9,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — Close off 28,17 behind us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Close off 28,17 behind us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 28,
+          "y": 17,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_seal — A guard is chasing us through the door at 6,15 — lock it shut behind us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "A guard is chasing us through the door at 6,15 — lock it shut behind us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 6,
+          "y": 15,
+          "seal": true
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Cycle the door at 21,9 open so we can get through.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Cycle the door at 21,9 open so we can get through."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 21,
+          "y": 9,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Open the door at 13,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open the door at 13,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 13,
+          "y": 4,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Unlock 25,2 for us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Unlock 25,2 for us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 25,
+          "y": 2,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Get the door at 22,1 out of the way.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get the door at 22,1 out of the way."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 22,
+          "y": 1,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Pop the door at 6,7.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pop the door at 6,7."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 6,
+          "y": 7,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Open up 1,7 remotely.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open up 1,7 remotely."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 1,
+          "y": 7,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Cycle the door at 11,9 open so we can get through.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Cycle the door at 11,9 open so we can get through."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 11,
+          "y": 9,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Open the door at 5,13.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open the door at 5,13."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 5,
+          "y": 13,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Unlock 7,3 for us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Unlock 7,3 for us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 7,
+          "y": 3,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Get the door at 25,15 out of the way.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get the door at 25,15 out of the way."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 25,
+          "y": 15,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Pop the door at 23,2.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pop the door at 23,2."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 23,
+          "y": 2,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Open up 25,1 remotely.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open up 25,1 remotely."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 25,
+          "y": 1,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Cycle the door at 24,4 open so we can get through.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Cycle the door at 24,4 open so we can get through."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 24,
+          "y": 4,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Open the door at 7,17.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open the door at 7,17."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 7,
+          "y": 17,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Unlock 16,7 for us.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Unlock 16,7 for us."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 16,
+          "y": 7,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Get the door at 6,13 out of the way.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get the door at 6,13 out of the way."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 6,
+          "y": 13,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Pop the door at 28,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Pop the door at 28,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 28,
+          "y": 4,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "cycle_door_open — Open up 3,17 remotely.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open up 3,17 remotely."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "cycle_door",
+        "arguments": {
+          "x": 3,
+          "y": 17,
+          "seal": false
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Send guard-0 walking over to 18,9.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Send guard-0 walking over to 18,9."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-0"
+          },
+          "x": 18,
+          "y": 9
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Spoof guard-4 patrol orders towards 28,17.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Spoof guard-4 patrol orders towards 28,17."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-4"
+          },
+          "x": 28,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Get guard-0 out of our way — route it to 27,10.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get guard-0 out of our way — route it to 27,10."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-0"
+          },
+          "x": 27,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Redirect guard-0 to 14,5.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Redirect guard-0 to 14,5."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-0"
+          },
+          "x": 14,
+          "y": 5
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Tell guard-2 to patrol 6,3 instead.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Tell guard-2 to patrol 6,3 instead."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-2"
+          },
+          "x": 6,
+          "y": 3
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Push guard-4 over to 10,8.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Push guard-4 over to 10,8."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-4"
+          },
+          "x": 10,
+          "y": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Send guard-3 walking over to 21,17.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Send guard-3 walking over to 21,17."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-3"
+          },
+          "x": 21,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Spoof guard-4 patrol orders towards 17,17.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Spoof guard-4 patrol orders towards 17,17."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-4"
+          },
+          "x": 17,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Get guard-1 out of our way — route it to 9,4.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get guard-1 out of our way — route it to 9,4."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-1"
+          },
+          "x": 9,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Redirect guard-0 to 19,3.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Redirect guard-0 to 19,3."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-0"
+          },
+          "x": 19,
+          "y": 3
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Tell guard-3 to patrol 5,17 instead.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Tell guard-3 to patrol 5,17 instead."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-3"
+          },
+          "x": 5,
+          "y": 17
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Push guard-0 over to 7,18.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Push guard-0 over to 7,18."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-0"
+          },
+          "x": 7,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Send guard-4 walking over to 24,12.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Send guard-4 walking over to 24,12."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-4"
+          },
+          "x": 24,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Spoof guard-0 patrol orders towards 16,15.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Spoof guard-0 patrol orders towards 16,15."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-0"
+          },
+          "x": 16,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Get guard-4 out of our way — route it to 1,18.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Get guard-4 out of our way — route it to 1,18."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-4"
+          },
+          "x": 1,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Redirect guard-3 to 3,18.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Redirect guard-3 to 3,18."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-3"
+          },
+          "x": 3,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Tell guard-4 to patrol 19,7 instead.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Tell guard-4 to patrol 19,7 instead."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-4"
+          },
+          "x": 19,
+          "y": 7
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Push guard-0 over to 8,3.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Push guard-0 over to 8,3."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-0"
+          },
+          "x": 8,
+          "y": 3
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Send guard-2 walking over to 21,10.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Send guard-2 walking over to 21,10."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-2"
+          },
+          "x": 21,
+          "y": 10
+        }
+      }
+    ]
+  },
+  {
+    "name": "reroute_patrol — Spoof guard-1 patrol orders towards 11,11.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Spoof guard-1 patrol orders towards 11,11."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "reroute_patrol",
+        "arguments": {
+          "guard_id": {
+            "$contains": "guard-1"
+          },
+          "x": 11,
+          "y": 11
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Have the operative open the door at 23,11 by hand.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Have the operative open the door at 23,11 by hand."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 23,
+          "y": 11
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Push the door at 2,15 open yourself.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Push the door at 2,15 open yourself."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 2,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — The operative should physically open 3,11.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "The operative should physically open 3,11."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 3,
+          "y": 11
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Open 8,3 on foot rather than over the network.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open 8,3 on foot rather than over the network."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 8,
+          "y": 3
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Manually work the door at 12,1.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Manually work the door at 12,1."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 12,
+          "y": 1
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Have the operative open the door at 14,12 by hand.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Have the operative open the door at 14,12 by hand."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 14,
+          "y": 12
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Push the door at 9,14 open yourself.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Push the door at 9,14 open yourself."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 9,
+          "y": 14
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — The operative should physically open 10,18.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "The operative should physically open 10,18."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 10,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Open 1,18 on foot rather than over the network.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open 1,18 on foot rather than over the network."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 1,
+          "y": 18
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Manually work the door at 2,15.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Manually work the door at 2,15."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 2,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Have the operative open the door at 7,8 by hand.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Have the operative open the door at 7,8 by hand."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 7,
+          "y": 8
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Push the door at 9,4 open yourself.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Push the door at 9,4 open yourself."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 9,
+          "y": 4
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — The operative should physically open 7,15.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "The operative should physically open 7,15."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 7,
+          "y": 15
+        }
+      }
+    ]
+  },
+  {
+    "name": "operate_door — Open 22,11 on foot rather than over the network.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Open 22,11 on foot rather than over the network."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "operate_door",
+        "arguments": {
+          "x": 22,
+          "y": 11
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_coop — I want to move the operative myself — you take the network.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "I want to move the operative myself — you take the network."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "coop"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_coop — Set it up so I play and you handle the facility.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Set it up so I play and you handle the facility."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "coop"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_coop — Co-op please: I am the operative, you are the handler.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Co-op please: I am the operative, you are the handler."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "coop"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_coop — I will drive, you support.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "I will drive, you support."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "coop"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_coop — Put us in the mode where I control the operative.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Put us in the mode where I control the operative."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "coop"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_coop — Let me play with you as my handler.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Let me play with you as my handler."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "coop"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_agent — You play the whole run yourself, I will watch.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "You play the whole run yourself, I will watch."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "agent"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_agent — Take both roles and run it.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Take both roles and run it."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "agent"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_agent — Play it for me.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Play it for me."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "agent"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_agent — You do everything, I am just spectating.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "You do everything, I am just spectating."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "agent"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_agent — Run the whole infiltration on your own.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Run the whole infiltration on your own."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "agent"
+        }
+      }
+    ]
+  },
+  {
+    "name": "set_play_mode_agent — Handle the operative as well as the network.",
+    "messages": [
+      {
+        "role": "user",
+        "type": "message",
+        "content": "Handle the operative as well as the network."
+      }
+    ],
+    "expectedCall": [
+      {
+        "functionName": "set_play_mode",
+        "arguments": {
+          "mode": "agent"
+        }
+      }
+    ]
+  }
+]

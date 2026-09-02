@@ -12,7 +12,10 @@
     "test": "vitest run",
     "smoke": "node tools/smoke.mjs",
     "assets": "tools/build-atlas.sh",
-    "demo": "node tools/agent-demo.mjs"
+    "demo": "node tools/agent-demo.mjs",
+    "evals:build": "node tools/build-evals.mjs",
+    "evals": "node tools/run-evals.mjs",
+    "evals:cli": "webmcp-evals smoke -u http://localhost:5183/ -e evals.json"
   },
   "dependencies": {
     "@mcp-b/webmcp-polyfill": "^5.1.0"

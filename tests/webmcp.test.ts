@@ -257,3 +257,35 @@ test('cut_power reports the blackout to the agent and the engine agrees', async 
   const situation = payload(await context.call('get_situation'));
   assert.equal(situation.powerOutTurnsRemaining, game.state.powerOutTurns);
 });
+
+test('an agent can start playing by simply acting, with no UI steps', async () => {
+  const { game } = await freshSurface();
+  assert.equal(game.state.phase, 'mode_select', 'a fresh page waits on the opening screen');
+
+  // no set_play_mode, no begin_infiltration — the handler just acts
+  const result = await context.call('ping_scan', { x: 5, y: 5 });
+
+  assert.notEqual(result.isError, true, result.content[0].text);
+  assert.equal(game.state.phase, 'playing', 'acting must start the run for an agent');
+  assert.equal(game.state.mode, 'agent', 'an unattended start is an agent run');
+});
+
+test('autostart does not override a human who already chose co-op', async () => {
+  const { game, surface } = await freshSurface();
+  await context.call('set_play_mode', { mode: 'coop' });
+  await surface.syncPhaseTools();
+  assert.equal(game.state.phase, 'briefing');
+
+  await context.call('ping_scan', { x: 5, y: 5 });
+
+  assert.equal(game.state.phase, 'playing', 'the agent may still start the floor');
+  assert.equal(game.state.mode, 'coop', 'the human\u2019s choice must survive');
+});
+
+test('read tools never start the run as a side effect', async () => {
+  const { game } = await freshSurface();
+  await context.call('get_situation');
+  await context.call('list_abilities');
+  await context.call('assess_tile', { x: 3, y: 3 });
+  assert.equal(game.state.phase, 'mode_select', 'reads must be side-effect free');
+});

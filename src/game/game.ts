@@ -127,16 +127,22 @@ export class Game {
   /** Answer the opening screen: who is at the controls for this run. */
   setMode(mode: PlayMode): ActionResult {
     const s = this.state;
-    if (s.phase !== 'mode_select' && s.phase !== 'briefing') {
-      return { ok: false, message: `Play mode cannot be changed during phase "${s.phase}".` };
+    if (s.phase === 'run_failed' || s.phase === 'run_complete') {
+      return { ok: false, message: 'The run is over — start a new one first.' };
     }
+    const previous = s.mode;
     s.mode = mode;
     if (s.phase === 'mode_select') s.phase = 'briefing';
+    const handover = previous && previous !== mode;
     this.log(
       'system',
       mode === 'coop'
-        ? 'Co-op: operative on the ground, agent handler on the network.'
-        : 'Agent-run infiltration — the handler has the operative too.',
+        ? handover
+          ? 'Control handed back — the human has the operative, the agent keeps the network.'
+          : 'Co-op: operative on the ground, agent handler on the network.'
+        : handover
+          ? 'Control handed to the agent — it has the operative and the network.'
+          : 'Agent-run infiltration — the handler has the operative too.',
     );
     this.emit();
     return {

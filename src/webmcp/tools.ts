@@ -135,12 +135,56 @@ export class ToolSurface {
     this.registered = [];
   }
 
+  /**
+   * An agent arriving cold should be able to just act. The opening screen and
+   * the briefing are human affordances; if a handler calls a gameplay tool
+   * before they have been answered, start the run for it rather than making it
+   * click through a UI it cannot see.
+   */
+  private autostart(): void {
+    const phase = this.game.state.phase;
+    if (phase !== 'mode_select' && phase !== 'briefing') return;
+    if (!this.game.state.mode) this.game.setMode('agent');
+    this.game.beginInfiltration();
+  }
+
   // -- tool definitions ---------------------------------------------------
 
   private coreTools(): ToolDescriptor[] {
     const game = this.game;
 
     return [
+      {
+        name: 'set_play_mode',
+        description:
+          'Set or change who is at the controls, and hand control over mid-run. "coop" means a human moves the operative while you work the facility network — scanning, looping cameras, sealing doors, cutting power. "agent" means you take both roles and play the whole run yourself. Callable at any point during a run.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            mode: {
+              type: 'string',
+              enum: ['coop', 'agent'],
+              description:
+                'coop = human operative + agent handler; agent = you play both roles.',
+            },
+          },
+          required: ['mode'],
+        },
+        execute: (args: Args) => {
+          const mode = str(args, 'mode');
+          if (mode !== 'coop' && mode !== 'agent') {
+            return errorResponse('mode must be either "coop" or "agent".');
+          }
+          const result = game.setMode(mode);
+          void this.syncPhaseTools();
+          return result.ok
+            ? textResponse(result.message, {
+                ...(result.detail ?? {}),
+                nextStep: 'Call begin_infiltration to start the floor.',
+              })
+            : errorResponse(result.message);
+        },
+      },
       {
         name: 'get_situation',
         description:
@@ -248,6 +292,7 @@ export class ToolSurface {
           const x = num(args, 'x');
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
+          this.autostart();
           return fromResult(game.moveTo(x, y, args.sprint === true));
         },
       },
@@ -264,14 +309,20 @@ export class ToolSurface {
             },
           },
         },
-        execute: (args: Args) => fromResult(game.hack(str(args, 'terminal_id') ?? undefined)),
+        execute: (args: Args) => {
+          this.autostart();
+          return fromResult(game.hack(str(args, 'terminal_id') ?? undefined));
+        },
       },
       {
         name: 'grab_intel',
         description:
           'Pick up the intel cache on the operative\'s current tile. Intel is banked between runs and unlocks progression.',
         inputSchema: { type: 'object', properties: {} },
-        execute: () => fromResult(game.grab()),
+        execute: () => {
+          this.autostart();
+          return fromResult(game.grab());
+        },
       },
       {
         name: 'operate_door',
@@ -282,6 +333,7 @@ export class ToolSurface {
           const x = num(args, 'x');
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
+          this.autostart();
           return fromResult(game.toggleDoor(x, y));
         },
       },
@@ -290,14 +342,20 @@ export class ToolSurface {
         description:
           'Extract from the floor. Only works when the operative is standing on the extraction pad and every data core has been siphoned. Clearing a floor offers an implant choice.',
         inputSchema: { type: 'object', properties: {} },
-        execute: () => fromResult(game.extract()),
+        execute: () => {
+          this.autostart();
+          return fromResult(game.extract());
+        },
       },
       {
         name: 'end_turn',
         description:
           'End the operative\'s turn. Guards then move, cameras sweep, timers tick down, and AP and bandwidth refill. Ending a turn while standing in a vision cone is how runs die.',
         inputSchema: { type: 'object', properties: {} },
-        execute: () => fromResult(game.endTurn()),
+        execute: () => {
+          this.autostart();
+          return fromResult(game.endTurn());
+        },
       },
 
       // --- agent abilities (spend bandwidth) ------------------------------
@@ -310,6 +368,7 @@ export class ToolSurface {
           const x = num(args, 'x');
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
+          this.autostart();
           return fromResult(game.ping(x, y));
         },
       },
@@ -333,6 +392,7 @@ export class ToolSurface {
           const x = num(args, 'x');
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
+          this.autostart();
           return fromResult(game.agentToggleDoor(x, y, args.seal === true));
         },
       },
@@ -348,6 +408,7 @@ export class ToolSurface {
         execute: (args: Args) => {
           const id = str(args, 'camera_id');
           if (!id) return errorResponse('camera_id is required.');
+          this.autostart();
           return fromResult(game.loopCamera(id));
         },
       },
@@ -360,6 +421,7 @@ export class ToolSurface {
           const x = num(args, 'x');
           const y = num(args, 'y');
           if (x === null || y === null) return errorResponse('x and y are required numbers.');
+          this.autostart();
           return fromResult(game.distraction(x, y));
         },
       },
@@ -368,7 +430,10 @@ export class ToolSurface {
         description:
           'Kill the facility grid for several turns, shortening every guard and camera vision cone to 40% of its range. Expensive in bandwidth; best saved for crossing a wide open room.',
         inputSchema: { type: 'object', properties: {} },
-        execute: () => fromResult(game.cutPower()),
+        execute: () => {
+          this.autostart();
+          return fromResult(game.cutPower());
+        },
       },
       {
         name: 'reroute_patrol',
@@ -390,6 +455,7 @@ export class ToolSurface {
           if (!id || x === null || y === null) {
             return errorResponse('guard_id, x and y are all required.');
           }
+          this.autostart();
           return fromResult(game.reroutePatrol(id, x, y));
         },
       },
@@ -399,42 +465,6 @@ export class ToolSurface {
   /** Tools that only exist while they are meaningful. */
   private phaseTools(phase: RunPhase): ToolDescriptor[] {
     const game = this.game;
-
-    if (phase === 'mode_select') {
-      return [
-        {
-          name: 'set_play_mode',
-          description:
-            'Answer the opening question: who is at the controls for this run. "coop" means a human moves the operative while you work the facility network — scanning, looping cameras, sealing doors, cutting power. "agent" hands you both roles so you play the whole run yourself. Nothing else can be done until this is set.',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              mode: {
-                type: 'string',
-                enum: ['coop', 'agent'],
-                description:
-                  'coop = human operative + agent handler; agent = you play both roles.',
-              },
-            },
-            required: ['mode'],
-          },
-          execute: (args: Args) => {
-            const mode = str(args, 'mode');
-            if (mode !== 'coop' && mode !== 'agent') {
-              return errorResponse('mode must be either "coop" or "agent".');
-            }
-            const result = game.setMode(mode);
-            void this.syncPhaseTools();
-            return result.ok
-              ? textResponse(result.message, {
-                  ...(result.detail ?? {}),
-                  nextStep: 'Call begin_infiltration to start the floor.',
-                })
-              : errorResponse(result.message);
-          },
-        },
-      ];
-    }
 
     if (phase === 'briefing') {
       return [
