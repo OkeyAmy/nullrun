@@ -35,7 +35,16 @@ await page.evaluate(() => window.nullrun.game.newRun(20260903));
 await page.waitForTimeout(150);
 
 // --- briefing -------------------------------------------------------------
-check('briefing overlay is shown', await page.locator('.overlay .card h2').isVisible());
+check('opening screen is shown', await page.locator('.overlay .card h2').isVisible());
+check(
+  'the opening screen offers all three play modes',
+  (await page.locator('.overlay [data-mode]').count()) === 3,
+);
+await page.screenshot({ path: '.smoke/0-mode-select.png' });
+
+await page.click('.overlay [data-mode="coop"]');
+await page.waitForTimeout(200);
+check('briefing follows the mode choice', await page.locator('.overlay .card h2').isVisible());
 await page.screenshot({ path: '.smoke/1-briefing.png' });
 
 const bridgeMode = await page.evaluate(() => window.nullrun.tools.bridge.mode);
@@ -111,6 +120,7 @@ await page.screenshot({ path: '.smoke/4-hover.png' });
 // have ended the run, and agent abilities are only valid while playing
 await page.evaluate(() => {
   window.nullrun.game.newRun(20260903);
+  window.nullrun.game.setMode('coop');
   window.nullrun.game.beginInfiltration();
 });
 await page.waitForTimeout(150);

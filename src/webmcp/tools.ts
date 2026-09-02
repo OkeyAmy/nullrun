@@ -90,6 +90,11 @@ export class ToolSurface {
    */
   syncPhaseTools(): Promise<void> {
     this.syncQueue = this.syncQueue
+      // Yield a full task first. A phase change is usually triggered from
+      // inside a tool's own execute(); aborting the registration synchronously
+      // would cancel the very call that caused it, and the caller would see
+      // "Tool unregistered" instead of its result.
+      .then(() => new Promise<void>((resolve) => setTimeout(resolve, 0)))
       .then(() => this.runPhaseSync())
       .catch((error) => {
         if (!isAbortError(error)) console.warn('[nullrun] phase tool sync failed', error);
@@ -395,6 +400,42 @@ export class ToolSurface {
   private phaseTools(phase: RunPhase): ToolDescriptor[] {
     const game = this.game;
 
+    if (phase === 'mode_select') {
+      return [
+        {
+          name: 'set_play_mode',
+          description:
+            'Answer the opening question: who is at the controls for this run. "coop" is the intended experience — a human moves the operative while you work the facility network. "agent" hands you both roles so you can play the whole run yourself. "solo" puts the human alone and takes your handler abilities offline. Nothing else can be done until this is set.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              mode: {
+                type: 'string',
+                enum: ['coop', 'agent', 'solo'],
+                description:
+                  'coop = human operative + agent handler; agent = you play both roles; solo = human alone, handler offline.',
+              },
+            },
+            required: ['mode'],
+          },
+          execute: (args: Args) => {
+            const mode = str(args, 'mode');
+            if (mode !== 'coop' && mode !== 'agent' && mode !== 'solo') {
+              return errorResponse('mode must be one of "coop", "agent" or "solo".');
+            }
+            const result = game.setMode(mode);
+            void this.syncPhaseTools();
+            return result.ok
+              ? textResponse(result.message, {
+                  ...(result.detail ?? {}),
+                  nextStep: 'Call begin_infiltration to start the floor.',
+                })
+              : errorResponse(result.message);
+          },
+        },
+      ];
+    }
+
     if (phase === 'briefing') {
       return [
         {
@@ -476,6 +517,15 @@ export class ToolSurface {
 
     return {
       phase: s.phase,
+      playMode: s.mode,
+      yourRole:
+        s.mode === 'agent'
+          ? 'You control both the operative and the facility network.'
+          : s.mode === 'coop'
+            ? 'A human moves the operative. You run the facility network: scan, loop cameras, seal doors, cut power, reroute patrols.'
+            : s.mode === 'solo'
+              ? 'Solo run — your handler abilities are offline. You may still read the situation.'
+              : 'Not chosen yet — call set_play_mode.',
       floor: floor.index + 1,
       totalFloors: BALANCE.run.floors,
       turn: s.turn,

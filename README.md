@@ -51,6 +51,28 @@ An agent can act on that. It cannot act on a screenshot.
 - **Same engine, both players.** Every tool calls the exact method the UI button calls. There is no
   agent-only code path that can drift from what a human sees.
 
+## Choosing who plays
+
+The first screen asks who is at the controls, and the answer is readable and settable by an agent
+(`set_play_mode`, and `get_situation` reports `playMode` plus a `yourRole` sentence so a handler
+that connects mid-run knows what it is expected to do):
+
+- **Human + AI handler** — the intended experience. You move the operative, the agent works the network.
+- **AI plays everything** — the agent takes both roles and runs the whole infiltration.
+- **Solo human** — no handler; the agent ability tools go offline and say so when called.
+
+### Connecting your agent
+
+The page publishes its tools on `document.modelContext`, so any WebMCP-aware agent discovers them
+itself — there is nothing to paste and no key to configure:
+
+- **Claude in Chrome** (or another WebMCP-aware browser agent): open the page in a tab and ask it
+  to play. It calls `get_situation` and goes from there.
+- **ChatGPT browser**: open the page and tell it to start with `get_situation`.
+- **No agent handy**: pick *AI plays everything* and run `pnpm demo` — a scripted handler
+  (`tools/agent-demo.mjs`) plays through the same public tools, never touching the DOM or the
+  engine. It currently clears two floors on the default seed in ~160 tool calls.
+
 ## The tool surface
 
 **Read (free)** — `get_situation`, `assess_tile`, `plan_route`, `list_abilities`, `get_run_status`
@@ -80,6 +102,7 @@ pnpm install
 pnpm dev        # http://localhost:5173
 pnpm test       # 22 engine + WebMCP integration tests
 pnpm smoke      # drives the real page in Chromium, incl. document.modelContext
+pnpm demo       # a handler plays the game using only the WebMCP tools
 pnpm build
 ```
 
@@ -92,6 +115,9 @@ still registered identically — the badge in the top right tells you which mode
 intel · `Shift` sprint · `X` extract · `Space` end turn.
 
 ## Verification
+
+`pnpm demo` is itself the strongest completeness check: if a script that only has the public tool
+surface can clear floors, the surface is complete.
 
 `pnpm test` covers the simulation and the agent path — that sealing a door actually stops a guard
 across the whole seal window, that cutting power removes a watcher, that the alarm ends a run,

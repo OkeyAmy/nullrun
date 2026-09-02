@@ -22,6 +22,7 @@ const TOOL_CATEGORIES: Record<string, ToolCategory> = {
   trigger_distraction: 'agent',
   cut_power: 'agent',
   reroute_patrol: 'agent',
+  set_play_mode: 'meta',
   begin_infiltration: 'meta',
   choose_implant: 'meta',
   start_new_run: 'meta',
@@ -34,6 +35,7 @@ export interface HudCallbacks {
   onEndTurn(): void;
   onToggleSprint(): void;
   onBegin(): void;
+  onSetMode(mode: 'solo' | 'coop' | 'agent'): void;
   onChooseImplant(id: string): void;
   onNewRun(): void;
 }
@@ -176,7 +178,7 @@ export class Hud {
 
   private renderOverlay(): void {
     const s = this.game.state;
-    const key = `${s.phase}:${s.floor.index}:${s.implantChoices.map((i) => i.id).join(',')}`;
+    const key = `${s.phase}:${s.mode}:${s.floor.index}:${s.implantChoices.map((i) => i.id).join(',')}`;
     if (key === this.lastOverlayKey) return;
     this.lastOverlayKey = key;
 
@@ -187,9 +189,60 @@ export class Hud {
     }
 
     this.overlayEl.hidden = false;
-    if (s.phase === 'briefing') this.renderBriefing();
+    if (s.phase === 'mode_select') this.renderModeSelect();
+    else if (s.phase === 'briefing') this.renderBriefing();
     else if (s.phase === 'choosing_implant') this.renderImplants();
     else this.renderRunEnd();
+  }
+
+  private renderModeSelect(): void {
+    const mode = this.tools.bridge.mode;
+    const connected = mode !== 'unavailable';
+    this.overlayEl.innerHTML = `
+      <div class="card">
+        <h2>NULLRUN</h2>
+        <p class="sub">Who is at the controls?</p>
+        <div class="choices">
+          <button class="choice" data-mode="coop">
+            <strong>Human + AI handler &nbsp;·&nbsp; the real thing</strong>
+            You move the operative. A connected AI agent works the facility network —
+            scanning, looping cameras, sealing doors, cutting power. Neither of you can
+            finish a floor alone.
+          </button>
+          <button class="choice" data-mode="agent">
+            <strong>AI plays everything</strong>
+            The agent takes both roles and runs the whole infiltration through its tools.
+            Watch the handler console to follow what it does.
+          </button>
+          <button class="choice" data-mode="solo">
+            <strong>Solo human</strong>
+            No handler on the line. Agent abilities are offline — harder, and the way to
+            feel what the agent is actually contributing.
+          </button>
+        </div>
+        <p class="sub" style="margin:18px 0 8px">Connecting your agent</p>
+        <p style="font-size:11px;line-height:1.7">
+          This page publishes its tools on <code>document.modelContext</code>${
+            connected ? ` (currently <strong>${mode}</strong>)` : ''
+          }. To let an AI play:
+        </p>
+        <ul style="font-size:11px">
+          <li><strong>Claude in Chrome</strong> or another WebMCP-aware browser agent: open this page in
+              a tab and ask it to play — it discovers the ${this.tools.registered.length} tools itself.</li>
+          <li><strong>ChatGPT browser</strong>: open the page and tell it to call
+              <code>get_situation</code>, then play.</li>
+          <li><strong>No agent handy?</strong> Pick “AI plays everything” and run
+              <code>pnpm demo</code> — a scripted handler drives the game through the same tools.</li>
+        </ul>
+        <p class="sub" style="margin-top:14px">An agent can answer this screen itself by calling <code>set_play_mode</code>.</p>
+      </div>
+    `;
+    for (const button of this.overlayEl.querySelectorAll<HTMLElement>('[data-mode]')) {
+      button.addEventListener('click', () => {
+        const picked = button.dataset.mode as 'solo' | 'coop' | 'agent' | undefined;
+        if (picked) this.callbacks.onSetMode(picked);
+      });
+    }
   }
 
   private renderBriefing(): void {

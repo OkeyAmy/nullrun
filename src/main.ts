@@ -20,6 +20,7 @@ const hud = new Hud(game, tools, {
     hud.render();
   },
   onBegin: () => game.beginInfiltration(),
+  onSetMode: (mode) => report(game.setMode(mode)),
   onChooseImplant: (id) => report(game.chooseImplant(id)),
   onNewRun: () => game.newRun(),
 });

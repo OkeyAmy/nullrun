@@ -79,7 +79,14 @@ export interface Implant {
   description: string;
 }
 
+/**
+ * Who is at the controls. Chosen before a run and readable by the agent, so a
+ * connected handler knows whether it is advising a human or playing solo.
+ */
+export type PlayMode = 'solo' | 'coop' | 'agent';
+
 export type RunPhase =
+  | 'mode_select'
   | 'menu'
   | 'briefing'
   | 'playing'
@@ -115,6 +122,8 @@ export interface LogEntry {
 
 export interface GameState {
   phase: RunPhase;
+  /** Null until the opening screen has been answered. */
+  mode: PlayMode | null;
   floor: FloorState;
   player: Vec;
   /** Direction the operative is facing, for rendering. */

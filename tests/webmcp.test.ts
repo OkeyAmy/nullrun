@@ -79,6 +79,14 @@ async function freshSurface() {
   return { game, surface };
 }
 
+/** Answer the opening screen and start the floor, the way an agent would. */
+async function startFloor(surface: InstanceType<typeof ToolSurface>, mode = 'coop') {
+  await context.call('set_play_mode', { mode });
+  await surface.syncPhaseTools();
+  await context.call('begin_infiltration');
+  await surface.syncPhaseTools();
+}
+
 test('the page registers its tool surface on document.modelContext', async () => {
   const { surface } = await freshSurface();
   assert.equal(surface.bridge.mode, 'native');
@@ -126,8 +134,19 @@ test('get_situation reports the operative position the engine actually holds', a
   assert.equal(data.turn, game.state.turn);
 });
 
-test('an agent can only start the floor through the phase-scoped tool', async () => {
+test('the opening screen gates the run behind set_play_mode', async () => {
   const { game, surface } = await freshSurface();
+  assert.equal(game.state.phase, 'mode_select');
+  assert.ok(context.find('set_play_mode'), 'the opening screen must expose set_play_mode');
+  assert.equal(
+    context.find('begin_infiltration'),
+    undefined,
+    'the floor cannot be started before a play mode is chosen',
+  );
+
+  await context.call('set_play_mode', { mode: 'coop' });
+  await surface.syncPhaseTools();
+  assert.equal(game.state.mode, 'coop');
   assert.equal(game.state.phase, 'briefing');
   assert.ok(context.find('begin_infiltration'), 'briefing must expose begin_infiltration');
 
@@ -142,9 +161,30 @@ test('an agent can only start the floor through the phase-scoped tool', async ()
   );
 });
 
+test('solo mode takes the handler abilities offline but leaves reads working', async () => {
+  const { surface } = await freshSurface();
+  await startFloor(surface, 'solo');
+
+  const blocked = await context.call('cut_power');
+  assert.equal(blocked.isError, true, 'handler abilities must be refused in solo mode');
+  assert.match(blocked.content[0].text, /solo mode/i);
+
+  const situation = await context.call('get_situation');
+  assert.notEqual(situation.isError, true, 'reads must still work in solo mode');
+  assert.equal(payload(situation).playMode, 'solo');
+});
+
+test('get_situation tells a connecting agent what its role is', async () => {
+  const { surface } = await freshSurface();
+  await startFloor(surface, 'coop');
+  const data = payload(await context.call('get_situation'));
+  assert.equal(data.playMode, 'coop');
+  assert.match(String(data.yourRole), /human moves the operative/i);
+});
+
 test('move_operative moves the operative and spends action points', async () => {
-  const { game } = await freshSurface();
-  await context.call('begin_infiltration');
+  const { game, surface } = await freshSurface();
+  await startFloor(surface);
 
   const start = { ...game.state.player };
   const apBefore = game.state.ap;
@@ -159,8 +199,8 @@ test('move_operative moves the operative and spends action points', async () => 
 });
 
 test('trigger_distraction pulls a real guard off patrol', async () => {
-  const { game } = await freshSurface();
-  await context.call('begin_infiltration');
+  const { game, surface } = await freshSurface();
+  await startFloor(surface);
 
   const guard = game.state.floor.guards[0];
   assert.ok(guard, 'the floor must have spawned at least one guard');
@@ -173,8 +213,8 @@ test('trigger_distraction pulls a real guard off patrol', async () => {
 });
 
 test('tools refuse impossible requests instead of silently succeeding', async () => {
-  await freshSurface();
-  await context.call('begin_infiltration');
+  const { surface } = await freshSurface();
+  await startFloor(surface);
 
   const badCamera = await context.call('loop_camera', { camera_id: 'cam-does-not-exist' });
   assert.equal(badCamera.isError, true, 'an unknown camera id must be an error');
@@ -187,8 +227,8 @@ test('tools refuse impossible requests instead of silently succeeding', async ()
 });
 
 test('plan_route names the guard watching the route it returns', async () => {
-  const { game } = await freshSurface();
-  await context.call('begin_infiltration');
+  const { game, surface } = await freshSurface();
+  await startFloor(surface);
 
   // put a guard directly in front of the operative, looking at them
   const player = game.state.player;
@@ -220,8 +260,8 @@ test('plan_route names the guard watching the route it returns', async () => {
 });
 
 test('cut_power reports the blackout to the agent and the engine agrees', async () => {
-  const { game } = await freshSurface();
-  await context.call('begin_infiltration');
+  const { game, surface } = await freshSurface();
+  await startFloor(surface);
 
   const result = await context.call('cut_power');
   assert.notEqual(result.isError, true, result.content[0].text);
