@@ -407,3 +407,41 @@ test('a repeat run in Human mode still offers the briefing', async () => {
   assert.equal(game.state.mode, 'coop');
   assert.equal(game.state.phase, 'briefing');
 });
+
+// --- what each player can see --------------------------------------------
+// In co-op the human is the one with eyes in the room, so the handler has to
+// ask rather than read. In agent mode there is no human to ask, so the agent
+// keeps the body's senses — blinding it there would just break the mode.
+
+test('in co-op the handler cannot read the operative surroundings', async () => {
+  const { surface } = await freshSurface();
+  await startFloor(surface, 'coop');
+  const data = payload(await context.call('get_situation'));
+
+  assert.equal(
+    data.operative.currentlyWatchedBy,
+    'unknown to the network',
+    'the network must not report what the operative can see',
+  );
+  assert.equal(data.operative.standingOn, 'unknown to the network');
+  assert.match(String(data.operative.note), /ask the human/i);
+  assert.match(String(data.intelSource), /camera network/i);
+
+  // it still knows where the operative is — cameras track that much
+  assert.equal(typeof data.operative.position.x, 'number');
+  assert.equal(typeof data.operative.actionPoints, 'number');
+});
+
+test('in agent mode the handler keeps full sensor access', async () => {
+  const { surface } = await freshSurface();
+  await startFloor(surface, 'agent');
+  const data = payload(await context.call('get_situation'));
+
+  assert.notEqual(
+    data.operative.currentlyWatchedBy,
+    'unknown to the network',
+    'the agent drives the body, so it must keep the body senses',
+  );
+  assert.equal(data.operative.note, undefined, 'and needs no ask-the-human note');
+  assert.match(String(data.intelSource), /full sensor access/i);
+});

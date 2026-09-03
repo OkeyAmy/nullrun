@@ -768,27 +768,49 @@ export class ToolSurface {
     const known = (x: number, y: number) => floor.discovered[tileIndex(floor, x, y)];
     const here = game.threatAt(s.player.x, s.player.y);
 
+    // Co-op is the only mode with a human at the table; in agent mode the
+    // handler drives the body itself and must keep the body's senses.
+    const networkOnly = s.mode === 'coop';
+
     return {
       phase: s.phase,
       playMode: s.mode,
+      intelSource: networkOnly
+        ? 'Facility camera network and your own scans. You cannot see what the cameras do not cover — the human can.'
+        : 'Full sensor access: you are driving the operative directly.',
       yourRole:
         s.mode === 'agent'
           ? 'You control both the operative and the facility network.'
           : s.mode === 'coop'
-            ? 'A human moves the operative. You run the facility network: scan, loop cameras, seal doors, cut power, reroute patrols.'
+            ? 'A human moves the operative. You run the facility network: scan, loop cameras, seal doors, cut power, reroute patrols. They have eyes in the room; you have the building. Talk to each other.'
             : 'Not chosen yet — call set_play_mode.',
       floor: floor.index + 1,
       totalFloors: BALANCE.run.floors,
       turn: s.turn,
       mapSize: { width: floor.width, height: floor.height },
-      operative: {
-        position: { ...s.player },
-        actionPoints: s.ap,
-        maxActionPoints: s.maxAp,
-        standingOn: tileAt(floor, s.player.x, s.player.y)?.kind,
-        currentlyWatchedBy: here.watchedBy,
-        inCover: here.inCover,
-      },
+      operative: networkOnly
+        ? {
+            // In co-op the human is the one with eyes in the room. The handler
+            // has the building's own systems and nothing else, so what is
+            // immediately around the operative has to be asked for out loud —
+            // that conversation is the co-op, and handing it over for free is
+            // what made the second player decorative.
+            position: { ...s.player },
+            actionPoints: s.ap,
+            maxActionPoints: s.maxAp,
+            standingOn: 'unknown to the network',
+            currentlyWatchedBy: 'unknown to the network',
+            inCover: 'unknown to the network',
+            note: "The cameras track where the operative is, not what they can see. Ask the human what is in the room with them.",
+          }
+        : {
+            position: { ...s.player },
+            actionPoints: s.ap,
+            maxActionPoints: s.maxAp,
+            standingOn: tileAt(floor, s.player.x, s.player.y)?.kind,
+            currentlyWatchedBy: here.watchedBy,
+            inCover: here.inCover,
+          },
       agent: {
         bandwidth: s.bandwidth,
         maxBandwidth: s.maxBandwidth,
