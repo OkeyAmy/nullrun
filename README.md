@@ -335,8 +335,6 @@ code: seeing a wall face is perfectly legitimate, and the fuzz sweep needed a re
 
 - Chrome and Edge need origin-trial enrolment. Without it the page falls back to the polyfill, which
   registers identical tools, so behaviour matches and only discovery differs.
-- The handler behind `pnpm demo` is a heuristic, not an LLM. Its job is proving the tool surface is
-  sufficient and giving a repeatable demo. A real agent plays better.
 - Guard AI stays deliberately readable (patrol, investigate, hunt) rather than clever. The tactical
   interest comes from two players splitting the work.
 
