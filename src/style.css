@@ -696,3 +696,15 @@ button.toggled {
     display: none;
   }
 }
+
+/* the floor's complication, announced up front so it can be planned around */
+.stat.modifier {
+  border-color: rgba(197, 139, 255, 0.35);
+  cursor: help;
+}
+
+.stat.modifier .stat-value {
+  color: var(--violet);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}

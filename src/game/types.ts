@@ -177,4 +177,9 @@ export interface GameState {
   reflexAvailable: boolean;
   /** Mirror Daemon: one sighting per floor can still be scrubbed. */
   mirrorAvailable: boolean;
+  /** Id of the complication running on the current floor. See game/modifiers.ts. */
+  modifierId: string;
+  /** Its player-facing briefing, kept on state so the HUD and tools agree. */
+  modifierBrief: string;
+  modifierName: string;
 }

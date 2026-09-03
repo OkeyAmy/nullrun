@@ -801,6 +801,11 @@ export class ToolSurface {
       },
       powerOutTurnsRemaining: s.powerOutTurns,
       objective: {
+        complication: {
+          id: s.modifierId,
+          name: s.modifierName,
+          brief: s.modifierBrief,
+        },
         dataCoresRemaining: game.dataCoresRemaining(),
         extractionUnlocked: game.objectiveComplete(),
         extractionAt: { ...floor.extraction },

@@ -887,3 +887,78 @@ test('Phase Lattice walks the operative straight through a shut door', () => {
   assert.equal(phased.move(1, 0).ok, true, 'Phase Lattice must pass through it');
   assert.deepEqual(phased.state.player, { x: 3, y: 2 });
 });
+
+// --- per-floor complications ----------------------------------------------
+
+const { MODIFIERS, pickModifier } = await import('../src/game/modifiers.ts');
+
+test('floor 1 is always nominal so the base rules can be learned first', () => {
+  for (let roll = 0; roll < 50; roll++) {
+    assert.equal(
+      pickModifier(0, roll).id,
+      'nominal',
+      `floor 1 must stay clean, roll ${roll} gave a complication`,
+    );
+  }
+});
+
+test('later floors always draw a real complication', () => {
+  const drawn = new Set<string>();
+  for (let roll = 0; roll < 50; roll++) {
+    const modifier = pickModifier(1, roll);
+    assert.notEqual(modifier.id, 'nominal', `roll ${roll} produced no complication`);
+    drawn.add(modifier.id);
+  }
+  assert.ok(drawn.size > 1, `the draw must vary, only ever got: ${[...drawn].join(', ')}`);
+});
+
+test('the same seed always produces the same complication', () => {
+  const idsFor = (seed: number) => {
+    const game = new Game(); 
+    game.newRun(seed);
+    return game.state.modifierId;
+  };
+  assert.equal(idsFor(4242), idsFor(4242), 'a facility must play out the same way twice');
+});
+
+test('every complication leaves the floor completable', () => {
+  for (const modifier of MODIFIERS) {
+    const floor = generateFloor(77, floorConfig(2));
+    const game = new Game();
+    game.state.floor = floor;
+    modifier.apply(floor, game.state);
+
+    const start = floorStart(floor);
+    assert.ok(
+      findPath(floor, start, floor.extraction),
+      `${modifier.id} left no route from entry to extraction`,
+    );
+  }
+});
+
+test('the lockdown drill really does shut every door', () => {
+  const floor = generateFloor(9, floorConfig(2));
+  const game = new Game();
+  const drill = MODIFIERS.find((m) => m.id === 'drill');
+  // a floor worth testing has doors, and at least one open to begin with
+  const doors = floor.tiles.filter((t) => t.kind === 'door');
+  assert.ok(doors.length > 0, 'this fixture needs doors to be meaningful');
+
+  drill.apply(floor, game.state);
+
+  assert.equal(
+    floor.tiles.filter((t) => t.kind === 'door' && t.open).length,
+    0,
+    'every door must start shut under a lockdown drill',
+  );
+});
+
+test('a hot floor opens with the clock already advanced', () => {
+  const game = new Game();
+  const before = game.state.escalation;
+  MODIFIERS.find((m) => m.id === 'hot').apply(game.state.floor, game.state);
+  assert.ok(
+    game.state.escalation > before,
+    `a hot floor must start further along (${before} -> ${game.state.escalation})`,
+  );
+});

@@ -11,6 +11,7 @@ import {
   tileAt,
 } from './grid';
 import { floorConfig, floorStart, generateFloor } from './mapgen';
+import { pickModifier } from './modifiers';
 import { RNG } from './rng';
 import type {
   Camera,
@@ -166,8 +167,12 @@ export class Game {
       endReason: '',
       reflexAvailable: false,
       mirrorAvailable: false,
+      modifierId: 'nominal',
+      modifierBrief: '',
+      modifierName: '',
     };
     this.refreshResources();
+    this.applyModifier(floor);
     updateOperativeVisibility(floor, start);
     this.log('system', `Facility seed ${seed}. Floor 1 of ${BALANCE.run.floors}. Go dark.`);
     this.emit();
@@ -175,6 +180,22 @@ export class Game {
 
   private buildFloor(seed: number, index: number): FloorState {
     return generateFloor(seed, floorConfig(index));
+  }
+
+  /**
+   * Draw the floor's complication and apply it. Deterministic from the run
+   * seed, so a given facility always plays out the same way.
+   */
+  private applyModifier(floor: FloorState): void {
+    const s = this.state;
+    const modifier = pickModifier(floor.index, s.seed + floor.index * 31);
+    modifier.apply(floor, s);
+    s.modifierId = modifier.id;
+    s.modifierName = modifier.name;
+    s.modifierBrief = modifier.brief;
+    if (modifier.id !== 'nominal') {
+      this.log('system', `${modifier.name.toUpperCase()} — ${modifier.brief}`);
+    }
   }
 
   /** Answer the opening screen: who is at the controls for this run. */
@@ -246,6 +267,8 @@ export class Game {
     s.alertStage = this.stageFor(s.escalation);
     s.nearMiss = false;
     this.refreshResources();
+    this.applyModifier(floor);
+    s.alertStage = this.stageFor(s.escalation);
     updateOperativeVisibility(floor, s.player);
     this.log('system', `Floor ${index + 1} of ${BALANCE.run.floors}. Security posture increased.`);
     this.emit();

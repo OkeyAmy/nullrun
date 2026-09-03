@@ -117,6 +117,7 @@ export class Hud {
         <div class="stat-value">${ALERT_NAMES[s.alertStage]}</div>
         <div class="meter"><span style="transform:scaleX(${escalationPct / 100})"></span></div>
       </div>
+      ${s.modifierId !== 'nominal' ? `<div class="stat modifier" title="${escapeHtml(s.modifierBrief)}"><div class="stat-label">Complication</div><div class="stat-value">${escapeHtml(s.modifierName)}</div></div>` : ''}
       ${s.powerOutTurns > 0 ? this.stat('Blackout', `${s.powerOutTurns}t`) : ''}
     `;
   }
