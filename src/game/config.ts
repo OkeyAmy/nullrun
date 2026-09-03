@@ -70,8 +70,12 @@ export const BALANCE = {
 
   alarm: {
     max: 100,
-    perGuardSighting: 25,
-    perCameraSighting: 15,
+    // NOTE: sightings used to be counted twice per turn, so these were felt as
+    // 50 and 30 in every playtest before that bug was fixed. Restored partway
+    // rather than all the way, because the escalation clock is new pressure the
+    // old tuning never had to account for.
+    perGuardSighting: 40,
+    perCameraSighting: 25,
     /** Noise the agent makes pinging near a guard. */
     pingSuspicion: 6,
     decayPerTurn: 5,

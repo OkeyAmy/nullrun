@@ -1,4 +1,4 @@
-import { ARCHETYPES } from './archetypes';
+import { ARCHETYPES, archetypePool } from './archetypes';
 import type { FloorState, GameState } from './types';
 
 /**
@@ -90,14 +90,25 @@ export const MODIFIERS: FloorModifier[] = [
     apply: (floor) => {
       floor.cameras.length = 0;
       const first = floor.guards[0];
-      if (first) {
-        floor.guards.push({
-          ...first,
-          id: `extra-${floor.guards.length}`,
-          x: first.x,
-          y: first.y,
-        });
-      }
+      if (!first) return;
+      // a straight clone would walk the original's route in lockstep, which is
+      // the identical-guards problem the archetypes exist to avoid
+      const pool = archetypePool(floor.index);
+      const spec = ARCHETYPES[pool[floor.guards.length % pool.length]];
+      floor.guards.push({
+        ...first,
+        id: `extra-${floor.guards.length}`,
+        archetype: spec.id,
+        route: [...first.route].reverse(),
+        routeIdx: 0,
+        visionRange: spec.visionRange,
+        coneHalfAngleDeg: spec.coneHalfAngleDeg,
+        patrolSpeed: spec.patrolSpeed,
+        huntSpeed: spec.huntSpeed,
+        stationary: spec.stationary,
+        deafToNoise: spec.deafToNoise,
+        seesInBlackout: spec.seesInBlackout,
+      });
     },
   },
 ];
