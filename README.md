@@ -10,7 +10,7 @@ slamming blast doors in a guard's face, rewriting patrol orders. You move throug
 | | |
 | --- | --- |
 | **Live demo** | https://OkeyAmy.github.io/nullrun/ |
-| **Demo video** | _add your video link here_ |
+| **Demo video** | _https://youtu.be/IWgT0eSfDL4?si=Jrg9X4M9svlMfQoI_ |
 | **Licence** | MIT |
 | **Tool surface** | 18 tools on `document.modelContext` |
 
