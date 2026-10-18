@@ -25,7 +25,7 @@ const hud = new Hud(game, tools, {
     hud.render();
   },
   onBegin: () => game.beginInfiltration(),
-  onSetMode: (mode) => report(game.setMode(mode)),
+  onSetMode: (mode) => setMode(mode),
   onChooseImplant: (id) => report(game.chooseImplant(id)),
   onPurchaseUpgrade: (id) => report(game.purchaseUpgrade(id)),
   onNewRun: () => game.newRun(),
@@ -116,7 +116,7 @@ window.addEventListener('keydown', (event) => {
   }
   if (!humanCanAct()) {
     // the agent is playing; let the human take the operative back with `C`
-    if (event.key === 'c' || event.key === 'C') report(game.setMode('coop'));
+    if (event.key === 'c' || event.key === 'C') setMode('coop');
     return;
   }
 
@@ -242,6 +242,34 @@ if (canvasWrap && 'ResizeObserver' in window) {
   new ResizeObserver(() => renderer.resize()).observe(canvasWrap);
 }
 
+// The tab remembers the seat you picked: a refresh resumes it, a fresh visit
+// still asks. sessionStorage, so closing the tab forgets.
+const MODE_STORAGE_KEY = 'nullrun.mode.v1';
+type Seat = 'coop' | 'agent';
+
+/** Apply a play mode and remember it for the rest of the tab session. */
+function setMode(mode: Seat): void {
+  const result = game.setMode(mode);
+  if (result.ok) {
+    try {
+      sessionStorage.setItem(MODE_STORAGE_KEY, mode);
+    } catch {
+      // private browsing can refuse storage — remembering is best-effort
+    }
+  }
+  report(result);
+}
+
+/** Read the seat remembered for this tab, if any. */
+function rememberedMode(): Seat | null {
+  try {
+    const raw = sessionStorage.getItem(MODE_STORAGE_KEY);
+    return raw === 'coop' || raw === 'agent' ? raw : null;
+  } catch {
+    return null;
+  }
+}
+
 // --- boot ----------------------------------------------------------------
 
 async function boot(): Promise<void> {
@@ -268,6 +296,13 @@ async function boot(): Promise<void> {
 
   // expose for debugging and for headless agent harnesses
   Object.assign(window, { nullrun: { game, tools, renderer, audio } });
+
+  // A refresh in this tab resumes the seat you left; a fresh visit asks again.
+  const nav = performance.getEntriesByType('navigation')[0] as
+    | PerformanceNavigationTiming
+    | undefined;
+  const saved = nav?.type === 'reload' ? rememberedMode() : null;
+  if (saved) game.setMode(saved);
 }
 
 void boot();
