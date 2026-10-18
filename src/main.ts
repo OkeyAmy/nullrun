@@ -302,7 +302,7 @@ async function boot(): Promise<void> {
     | PerformanceNavigationTiming
     | undefined;
   const saved = nav?.type === 'reload' ? rememberedMode() : null;
-  if (saved) game.setMode(saved);
+  if (saved) setMode(saved);
 }
 
 void boot();
