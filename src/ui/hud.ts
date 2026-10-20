@@ -103,6 +103,7 @@ export class Hud {
     this.statsEl.innerHTML = `
       ${this.stat('Floor', `${s.floor.index + 1}/${BALANCE.run.floors}`)}
       ${this.stat('Turn', String(s.turn))}
+      ${this.stat('Position', `${s.player.x},${s.player.y}`)}
       ${this.stat('Action pts', `${s.ap}/${s.maxAp}`)}
       ${this.stat('Bandwidth', `${s.bandwidth}/${s.maxBandwidth}`)}
       ${this.stat('Cores left', String(this.game.dataCoresRemaining()))}
@@ -186,14 +187,14 @@ export class Hud {
     );
 
     this.actionbarEl.innerHTML = `
-      <button id="btn-hack" ${!playing || !adjacentTerminal ? 'disabled' : ''}>Hack [E]</button>
-      <button id="btn-grab" ${!playing || !onLoot ? 'disabled' : ''}>Lift intel [F]</button>
-      <button id="btn-takedown" class="danger" ${!playing || !adjacentGuard ? 'disabled' : ''} title="Costs ${BALANCE.apCost.takedown} AP and leaves a body that can be found">Take down [T]</button>
-      <button id="btn-sprint" class="${this.sprintMode ? 'toggled' : ''}" data-sprint="${this.sprintMode ? 'on' : 'off'}" ${!playing ? 'disabled' : ''}>Sprint [Shift]</button>
-      <button id="btn-extract" class="primary" ${!playing || !onExtraction || !this.game.objectiveComplete() ? 'disabled' : ''}>Extract [X]</button>
+      <button id="btn-hack" data-testid="btn-hack" ${!playing || !adjacentTerminal ? 'disabled' : ''}>Hack [E]</button>
+      <button id="btn-grab" data-testid="btn-grab" ${!playing || !onLoot ? 'disabled' : ''}>Lift intel [F]</button>
+      <button id="btn-takedown" class="danger" data-testid="btn-takedown" ${!playing || !adjacentGuard ? 'disabled' : ''} title="Costs ${BALANCE.apCost.takedown} AP and leaves a body that can be found">Take down [T]</button>
+      <button id="btn-sprint" class="${this.sprintMode ? 'toggled' : ''}" data-testid="btn-sprint" data-sprint="${this.sprintMode ? 'on' : 'off'}" ${!playing ? 'disabled' : ''}>Sprint [Shift]</button>
+      <button id="btn-extract" class="primary" data-testid="btn-extract" ${!playing || !onExtraction || !this.game.objectiveComplete() ? 'disabled' : ''}>Extract [X]</button>
       <span class="spacer"></span>
       <span class="keyhint">WASD / arrows move · click a tile to path · hover to preview risk</span>
-      <button id="btn-end" ${!playing ? 'disabled' : ''}>End turn [Space]</button>
+      <button id="btn-end" data-testid="btn-end" ${!playing ? 'disabled' : ''}>End turn [Space]</button>
     `;
 
     this.bind('btn-hack', this.callbacks.onHack);
@@ -236,13 +237,13 @@ export class Hud {
         <h2>NULLRUN</h2>
         <p class="sub">Who is at the controls?</p>
         <div class="choices">
-          <button class="choice" data-mode="coop">
+          <button class="choice" data-testid="mode-human" data-mode="coop">
             <strong>Human</strong>
             You move the operative, and an AI handler works the facility network alongside you —
             scanning, looping cameras, sealing doors, cutting power. Neither of you can finish a
             floor alone.
           </button>
-          <button class="choice" data-mode="agent">
+          <button class="choice" data-testid="mode-agent" data-mode="agent">
             <strong>AI</strong>
             The agent takes both roles and runs the whole infiltration through its tools.
             Watch the handler console to follow what it does.
@@ -300,7 +301,7 @@ export class Hud {
           }
         </p>
         <div class="card-actions">
-          <button id="btn-begin" class="primary">Begin infiltration</button>
+          <button id="btn-begin" class="primary" data-testid="btn-begin">Begin infiltration</button>
         </div>
       </div>
     `;
