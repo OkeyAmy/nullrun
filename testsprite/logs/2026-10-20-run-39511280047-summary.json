@@ -1,0 +1,1396 @@
+{
+  "total": 76,
+  "passed": 76,
+  "failed": 0,
+  "skipped": 0,
+  "timedOut": 0,
+  "runs": [
+    {
+      "testId": "301de2d3-01da-4196-b340-166247fa89e9",
+      "title": "Move with W and spend AP",
+      "runId": "fce927e9-8c06-4deb-b40d-36392fa9e486",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/301de2d3-01da-4196-b340-166247fa89e9",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/fce927e9-8c06-4deb-b40d-36392fa9e486"
+    },
+    {
+      "testId": "3753c3ff-5255-4b1d-b223-5acdbf67be61",
+      "title": "End turn with Space",
+      "runId": "c5eecd6a-a76f-44f5-8b85-f2e2a0823c1a",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/3753c3ff-5255-4b1d-b223-5acdbf67be61",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/c5eecd6a-a76f-44f5-8b85-f2e2a0823c1a"
+    },
+    {
+      "testId": "87da54f4-b4e2-4bdb-8747-7b5750a6308d",
+      "title": "Verify alarm critical styling appears at the threshold",
+      "runId": "bf526e1b-cdd2-4791-b1db-24983d1c9dda",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/87da54f4-b4e2-4bdb-8747-7b5750a6308d",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/bf526e1b-cdd2-4791-b1db-24983d1c9dda"
+    },
+    {
+      "testId": "4b70fca8-c715-4e33-b6c3-aecb79d4779d",
+      "title": "Hover a tile to read its risk",
+      "runId": "9e8d6d32-88c7-4f22-9130-7bc17f37bf9f",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/4b70fca8-c715-4e33-b6c3-aecb79d4779d",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/9e8d6d32-88c7-4f22-9130-7bc17f37bf9f"
+    },
+    {
+      "testId": "9ec22811-8550-4755-86ad-ce5127c3ea19",
+      "title": "Drag on the board pans camera without moving operative",
+      "runId": "bfc55078-c63e-4351-bc7e-a27e4d6b7980",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/9ec22811-8550-4755-86ad-ce5127c3ea19",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/bfc55078-c63e-4351-bc7e-a27e4d6b7980"
+    },
+    {
+      "testId": "7f476ef4-3392-4a39-97eb-20719bd0633e",
+      "title": "Move with A and spend AP",
+      "runId": "030acf57-620d-42a1-a89b-3fd258fe21eb",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/7f476ef4-3392-4a39-97eb-20719bd0633e",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/030acf57-620d-42a1-a89b-3fd258fe21eb"
+    },
+    {
+      "testId": "40f4055b-2a01-48a7-b46b-cebc9e4214f2",
+      "title": "Move to an adjacent tile by clicking",
+      "runId": "a0ff93ff-b84c-4230-8903-01fd115b1e01",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/40f4055b-2a01-48a7-b46b-cebc9e4214f2",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/a0ff93ff-b84c-4230-8903-01fd115b1e01"
+    },
+    {
+      "testId": "677b1bcf-9aa3-47be-8f1f-18e73e994f0b",
+      "title": "Hack a terminal with E",
+      "runId": "00087222-4b64-4a97-a09c-e44fd5290c18",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/677b1bcf-9aa3-47be-8f1f-18e73e994f0b",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/00087222-4b64-4a97-a09c-e44fd5290c18"
+    },
+    {
+      "testId": "72ae7252-2a6a-4482-ad0c-20549cab7a08",
+      "title": "Click distant tile follows a path over time",
+      "runId": "17a9eba5-e217-4010-abbc-5e77d536dd05",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/72ae7252-2a6a-4482-ad0c-20549cab7a08",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/17a9eba5-e217-4010-abbc-5e77d536dd05"
+    },
+    {
+      "testId": "8d6ace83-b718-4d0b-98fe-0a3d8bd3344e",
+      "title": "Click adjacent tile moves one step",
+      "runId": "4c234886-4506-4e9c-a8b9-a639c45d8dfe",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/8d6ace83-b718-4d0b-98fe-0a3d8bd3344e",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4c234886-4506-4e9c-a8b9-a639c45d8dfe"
+    },
+    {
+      "testId": "1b357f60-c38c-4503-81cc-0186bdd09ee1",
+      "title": "Toggle sprint with Shift",
+      "runId": "4c07bee6-7275-48bd-93dc-4448c2dd2b36",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/1b357f60-c38c-4503-81cc-0186bdd09ee1",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4c07bee6-7275-48bd-93dc-4448c2dd2b36"
+    },
+    {
+      "testId": "c2901c68-7b5f-4a8c-b8f2-de1d50ead324",
+      "title": "Run ends when alarm reaches 100%",
+      "runId": "105ef744-8fbe-4ad9-85d3-20c3aec91c05",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/c2901c68-7b5f-4a8c-b8f2-de1d50ead324",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/105ef744-8fbe-4ad9-85d3-20c3aec91c05"
+    },
+    {
+      "testId": "8fe9104c-cac7-47cd-9e48-e1e790a16510",
+      "title": "Verify alarm rises after detection and is reflected in the HUD",
+      "runId": "8cf38a4f-5e3e-43dd-844e-1ea5a40498fa",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/8fe9104c-cac7-47cd-9e48-e1e790a16510",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/8cf38a4f-5e3e-43dd-844e-1ea5a40498fa"
+    },
+    {
+      "testId": "cc2d9564-76b2-4bcf-81fb-8c39c68a5c29",
+      "title": "Run ends when a guard catches the operative",
+      "runId": "55143407-828b-46a4-9445-42b0559697a6",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/cc2d9564-76b2-4bcf-81fb-8c39c68a5c29",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/55143407-828b-46a4-9445-42b0559697a6"
+    },
+    {
+      "testId": "3600febb-14bb-4662-8ddb-aaf1ad1aa141",
+      "title": "Prevent movement when AP is exhausted",
+      "runId": "328fd2ea-0192-4ba4-bc70-1fefea4cf467",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/3600febb-14bb-4662-8ddb-aaf1ad1aa141",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/328fd2ea-0192-4ba4-bc70-1fefea4cf467"
+    },
+    {
+      "testId": "60f65efb-681e-474c-bd43-f82dd697d0fa",
+      "title": "Restore mode and sound preference after reload",
+      "runId": "294c9f0a-afb6-4e6e-8daa-1a1747d95599",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/60f65efb-681e-474c-bd43-f82dd697d0fa",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/294c9f0a-afb6-4e6e-8daa-1a1747d95599"
+    },
+    {
+      "testId": "ac908237-be97-4a31-8dca-4f0ad0294af3",
+      "title": "Take down a guard with T",
+      "runId": "50eb103f-66b6-40b5-9b11-4f94b7dd3810",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/ac908237-be97-4a31-8dca-4f0ad0294af3",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/50eb103f-66b6-40b5-9b11-4f94b7dd3810"
+    },
+    {
+      "testId": "c77d813c-9fed-46e7-932c-82b3d30732ef",
+      "title": "Move with sprint active",
+      "runId": "c5f2d550-be90-4840-8faf-f32fc3af5bca",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/c77d813c-9fed-46e7-932c-82b3d30732ef",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/c5f2d550-be90-4840-8faf-f32fc3af5bca"
+    },
+    {
+      "testId": "dc164389-4eda-445c-a95e-9c30d3f690b1",
+      "title": "Read-only tool call does not change game state",
+      "runId": "7792acee-8745-4c52-b2da-f65b0a28ceb4",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/dc164389-4eda-445c-a95e-9c30d3f690b1",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/7792acee-8745-4c52-b2da-f65b0a28ceb4"
+    },
+    {
+      "testId": "de2fe689-d5ac-4aeb-92eb-afa12b8c7ced",
+      "title": "Verify run failure occurs when alarm reaches maximum",
+      "runId": "f181d736-5386-447c-bd71-71743cfb82f1",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/de2fe689-d5ac-4aeb-92eb-afa12b8c7ced",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/f181d736-5386-447c-bd71-71743cfb82f1"
+    },
+    {
+      "testId": "2bd07ef5-3d4c-49d2-848b-3f2ebd369d31",
+      "title": "Changing play mode after a finished run is refused",
+      "runId": "9e831987-d3e8-4470-ba6e-5efee0945911",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/2bd07ef5-3d4c-49d2-848b-3f2ebd369d31",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/9e831987-d3e8-4470-ba6e-5efee0945911"
+    },
+    {
+      "testId": "ea61c2df-870b-4a61-82b1-2b213827a525",
+      "title": "Lift intel with F",
+      "runId": "f67e0a9a-87ad-4996-be68-431a623575a1",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/ea61c2df-870b-4a61-82b1-2b213827a525",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/f67e0a9a-87ad-4996-be68-431a623575a1"
+    },
+    {
+      "testId": "eb0e0a17-c556-44e4-acbd-a3267d1725d2",
+      "title": "Move with S and spend AP",
+      "runId": "219f1cf1-1f00-4309-a2b5-61bcccc0a777",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/eb0e0a17-c556-44e4-acbd-a3267d1725d2",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/219f1cf1-1f00-4309-a2b5-61bcccc0a777"
+    },
+    {
+      "testId": "efbd4180-c209-4166-8c9d-91ff60648ab9",
+      "title": "Move to an adjacent tile by clicking it",
+      "runId": "3e1fa841-27dd-4688-8019-ca7f1af83d5b",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/efbd4180-c209-4166-8c9d-91ff60648ab9",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/3e1fa841-27dd-4688-8019-ca7f1af83d5b"
+    },
+    {
+      "testId": "d28f9a1f-eb36-4478-a006-7f8313d562bc",
+      "title": "Play controls are blocked after a run ends",
+      "runId": "579ce194-c250-4218-900e-ccff58496fb2",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/d28f9a1f-eb36-4478-a006-7f8313d562bc",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/579ce194-c250-4218-900e-ccff58496fb2"
+    },
+    {
+      "testId": "33f6fdcc-cda4-43d2-bcbb-f1700a88dbb9",
+      "title": "Remember play mode after reload",
+      "runId": "4b13e994-84c7-478e-9de7-187ecd0703fe",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/33f6fdcc-cda4-43d2-bcbb-f1700a88dbb9",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4b13e994-84c7-478e-9de7-187ecd0703fe"
+    },
+    {
+      "testId": "d624d0fe-742e-4e2c-8e51-44e3649daa73",
+      "title": "Extract with X when objective is complete",
+      "runId": "3162eb20-4276-4afd-a42b-f28709543475",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/d624d0fe-742e-4e2c-8e51-44e3649daa73",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/3162eb20-4276-4afd-a42b-f28709543475"
+    },
+    {
+      "testId": "a6893a2e-0984-4bb5-b816-d9a0bc43d714",
+      "title": "Advance through a cleared floor via extraction",
+      "runId": "385bb774-cd36-49af-aae8-3317b7771199",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/a6893a2e-0984-4bb5-b816-d9a0bc43d714",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/385bb774-cd36-49af-aae8-3317b7771199"
+    },
+    {
+      "testId": "23040e30-1cea-447a-a6ce-4f603132d80e",
+      "title": "Start a new run from the end screen",
+      "runId": "c2087f89-6941-4c9e-b0f9-6687d5b56721",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/23040e30-1cea-447a-a6ce-4f603132d80e",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/c2087f89-6941-4c9e-b0f9-6687d5b56721"
+    },
+    {
+      "testId": "fb25acfd-275d-4b8c-ba42-72944951e2d2",
+      "title": "Take control from agent mode and move",
+      "runId": "944ece1d-7ee5-49f1-9ed0-38b367ba1a22",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/fb25acfd-275d-4b8c-ba42-72944951e2d2",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/944ece1d-7ee5-49f1-9ed0-38b367ba1a22"
+    },
+    {
+      "testId": "f5e6325e-f373-4364-87a8-2a3293e3655a",
+      "title": "Ignore movement keys when AP is insufficient",
+      "runId": "4c8214a3-4a81-4256-9df6-6bfc3f2b6124",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/f5e6325e-f373-4364-87a8-2a3293e3655a",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4c8214a3-4a81-4256-9df6-6bfc3f2b6124"
+    },
+    {
+      "testId": "0e0c57cb-76d3-47f0-952c-6302b367f482",
+      "title": "Pan the board by dragging (code)",
+      "runId": "050435a3-c103-4333-9f40-6ef7bed7cbca",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/0e0c57cb-76d3-47f0-952c-6302b367f482",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/050435a3-c103-4333-9f40-6ef7bed7cbca"
+    },
+    {
+      "testId": "c2efe0d3-ffe2-4c31-bc54-b44bbd5f574a",
+      "title": "Move one tile with keyboard (code)",
+      "runId": "d8d88362-9607-4632-89f6-9daa01a11cdf",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/c2efe0d3-ffe2-4c31-bc54-b44bbd5f574a",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d8d88362-9607-4632-89f6-9daa01a11cdf"
+    },
+    {
+      "testId": "52668bb8-32e6-4a8a-947c-786e99fafd16",
+      "title": "Hack a terminal while adjacent to it (code)",
+      "runId": "2b397999-c4c4-439d-a521-bec163a7e88d",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/52668bb8-32e6-4a8a-947c-786e99fafd16",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/2b397999-c4c4-439d-a521-bec163a7e88d"
+    },
+    {
+      "testId": "7933ff2e-3ebe-4c07-91df-15c12b935bb0",
+      "title": "Open sprint and move farther in a single turn (code)",
+      "runId": "a6e072b1-bfff-470a-a9a1-3f80454ebea9",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/7933ff2e-3ebe-4c07-91df-15c12b935bb0",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/a6e072b1-bfff-470a-a9a1-3f80454ebea9"
+    },
+    {
+      "testId": "6deec06b-1d1f-4bf4-a484-c52cfd44fcf4",
+      "title": "Bridge status and tool count are exposed (code)",
+      "runId": "694393eb-63dc-4f58-a710-5724f69b4994",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/6deec06b-1d1f-4bf4-a484-c52cfd44fcf4",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/694393eb-63dc-4f58-a710-5724f69b4994"
+    },
+    {
+      "testId": "70902a5a-3ae2-466f-873f-44f9398378f3",
+      "title": "Walk a path to a distant tile by clicking (code)",
+      "runId": "4b951793-1278-4a0a-b7cd-e7e5737ddd12",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/70902a5a-3ae2-466f-873f-44f9398378f3",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4b951793-1278-4a0a-b7cd-e7e5737ddd12"
+    },
+    {
+      "testId": "822a08f1-1939-4826-9e89-d32ba00cf45d",
+      "title": "Follow a path by clicking a distant tile (code)",
+      "runId": "1042c971-c157-460a-9691-8917e724b624",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/822a08f1-1939-4826-9e89-d32ba00cf45d",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/1042c971-c157-460a-9691-8917e724b624"
+    },
+    {
+      "testId": "970ea8bf-3eaa-469e-948c-0aa106b56093",
+      "title": "Take down an adjacent guard (code)",
+      "runId": "1e1e7232-b00d-48da-ae36-86c41dbb9f4a",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/970ea8bf-3eaa-469e-948c-0aa106b56093",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/1e1e7232-b00d-48da-ae36-86c41dbb9f4a"
+    },
+    {
+      "testId": "1f9c8b28-f865-4063-a72a-5b95a562e334",
+      "title": "Toggle an adjacent door by clicking (code)",
+      "runId": "fea4c711-c20a-4885-914c-ab461a6d4249",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/1f9c8b28-f865-4063-a72a-5b95a562e334",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/fea4c711-c20a-4885-914c-ab461a6d4249"
+    },
+    {
+      "testId": "2e76a409-031e-4cb6-84cf-1c7b5d408f22",
+      "title": "Toggle sprint state with the shortcut action (code)",
+      "runId": "444c6848-2b60-47bd-a301-771e4aa5a71e",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/2e76a409-031e-4cb6-84cf-1c7b5d408f22",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/444c6848-2b60-47bd-a301-771e4aa5a71e"
+    },
+    {
+      "testId": "3162d38d-b237-4297-95ad-3a0a8453a509",
+      "title": "Lift intel from loot (code)",
+      "runId": "036af72c-c60f-4881-a29e-6f4c8dd38e57",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/3162d38d-b237-4297-95ad-3a0a8453a509",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/036af72c-c60f-4881-a29e-6f4c8dd38e57"
+    },
+    {
+      "testId": "7d26b780-1cde-4364-92da-4385212cfce1",
+      "title": "Click adjacent door toggles instead of moving onto it (code)",
+      "runId": "4309ffa2-597f-4341-b6bb-fb098dbe62ea",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/7d26b780-1cde-4364-92da-4385212cfce1",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4309ffa2-597f-4341-b6bb-fb098dbe62ea"
+    },
+    {
+      "testId": "6a9d8f4c-a84c-4b73-97ef-d4217d72b22c",
+      "title": "Failed run records the failure reason in the log (code)",
+      "runId": "e09b7ca1-2292-4da7-b798-fd3524d8fe40",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/6a9d8f4c-a84c-4b73-97ef-d4217d72b22c",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/e09b7ca1-2292-4da7-b798-fd3524d8fe40"
+    },
+    {
+      "testId": "b2feccdd-352a-44ec-b96b-34a705336643",
+      "title": "Toggle an adjacent door by clicking it (code)",
+      "runId": "1253617c-f6a4-40b9-8a9a-0c7a1092eecd",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/b2feccdd-352a-44ec-b96b-34a705336643",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/1253617c-f6a4-40b9-8a9a-0c7a1092eecd"
+    },
+    {
+      "testId": "22e3d752-275c-4a3f-837a-c0ac0c359062",
+      "title": "Verify core collection updates the cores left stat (code)",
+      "runId": "d55a9811-35bf-4421-bb64-50e9d3666717",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/22e3d752-275c-4a3f-837a-c0ac0c359062",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d55a9811-35bf-4421-bb64-50e9d3666717"
+    },
+    {
+      "testId": "146f3135-c3c8-44db-aaa7-af05c5d02b6b",
+      "title": "Pan the camera by dragging the board (code)",
+      "runId": "d9e38174-0c1e-4b96-82c7-d36c117e51b4",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/146f3135-c3c8-44db-aaa7-af05c5d02b6b",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d9e38174-0c1e-4b96-82c7-d36c117e51b4"
+    },
+    {
+      "testId": "5784fa97-8a5d-4dbb-8eb0-2ead9362ae86",
+      "title": "Extraction remains gated until all cores are collected (code)",
+      "runId": "c5ada47d-0af7-4cfc-b8b0-bc9975f3d904",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/5784fa97-8a5d-4dbb-8eb0-2ead9362ae86",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/c5ada47d-0af7-4cfc-b8b0-bc9975f3d904"
+    },
+    {
+      "testId": "88e30e2b-8bb4-45d4-b45b-c5fe61788fee",
+      "title": "Complete the full five-floor run (code)",
+      "runId": "4b92baff-5dd1-4226-8a5d-8319d0933947",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/88e30e2b-8bb4-45d4-b45b-c5fe61788fee",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4b92baff-5dd1-4226-8a5d-8319d0933947"
+    },
+    {
+      "testId": "1fbbfb34-dce8-4b99-a4e5-4ec340e0ab04",
+      "title": "Block movement when action points are exhausted (code)",
+      "runId": "9fb2c5ee-5438-4024-8a8a-c9e6b472c6b3",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/1fbbfb34-dce8-4b99-a4e5-4ec340e0ab04",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/9fb2c5ee-5438-4024-8a8a-c9e6b472c6b3"
+    },
+    {
+      "testId": "1b2e49d5-2066-4b33-b160-6c5671627bb2",
+      "title": "Advance to the next floor after clearing a floor (code)",
+      "runId": "08406876-fc07-4c46-bf12-c7fd24d0c094",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/1b2e49d5-2066-4b33-b160-6c5671627bb2",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/08406876-fc07-4c46-bf12-c7fd24d0c094"
+    },
+    {
+      "testId": "19cd58c4-f315-4bf0-a7e3-04274d614491",
+      "title": "Advance to the next floor after clearing a floor (code)",
+      "runId": "aeae1076-9843-49ea-b69b-524e08b6780b",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/19cd58c4-f315-4bf0-a7e3-04274d614491",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/aeae1076-9843-49ea-b69b-524e08b6780b"
+    },
+    {
+      "testId": "d1ecb8c5-4d0b-429b-b634-239373ffff30",
+      "title": "Extract after completing the floor objective (code)",
+      "runId": "6f0be39b-6652-40b0-8e07-4c1525c0892a",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/d1ecb8c5-4d0b-429b-b634-239373ffff30",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/6f0be39b-6652-40b0-8e07-4c1525c0892a"
+    },
+    {
+      "testId": "4e76d668-3cbf-4e3e-b404-3c72c0ffc3cf",
+      "title": "Choose agent mode and enter the run",
+      "runId": "ecf843a5-83f7-44ed-a68d-8ee98c4066d7",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/4e76d668-3cbf-4e3e-b404-3c72c0ffc3cf",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/ecf843a5-83f7-44ed-a68d-8ee98c4066d7"
+    },
+    {
+      "testId": "e91d2da4-82c8-45eb-a870-5906baaf3b09",
+      "title": "Begin infiltration with Enter from briefing",
+      "runId": "e26fa3a1-2845-40b1-9ebe-72b057e5e4c7",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/e91d2da4-82c8-45eb-a870-5906baaf3b09",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/e26fa3a1-2845-40b1-9ebe-72b057e5e4c7"
+    },
+    {
+      "testId": "751003b7-18ac-4a57-a262-4de53726af42",
+      "title": "Start the run from the briefing with Enter",
+      "runId": "d100037f-75fc-4944-a112-01616d722184",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/751003b7-18ac-4a57-a262-4de53726af42",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d100037f-75fc-4944-a112-01616d722184"
+    },
+    {
+      "testId": "c55efadb-296a-4449-8ada-edb160147cd8",
+      "title": "Refuse movement while an overlay is shown",
+      "runId": "56f7440e-0722-4e94-890a-7bf030eba389",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/c55efadb-296a-4449-8ada-edb160147cd8",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/56f7440e-0722-4e94-890a-7bf030eba389"
+    },
+    {
+      "testId": "34531575-d13a-4b4a-806e-f0538c4d12ed",
+      "title": "Human mode shows briefing before infiltration",
+      "runId": "51ece249-f68e-4649-bc34-71ce115bf8af",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/34531575-d13a-4b4a-806e-f0538c4d12ed",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/51ece249-f68e-4649-bc34-71ce115bf8af"
+    },
+    {
+      "testId": "96bf189d-96be-46bc-8908-f39edc5bf093",
+      "title": "Agent mode exposes control handoff UI",
+      "runId": "081d2890-78e2-41a7-8f67-1fe466cdb232",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/96bf189d-96be-46bc-8908-f39edc5bf093",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/081d2890-78e2-41a7-8f67-1fe466cdb232"
+    },
+    {
+      "testId": "3e9c7877-6c75-41a0-b281-813af4043923",
+      "title": "Verify HUD stats display on mission start",
+      "runId": "5afa0805-cb7d-4cad-bf1f-751a50c1bf02",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/3e9c7877-6c75-41a0-b281-813af4043923",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/5afa0805-cb7d-4cad-bf1f-751a50c1bf02"
+    },
+    {
+      "testId": "a6098dea-dccb-41d7-a82b-f675e78d8d8e",
+      "title": "Take control with C in agent mode",
+      "runId": "bca317e2-b5f7-44b7-8734-320dbdea66f7",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/a6098dea-dccb-41d7-a82b-f675e78d8d8e",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/bca317e2-b5f7-44b7-8734-320dbdea66f7"
+    },
+    {
+      "testId": "6c6c35fb-0a9f-4ef4-8737-13ac0078b973",
+      "title": "Take control returns human operative actions",
+      "runId": "4961ac01-f094-494d-b5b0-83cef9138efe",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/6c6c35fb-0a9f-4ef4-8737-13ac0078b973",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4961ac01-f094-494d-b5b0-83cef9138efe"
+    },
+    {
+      "testId": "8efe9fed-2037-4675-8d38-d6c2cc2d2c76",
+      "title": "Choose human mode, begin infiltration, and start play",
+      "runId": "614ad5ce-ab93-4c98-b01e-04fc966a691a",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/8efe9fed-2037-4675-8d38-d6c2cc2d2c76",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/614ad5ce-ab93-4c98-b01e-04fc966a691a"
+    },
+    {
+      "testId": "fa887087-eac2-4c75-a912-3de822f4dc6c",
+      "title": "Ignore movement keys while briefing is shown",
+      "runId": "28619bad-f4e7-4cf8-9dbf-baaac0b7f653",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/fa887087-eac2-4c75-a912-3de822f4dc6c",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/28619bad-f4e7-4cf8-9dbf-baaac0b7f653"
+    },
+    {
+      "testId": "4c2c25b1-199c-4cd6-b18a-33ae9b324f1b",
+      "title": "Move with D and spend AP",
+      "runId": "d108d6f4-f6b7-428f-bdc5-3560a066ebda",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/4c2c25b1-199c-4cd6-b18a-33ae9b324f1b",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d108d6f4-f6b7-428f-bdc5-3560a066ebda"
+    },
+    {
+      "testId": "fe1b063c-7581-440d-9e57-d4bd2ccbcedd",
+      "title": "Play mode choice persists after reload",
+      "runId": "daf8d1c9-9473-4a22-8afb-2998239d8bed",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/fe1b063c-7581-440d-9e57-d4bd2ccbcedd",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/daf8d1c9-9473-4a22-8afb-2998239d8bed"
+    },
+    {
+      "testId": "944bd5da-78bb-4fbc-983a-50fe75955a74",
+      "title": "Refuse keyboard movement while the briefing overlay is shown",
+      "runId": "465150d0-c47e-40bc-a713-408c605f3bf4",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/944bd5da-78bb-4fbc-983a-50fe75955a74",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/465150d0-c47e-40bc-a713-408c605f3bf4"
+    },
+    {
+      "testId": "b065407a-6273-4dec-a36e-a197c80e0e5e",
+      "title": "Move one tile with a keyboard direction key",
+      "runId": "94bab750-793b-4bde-a5c7-0efd6b85da29",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/b065407a-6273-4dec-a36e-a197c80e0e5e",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/94bab750-793b-4bde-a5c7-0efd6b85da29"
+    },
+    {
+      "testId": "8c0921fa-da81-406a-a6b5-6a451bb77964",
+      "title": "Sound toggle persists after reload",
+      "runId": "2db9884b-9ccb-4a6c-8194-a273e278b049",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/8c0921fa-da81-406a-a6b5-6a451bb77964",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/2db9884b-9ccb-4a6c-8194-a273e278b049"
+    },
+    {
+      "testId": "29f494af-3e76-45e3-8a83-e706a0e80e93",
+      "title": "Verify turn counter increments after ending a turn",
+      "runId": "0ac3cc93-12c3-4983-a36a-0ec81b5bd421",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/29f494af-3e76-45e3-8a83-e706a0e80e93",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/0ac3cc93-12c3-4983-a36a-0ec81b5bd421"
+    },
+    {
+      "testId": "182f47c5-2d34-45f0-8549-ad0f64df46ca",
+      "title": "Verify action points decrease with actions and reset on next turn",
+      "runId": "a5590749-fd88-472f-b453-cf9f8468d109",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/182f47c5-2d34-45f0-8549-ad0f64df46ca",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/a5590749-fd88-472f-b453-cf9f8468d109"
+    },
+    {
+      "testId": "2a824a24-bb79-41a6-af8d-34d8f5a38333",
+      "title": "End the turn with the keyboard shortcut",
+      "runId": "5d7f731b-0264-432d-ba4c-8a75d32a8034",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/2a824a24-bb79-41a6-af8d-34d8f5a38333",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/5d7f731b-0264-432d-ba4c-8a75d32a8034"
+    },
+    {
+      "testId": "ace8f16f-e2fe-48f4-8bd4-fd88224f615d",
+      "title": "Verify HUD stats remain visible during active play",
+      "runId": "6f2610a8-6f36-469d-8873-df60ff97bafb",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/ace8f16f-e2fe-48f4-8bd4-fd88224f615d",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/6f2610a8-6f36-469d-8873-df60ff97bafb"
+    },
+    {
+      "testId": "476a94e9-9d99-4c0f-b0ef-e2928d7a65ac",
+      "title": "Ignore disabled action shortcut keys",
+      "runId": "4a352ef5-c462-4050-b17c-7338e557863c",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/476a94e9-9d99-4c0f-b0ef-e2928d7a65ac",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4a352ef5-c462-4050-b17c-7338e557863c"
+    },
+    {
+      "testId": "1a5470bd-6d5a-4de7-956c-2e2234d90d45",
+      "title": "Keep sound preference after reload",
+      "runId": "7e6fad6d-7a08-40d1-aa2d-891570327ef3",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/1a5470bd-6d5a-4de7-956c-2e2234d90d45",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/7e6fad6d-7a08-40d1-aa2d-891570327ef3"
+    },
+    {
+      "testId": "74e7e532-fa56-4a78-8bfc-345d69c60df5",
+      "title": "Prevent movement while overlay is shown",
+      "runId": "1f5e28ed-3c65-4920-b17b-02851fa0b0ee",
+      "status": "passed",
+      "dashboardUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/test-cases/74e7e532-fa56-4a78-8bfc-345d69c60df5",
+      "executionUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/1f5e28ed-3c65-4920-b17b-02851fa0b0ee"
+    }
+  ],
+  "executionReport": {
+    "projectId": "9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d",
+    "executionId": "6b192287-50de-4bfb-ba17-04a1ec62a0cc",
+    "projectName": "nullrun",
+    "orgId": "39e7cea1-fc6b-516e-9626-22d343c9ad30",
+    "stats": {
+      "passed": 76,
+      "failed": 0,
+      "blocked": 0,
+      "total": 76
+    },
+    "allPassed": true,
+    "narrative": "The frontend suite is in very strong shape: every one of the 70 executed tests passed, and there were no blocked cases. That means the executable subset achieved a 100% pass rate, so the score reflects a healthy, stable product experience rather than a partially exercised one. The passing coverage spans core gameplay input, camera movement, HUD state, mode persistence, agent bridge behavior, and failure-state handling, which is a good sign that the major user flows are working consistently. Overall reliability looks excellent, with no visible regressions in the tested paths.",
+    "whatCouldBeBetter": "There are no failing or blocked tests to point to specific defects, which is a good sign. The main gap is not quality but opportunity: the suite is already validating many important interactions, but continued protection should focus on the highest-risk flows that would most impact playability if they regressed. That includes mode transitions, briefing overlays, movement gating when AP is exhausted, extraction/floor progression, and the end-state lockout behavior. Because everything passed, there is no evidence here of broken selectors, missing UI, or state-management bugs in the exercised paths.",
+    "recommendedNextStep": "Keep the current coverage green by rerunning this suite after any gameplay or UI change, especially around input handling, board interaction, HUD updates, and persistence. If you want to raise confidence further, add a few adversarial checks around rapid input during overlays, repeated mode toggles, and edge-case floor transitions so regressions are caught earlier. Since the full executable subset passed, the immediate next step is maintenance: preserve these behaviors and use the passing tests as a baseline before expanding coverage. The fixPrompt is intentionally empty because no actionable defects were surfaced.",
+    "tests": [
+      {
+        "id": "f67e0a9a-87ad-4996-be68-431a623575a1",
+        "title": "Lift intel with F",
+        "slug": "KBDS-007",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/f67e0a9a-87ad-4996-be68-431a623575a1"
+      },
+      {
+        "id": "00087222-4b64-4a97-a09c-e44fd5290c18",
+        "title": "Hack a terminal with E",
+        "slug": "KBDS-006",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/00087222-4b64-4a97-a09c-e44fd5290c18"
+      },
+      {
+        "id": "a6e072b1-bfff-470a-a9a1-3f80454ebea9",
+        "title": "Open sprint and move farther in a single turn (code)",
+        "slug": "TC-005",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/a6e072b1-bfff-470a-a9a1-3f80454ebea9"
+      },
+      {
+        "id": "9e8d6d32-88c7-4f22-9130-7bc17f37bf9f",
+        "title": "Hover a tile to read its risk",
+        "slug": "MOVE-008",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/9e8d6d32-88c7-4f22-9130-7bc17f37bf9f"
+      },
+      {
+        "id": "8cf38a4f-5e3e-43dd-844e-1ea5a40498fa",
+        "title": "Verify alarm rises after detection and is reflected in the HUD",
+        "slug": "HUD-005",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/8cf38a4f-5e3e-43dd-844e-1ea5a40498fa"
+      },
+      {
+        "id": "3e1fa841-27dd-4688-8019-ca7f1af83d5b",
+        "title": "Move to an adjacent tile by clicking it",
+        "slug": "ACTN-002",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/3e1fa841-27dd-4688-8019-ca7f1af83d5b"
+      },
+      {
+        "id": "bf526e1b-cdd2-4791-b1db-24983d1c9dda",
+        "title": "Verify alarm critical styling appears at the threshold",
+        "slug": "HUD-006",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/bf526e1b-cdd2-4791-b1db-24983d1c9dda"
+      },
+      {
+        "id": "7792acee-8745-4c52-b2da-f65b0a28ceb4",
+        "title": "Read-only tool call does not change game state",
+        "slug": "BRDG-002",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/7792acee-8745-4c52-b2da-f65b0a28ceb4"
+      },
+      {
+        "id": "4c07bee6-7275-48bd-93dc-4448c2dd2b36",
+        "title": "Toggle sprint with Shift",
+        "slug": "KBDS-005",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4c07bee6-7275-48bd-93dc-4448c2dd2b36"
+      },
+      {
+        "id": "55143407-828b-46a4-9445-42b0559697a6",
+        "title": "Run ends when a guard catches the operative",
+        "slug": "ENDR-002",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/55143407-828b-46a4-9445-42b0559697a6"
+      },
+      {
+        "id": "3162eb20-4276-4afd-a42b-f28709543475",
+        "title": "Extract with X when objective is complete",
+        "slug": "KBDS-010",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/3162eb20-4276-4afd-a42b-f28709543475"
+      },
+      {
+        "id": "50eb103f-66b6-40b5-9b11-4f94b7dd3810",
+        "title": "Take down a guard with T",
+        "slug": "KBDS-008",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/50eb103f-66b6-40b5-9b11-4f94b7dd3810"
+      },
+      {
+        "id": "fce927e9-8c06-4deb-b40d-36392fa9e486",
+        "title": "Move with W and spend AP",
+        "slug": "KBDS-001",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/fce927e9-8c06-4deb-b40d-36392fa9e486"
+      },
+      {
+        "id": "030acf57-620d-42a1-a89b-3fd258fe21eb",
+        "title": "Move with A and spend AP",
+        "slug": "KBDS-002",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/030acf57-620d-42a1-a89b-3fd258fe21eb"
+      },
+      {
+        "id": "c5f2d550-be90-4840-8faf-f32fc3af5bca",
+        "title": "Move with sprint active",
+        "slug": "MOVE-009",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/c5f2d550-be90-4840-8faf-f32fc3af5bca"
+      },
+      {
+        "id": "385bb774-cd36-49af-aae8-3317b7771199",
+        "title": "Advance through a cleared floor via extraction",
+        "slug": "FLOW-001",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/385bb774-cd36-49af-aae8-3317b7771199"
+      },
+      {
+        "id": "f181d736-5386-447c-bd71-71743cfb82f1",
+        "title": "Verify run failure occurs when alarm reaches maximum",
+        "slug": "HUD-007",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/f181d736-5386-447c-bd71-71743cfb82f1"
+      },
+      {
+        "id": "9fb2c5ee-5438-4024-8a8a-c9e6b472c6b3",
+        "title": "Block movement when action points are exhausted (code)",
+        "slug": "TC-019",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/9fb2c5ee-5438-4024-8a8a-c9e6b472c6b3"
+      },
+      {
+        "id": "328fd2ea-0192-4ba4-bc70-1fefea4cf467",
+        "title": "Prevent movement when AP is exhausted",
+        "slug": "MOVE-007",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/328fd2ea-0192-4ba4-bc70-1fefea4cf467"
+      },
+      {
+        "id": "219f1cf1-1f00-4309-a2b5-61bcccc0a777",
+        "title": "Move with S and spend AP",
+        "slug": "KBDS-003",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/219f1cf1-1f00-4309-a2b5-61bcccc0a777"
+      },
+      {
+        "id": "444c6848-2b60-47bd-a301-771e4aa5a71e",
+        "title": "Toggle sprint state with the shortcut action (code)",
+        "slug": "TC-014",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/444c6848-2b60-47bd-a301-771e4aa5a71e"
+      },
+      {
+        "id": "c5eecd6a-a76f-44f5-8b85-f2e2a0823c1a",
+        "title": "End turn with Space",
+        "slug": "KBDS-009",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/c5eecd6a-a76f-44f5-8b85-f2e2a0823c1a"
+      },
+      {
+        "id": "bfc55078-c63e-4351-bc7e-a27e4d6b7980",
+        "title": "Drag on the board pans camera without moving operative",
+        "slug": "KBDS-020",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/bfc55078-c63e-4351-bc7e-a27e4d6b7980"
+      },
+      {
+        "id": "a0ff93ff-b84c-4230-8903-01fd115b1e01",
+        "title": "Move to an adjacent tile by clicking",
+        "slug": "MOVE-002",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/a0ff93ff-b84c-4230-8903-01fd115b1e01"
+      },
+      {
+        "id": "579ce194-c250-4218-900e-ccff58496fb2",
+        "title": "Play controls are blocked after a run ends",
+        "slug": "ENDR-003",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/579ce194-c250-4218-900e-ccff58496fb2"
+      },
+      {
+        "id": "105ef744-8fbe-4ad9-85d3-20c3aec91c05",
+        "title": "Run ends when alarm reaches 100%",
+        "slug": "ENDR-001",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/105ef744-8fbe-4ad9-85d3-20c3aec91c05"
+      },
+      {
+        "id": "1e1e7232-b00d-48da-ae36-86c41dbb9f4a",
+        "title": "Take down an adjacent guard (code)",
+        "slug": "TC-018",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/1e1e7232-b00d-48da-ae36-86c41dbb9f4a"
+      },
+      {
+        "id": "d8d88362-9607-4632-89f6-9daa01a11cdf",
+        "title": "Move one tile with keyboard (code)",
+        "slug": "TC-004",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d8d88362-9607-4632-89f6-9daa01a11cdf"
+      },
+      {
+        "id": "c5ada47d-0af7-4cfc-b8b0-bc9975f3d904",
+        "title": "Extraction remains gated until all cores are collected (code)",
+        "slug": "TC-022",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/c5ada47d-0af7-4cfc-b8b0-bc9975f3d904"
+      },
+      {
+        "id": "aeae1076-9843-49ea-b69b-524e08b6780b",
+        "title": "Advance to the next floor after clearing a floor (code)",
+        "slug": "TC-009",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/aeae1076-9843-49ea-b69b-524e08b6780b"
+      },
+      {
+        "id": "4c234886-4506-4e9c-a8b9-a639c45d8dfe",
+        "title": "Click adjacent tile moves one step",
+        "slug": "KBDS-017",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4c234886-4506-4e9c-a8b9-a639c45d8dfe"
+      },
+      {
+        "id": "944ece1d-7ee5-49f1-9ed0-38b367ba1a22",
+        "title": "Take control from agent mode and move",
+        "slug": "MOVE-010",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/944ece1d-7ee5-49f1-9ed0-38b367ba1a22"
+      },
+      {
+        "id": "294c9f0a-afb6-4e6e-8daa-1a1747d95599",
+        "title": "Restore mode and sound preference after reload",
+        "slug": "KBDS-015",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/294c9f0a-afb6-4e6e-8daa-1a1747d95599"
+      },
+      {
+        "id": "4c8214a3-4a81-4256-9df6-6bfc3f2b6124",
+        "title": "Ignore movement keys when AP is insufficient",
+        "slug": "KBDS-014",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4c8214a3-4a81-4256-9df6-6bfc3f2b6124"
+      },
+      {
+        "id": "4b92baff-5dd1-4226-8a5d-8319d0933947",
+        "title": "Complete the full five-floor run (code)",
+        "slug": "TC-016",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4b92baff-5dd1-4226-8a5d-8319d0933947"
+      },
+      {
+        "id": "17a9eba5-e217-4010-abbc-5e77d536dd05",
+        "title": "Click distant tile follows a path over time",
+        "slug": "KBDS-018",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/17a9eba5-e217-4010-abbc-5e77d536dd05"
+      },
+      {
+        "id": "9e831987-d3e8-4470-ba6e-5efee0945911",
+        "title": "Changing play mode after a finished run is refused",
+        "slug": "ENDR-004",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/9e831987-d3e8-4470-ba6e-5efee0945911"
+      },
+      {
+        "id": "08406876-fc07-4c46-bf12-c7fd24d0c094",
+        "title": "Advance to the next floor after clearing a floor (code)",
+        "slug": "TC-001",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/08406876-fc07-4c46-bf12-c7fd24d0c094"
+      },
+      {
+        "id": "d55a9811-35bf-4421-bb64-50e9d3666717",
+        "title": "Verify core collection updates the cores left stat (code)",
+        "slug": "TC-011",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d55a9811-35bf-4421-bb64-50e9d3666717"
+      },
+      {
+        "id": "28619bad-f4e7-4cf8-9dbf-baaac0b7f653",
+        "title": "Ignore movement keys while briefing is shown",
+        "slug": "KBDS-013",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225333-f03fc1fe/8.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=mIng5Fau89OvZ-v1xDhXv1u1PfijbNgEK9Hcvhdu4D~IiUsLokaoSA-fz7sNLhuhmpaMM-ifWzZiu3c3XKErtaUszmGjQ9k-~Xz9GHT9mi2iMItfNcvDt6ccimO1NUzR70abR1M805pvcLyRl7U7qhOnsLXObfG5Ww~eyNrES5YYnFzhX3KMRq7TUvExWZFAR3ShHN6HjsMo-LUdbSjbJOXFKm0vNc3cg7T7G2DMBUxvyAsX~PwHZ4fPQQ5dV7E4A8NERgaQP1lrBF5xhmQ~sXj8KhmIque9-SwwI1LcYN~7a2GDPaiqjEWik6MadPNp4b7YWNZIg46whXlxNW4SJw__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/28619bad-f4e7-4cf8-9dbf-baaac0b7f653"
+      },
+      {
+        "id": "036af72c-c60f-4881-a29e-6f4c8dd38e57",
+        "title": "Lift intel from loot (code)",
+        "slug": "TC-020",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/036af72c-c60f-4881-a29e-6f4c8dd38e57"
+      },
+      {
+        "id": "2b397999-c4c4-439d-a521-bec163a7e88d",
+        "title": "Hack a terminal while adjacent to it (code)",
+        "slug": "TC-008",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/2b397999-c4c4-439d-a521-bec163a7e88d"
+      },
+      {
+        "id": "ecf843a5-83f7-44ed-a68d-8ee98c4066d7",
+        "title": "Choose agent mode and enter the run",
+        "slug": "NULL-001",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225323-03b55d05/13.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=gAFLxgUc7cRHzv0x3r57LRcV6NRrb-60vqHEuOiioKeJQSZ88TInhWx9Jg8SetYlovrX2NPXUIOR0an9tgPizYufeBt17n8ey~MgbKrCyrw4lj~icgaST3N3r~wtHz42q3duywSXXJ2EExNlVwpsKu1sP2RKV3u4YlF~cJ3hr6wvYb5hNtESex8ztWQ~-ZDV0m6mnbbtDA1LGXKeTECLst7WMzsJaV-okQu25dhxbgpg9xj86r-M9ed1AG5iqHse0L6tnePHFxvc7IfEGU6WG0R5gHrT6T9lHrHS~2nq25YJ9AqmhFsE~7ISToRynA2MynytX9E35XkL45d-5MXmvw__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/ecf843a5-83f7-44ed-a68d-8ee98c4066d7"
+      },
+      {
+        "id": "4b13e994-84c7-478e-9de7-187ecd0703fe",
+        "title": "Remember play mode after reload",
+        "slug": "NULL-003",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4b13e994-84c7-478e-9de7-187ecd0703fe"
+      },
+      {
+        "id": "694393eb-63dc-4f58-a710-5724f69b4994",
+        "title": "Bridge status and tool count are exposed (code)",
+        "slug": "TC-013",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/694393eb-63dc-4f58-a710-5724f69b4994"
+      },
+      {
+        "id": "c2087f89-6941-4c9e-b0f9-6687d5b56721",
+        "title": "Start a new run from the end screen",
+        "slug": "ENDR-005",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/c2087f89-6941-4c9e-b0f9-6687d5b56721"
+      },
+      {
+        "id": "1042c971-c157-460a-9691-8917e724b624",
+        "title": "Follow a path by clicking a distant tile (code)",
+        "slug": "TC-007",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/1042c971-c157-460a-9691-8917e724b624"
+      },
+      {
+        "id": "fea4c711-c20a-4885-914c-ab461a6d4249",
+        "title": "Toggle an adjacent door by clicking (code)",
+        "slug": "TC-003",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/fea4c711-c20a-4885-914c-ab461a6d4249"
+      },
+      {
+        "id": "4961ac01-f094-494d-b5b0-83cef9138efe",
+        "title": "Take control returns human operative actions",
+        "slug": "BRDG-004",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225323-4f7377b4/5.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=F8yF1HE1WqMS~upLFh5CCyEwlqceVjd0LO2ULbQQ4l9S9ycNXWnjuKNsWdbpUMy92zsAciWyUv4FLyiPuD8fDlwyBaiUiFpJoB6TtTZ4ffl1M7fYQ~~9uqEkDG~z57ZthwJ1QQl3MiPjKdLsWF8AXifWuykajMbBQ1h6b0GXHNF-H~LOLfawEcYlezvx1trrPTwehigrTuiSEHSxPy6c7VoWZHh~BZodLTR-TVM1zVqV2811AhNwzpLVeLpmZIV8QaqvQE2Boup5LfrHJHzUaNQWEDQgP8ngEAAJAex-V1ImGVJjc37cSPs0SvAO3-RM24huxBNKtUkVbeAZ1zDCcg__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4961ac01-f094-494d-b5b0-83cef9138efe"
+      },
+      {
+        "id": "050435a3-c103-4333-9f40-6ef7bed7cbca",
+        "title": "Pan the board by dragging (code)",
+        "slug": "TC-010",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/050435a3-c103-4333-9f40-6ef7bed7cbca"
+      },
+      {
+        "id": "d108d6f4-f6b7-428f-bdc5-3560a066ebda",
+        "title": "Move with D and spend AP",
+        "slug": "KBDS-004",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225324-a8a7b854/16.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=CsmS3SWKp62K~TDKChaLgSwETJDhHl1~SelFBw3tiU7srVdzc90DiUS9yQDnfBhBUPCRaw9Hfn-jG7xY170TzNXZ--HfGEBn8CgKI7khNugnWNSgEciR97IKd4Wq38oRIXEYB4AHUJPAoMIHYFTuJATTqmyeChVA~RDv0Bkclj7oWv6ePE7y9FDAC9ZzqALzWY1VCjnf4NYLgNJfEN8EsTKwn3nlm0hd9NR1h3cq58IkILY0zmVnnYYBk3UelzOGfYQQSa-YTRsLEwYAbXXOpO05Y3ISvXaQh~NmlyZ2fSIMfESByeeBE3mUxh9AGCRoZW~Rbku33SrNcxJIu~RRwQ__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d108d6f4-f6b7-428f-bdc5-3560a066ebda"
+      },
+      {
+        "id": "4b951793-1278-4a0a-b7cd-e7e5737ddd12",
+        "title": "Walk a path to a distant tile by clicking (code)",
+        "slug": "TC-021",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4b951793-1278-4a0a-b7cd-e7e5737ddd12"
+      },
+      {
+        "id": "e09b7ca1-2292-4da7-b798-fd3524d8fe40",
+        "title": "Failed run records the failure reason in the log (code)",
+        "slug": "TC-015",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/e09b7ca1-2292-4da7-b798-fd3524d8fe40"
+      },
+      {
+        "id": "4309ffa2-597f-4341-b6bb-fb098dbe62ea",
+        "title": "Click adjacent door toggles instead of moving onto it (code)",
+        "slug": "TC-017",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4309ffa2-597f-4341-b6bb-fb098dbe62ea"
+      },
+      {
+        "id": "1253617c-f6a4-40b9-8a9a-0c7a1092eecd",
+        "title": "Toggle an adjacent door by clicking it (code)",
+        "slug": "TC-006",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/1253617c-f6a4-40b9-8a9a-0c7a1092eecd"
+      },
+      {
+        "id": "d9e38174-0c1e-4b96-82c7-d36c117e51b4",
+        "title": "Pan the camera by dragging the board (code)",
+        "slug": "TC-002",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d9e38174-0c1e-4b96-82c7-d36c117e51b4"
+      },
+      {
+        "id": "e26fa3a1-2845-40b1-9ebe-72b057e5e4c7",
+        "title": "Begin infiltration with Enter from briefing",
+        "slug": "KBDS-012",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225324-b2d21ad4/0.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=JlvdmWoSwjn2QLID~oA2OiF1eO-9ESkN6woshR8NxMiyvuRZFRGeKzINhPGrO6fIwyfDI6ewOnKbEhGlWTS10zJkihd6hWMsyffNeRXTLL7~J~qANCSftEn-fCVQucLgsYNEBTZGZotLGLzaDAeDptAbsjJiKkRDVkD3WBd2kgkc7XODAeKawORgUuhFv8T3ptrygFn7Q-x0BhpZJwUXbayFoOe32POXbjUHIpiJExaUQf2L2rYcA-tnb4kuf0lt90U-aghfIBSmU0kjsFFp0cVlHOESxGXesDss7MYZdPGnP08G70yA0ZxyVkTXxmJ39Mk~HjTequYTXbdyXBpKCw__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/e26fa3a1-2845-40b1-9ebe-72b057e5e4c7"
+      },
+      {
+        "id": "bca317e2-b5f7-44b7-8734-320dbdea66f7",
+        "title": "Take control with C in agent mode",
+        "slug": "KBDS-011",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225323-12bd18bc/7.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=kFV~rDAmvKh08eYbsmrG5bXFmA4CmMg-xcELHlENGWQFlcRqoOs7SXljVgcFjO3yKM0e5wCUb3-HQAzJlGRqu1sjtmIUAhqNLXMwBnGwT6sCT1uIRvrsq6Uv-yQusOLX4gfiXa4rjaUtzISIq0JPi2BqLiy5VCaInLz~9Q0gykR8UrnWZsjx8MJIEG2veApwI42Px3NOKEp6Oz7SZmITVObPTL9uwLPQDVviqOsMF8DIFnDRaeyq~WrK124utcHWjFqcdQLQZ753MDWnrpKYkW3YCQhNd8u00tKtx-~lNls8Y~jQ5CrnVvY~ZUYvXIjRQwyO7qo6HL9LH8OhoY5fcw__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/bca317e2-b5f7-44b7-8734-320dbdea66f7"
+      },
+      {
+        "id": "d100037f-75fc-4944-a112-01616d722184",
+        "title": "Start the run from the briefing with Enter",
+        "slug": "NULL-004",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225324-494a4e1f/4.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=gTLb1EQee84xUqbsKctXUYnjXk769zLk8mxUQ5mBqu5ADSWeNmf4mQFK7HczZnJPu07Li3pOZQJGDdw5WleFbGnpuZVPRHywi5Aq29SFG4lZXzEFbvPGQw-C0ZAOZ3AnFl-pKPl5kgb3CK8zYwFCT272U3ovt5toq8UEMFtnG8ef4hVzLhOxwSdb~aCDaLFOg5mFPF~ixfISogOTCqgZ57AjjQYkR~KaE0UNekTEWdZQ41a8U7fnHfjiUSMW5NeWOWH2VYLlLarvbnDLm2Hnjd17tq-6glC5zg-a-YnJfFbYKXCrZ~6gTadOHiuxk15Uctx-ls7sy0k08h~bnpOWAA__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/d100037f-75fc-4944-a112-01616d722184"
+      },
+      {
+        "id": "5d7f731b-0264-432d-ba4c-8a75d32a8034",
+        "title": "End the turn with the keyboard shortcut",
+        "slug": "ACTN-011",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225324-b0d6d0f6/41.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=O7IlxRWWi0OwBkyS5~d~btdiM9JfYCDk~tBgK8U9jDrurUNfO7BpPxot8MQs0bTohTYdVu6CE5Ensvdg7RkEM9O9TiO-PX4m~0iV948LdGDSHJIdFvBUfamVxAcQzQZy7rYBQXerRcsKZ9KEPsYKUFmVh4NpyUSPsT5cHy5MZa74cBwzXSuRDnABBXo59BiEK-W5kocrzaptP0dCB31E~LzNbwEogG2ck-jcEHqMPsAChn09cvM3f6FbQz0sHc8zi5kj4G51-1-3rRUXVb77wmBYlVFLYVpGUeMgc3XsvmSAPdER-GbqIRkAzdKfZBS-nAzlTxd912qrVpgJX5rTmw__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/5d7f731b-0264-432d-ba4c-8a75d32a8034"
+      },
+      {
+        "id": "6f0be39b-6652-40b0-8e07-4c1525c0892a",
+        "title": "Extract after completing the floor objective (code)",
+        "slug": "TC-012",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/6f0be39b-6652-40b0-8e07-4c1525c0892a"
+      },
+      {
+        "id": "51ece249-f68e-4649-bc34-71ce115bf8af",
+        "title": "Human mode shows briefing before infiltration",
+        "slug": "BRDG-005",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225323-0ab6efd0/14.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=nVwHQPQFoncL8xDJkU685U3eXZNZGSbPbu7V9x0ZiwBCABzVfS1oetEhTTjtfbMQCdKXPGj5xvJGnkjKXhnIHz9et6fIEwkBkADSl5T2Fm0C7YdQEJjdT7xOA4ocwlIEYqcylRfUDad85b5wtEAY43fKfzRE3nhB7wxSomEKgyEgBS2pcwL542oUSLP2YMSEereNRl1VVf8qekUGvuBkMVT9Mw3DVv~w9QOtMyntjep~PQfHLkY2MnuLEE1GXEGoBpsLX0XfBK0VZ-quPg2z3D6DjqfgNV7SjYp4Ujgh3qBlgxdBbwZ-w8P8HlkDyyVpRiKWsbUJT2gzXQQ5FIplSA__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/51ece249-f68e-4649-bc34-71ce115bf8af"
+      },
+      {
+        "id": "6f2610a8-6f36-469d-8873-df60ff97bafb",
+        "title": "Verify HUD stats remain visible during active play",
+        "slug": "HUD-008",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225325-812c03b8/58.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=Ae0w1fLpE2vs0-HLEyGDYankdCDrOC~hWfTqisSvgsDF~eYHlIY-3Asz8-zp4uyOiuac111q24VKYUn4h0qSInBXTNlsacFhv4smVwkS5Z0ad2vA6LqMxWg5h4EqleY8ZnHA2K3LSSm3W~0N5ur0MHCoZafMPwXF63nJaxes0tNdcrTgoR3CDGy6hTpuFKj133ZUeEgzV5hCv0~Ry41Xm8KyL2N0ip-mK3cjJFA7xMTl0UNonB3pD0OWHNfB32K3XvXMoIb6a9OVqkQlbJ1vUfoz2AYJjcwwkkFGrEKcBfUC5dcmf62Y4R4XeVLTlEAdvau3SaXgK5R3aUpJ2FZmGQ__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/6f2610a8-6f36-469d-8873-df60ff97bafb"
+      },
+      {
+        "id": "081d2890-78e2-41a7-8f67-1fe466cdb232",
+        "title": "Agent mode exposes control handoff UI",
+        "slug": "BRDG-003",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225323-bced3983/13.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=Z3TqpufTnMjDhcXOawQdlxemFKa2tTU1XDmPWZ~ML~ofq0MiBAGSkcy4tsyGX3ksC27ME6HXeovk7flGz~d-6jZsBwR9Z5eMVmPjGu9aSkvbKaG85Ph2erc0i1gD6i6IlWgjBx1dPk4Pj56KfMBXzkrWpP6OVwamoLxP9eIS1mspzrdTofKCVDuywyGJrPaoaw63Z18gEZv3HVmU4XO3s3eEN2OlkcicsZEcClD8Bh1E1b9AVOdQ518gSs8u04lrIDpK8VpC7DsoKR~XyRnfbqk6BNkC6FIHH9hAcSElC2YWlU7M5GQaDudar6pvcXC2xqY5c0Ex9tK221m5MouSVQ__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/081d2890-78e2-41a7-8f67-1fe466cdb232"
+      },
+      {
+        "id": "56f7440e-0722-4e94-890a-7bf030eba389",
+        "title": "Refuse movement while an overlay is shown",
+        "slug": "MOVE-006",
+        "status": "PASSED",
+        "screenshotUrl": "https://d2einizr4etxpc.cloudfront.net/20261020-225324-c02ce722/4.jpeg?Expires=1950216897&Key-Pair-Id=K2CODXZ0C0KNJE&Signature=DE0Ara8ju7zqAH3XoS0Z0YOPUM5VXU9grYJW0npZUcsxqITNS1fKAd4ciHZemMFI69Q2jfZqhyih6Q~v2YGWhBRUHuPanTxiZEpb9PQG9enmeeohD2PE42r9eFdv4Nfy5V3Srp-wzvT2O8UGWbBC2BVnMShuyqEg~WqZs7p1pENu0KrbPl-bq0IA5mdnx8zxbi~zRzFtb0ICYQYmgGFvQv~M7rUqmIAIXQnuJqpZ19PHRwWOkCXCY-6wXkYj7jY69lm6gnfaisSQgufHqNfBoJzg1EQ330f0puZa7EqrWiEgOI6KlzrSeQ36aucoBn-JPJDxbWV-1GRJXZcguXkWKA__",
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/56f7440e-0722-4e94-890a-7bf030eba389"
+      },
+      {
+        "id": "5afa0805-cb7d-4cad-bf1f-751a50c1bf02",
+        "title": "Verify HUD stats display on mission start",
+        "slug": "HUD-001",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/5afa0805-cb7d-4cad-bf1f-751a50c1bf02"
+      },
+      {
+        "id": "2db9884b-9ccb-4a6c-8194-a273e278b049",
+        "title": "Sound toggle persists after reload",
+        "slug": "BRDG-007",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/2db9884b-9ccb-4a6c-8194-a273e278b049"
+      },
+      {
+        "id": "614ad5ce-ab93-4c98-b01e-04fc966a691a",
+        "title": "Choose human mode, begin infiltration, and start play",
+        "slug": "NULL-002",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/614ad5ce-ab93-4c98-b01e-04fc966a691a"
+      },
+      {
+        "id": "daf8d1c9-9473-4a22-8afb-2998239d8bed",
+        "title": "Play mode choice persists after reload",
+        "slug": "BRDG-006",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/daf8d1c9-9473-4a22-8afb-2998239d8bed"
+      },
+      {
+        "id": "465150d0-c47e-40bc-a713-408c605f3bf4",
+        "title": "Refuse keyboard movement while the briefing overlay is shown",
+        "slug": "ACTN-012",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/465150d0-c47e-40bc-a713-408c605f3bf4"
+      },
+      {
+        "id": "1f5e28ed-3c65-4920-b17b-02851fa0b0ee",
+        "title": "Prevent movement while overlay is shown",
+        "slug": "KBDS-016",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/1f5e28ed-3c65-4920-b17b-02851fa0b0ee"
+      },
+      {
+        "id": "94bab750-793b-4bde-a5c7-0efd6b85da29",
+        "title": "Move one tile with a keyboard direction key",
+        "slug": "ACTN-001",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/94bab750-793b-4bde-a5c7-0efd6b85da29"
+      },
+      {
+        "id": "0ac3cc93-12c3-4983-a36a-0ec81b5bd421",
+        "title": "Verify turn counter increments after ending a turn",
+        "slug": "HUD-002",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/0ac3cc93-12c3-4983-a36a-0ec81b5bd421"
+      },
+      {
+        "id": "a5590749-fd88-472f-b453-cf9f8468d109",
+        "title": "Verify action points decrease with actions and reset on next turn",
+        "slug": "HUD-003",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/a5590749-fd88-472f-b453-cf9f8468d109"
+      },
+      {
+        "id": "4a352ef5-c462-4050-b17c-7338e557863c",
+        "title": "Ignore disabled action shortcut keys",
+        "slug": "KBDS-021",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/4a352ef5-c462-4050-b17c-7338e557863c"
+      },
+      {
+        "id": "7e6fad6d-7a08-40d1-aa2d-891570327ef3",
+        "title": "Keep sound preference after reload",
+        "slug": "NULL-005",
+        "status": "PASSED",
+        "screenshotUrl": null,
+        "error": "",
+        "fix": null,
+        "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc/test/7e6fad6d-7a08-40d1-aa2d-891570327ef3"
+      }
+    ],
+    "resultUrl": "https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/projects/9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d/execution/6b192287-50de-4bfb-ba17-04a1ec62a0cc"
+  }
+}
