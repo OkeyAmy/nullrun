@@ -15,43 +15,16 @@ jobs:
   suite:
     name: UI suite
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 55
+    # Fork PRs cannot read repository secrets — skip instead of failing red.
     if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     steps:
-      - name: Run the TestSprite UI suite (test list with retry)
-        run: |
-          set -euo pipefail
-          LIST_ID="39eb38d6-01dd-486b-ae5f-11124b657bbd"
-          MAX_RETRIES=3
-          RETRY_DELAY=60
-          
-          for attempt in $(seq 1 $MAX_RETRIES); do
-            echo "Attempt $attempt of $MAX_RETRIES"
-            npx -y @testsprite/testsprite-cli@0.13.0 testlist run "$LIST_ID" \
-              --wait --report junit --report-file testsprite-junit.xml \
-              --timeout 1800 --max-concurrency 20
-            EXIT_CODE=$?
-            
-            if [ $EXIT_CODE -eq 0 ]; then
-              echo "All tests passed"
-              exit 0
-            elif [ $EXIT_CODE -eq 7 ]; then
-              echo "Rate-deferred or timed out, waiting ${RETRY_DELAY}s before retry..."
-              sleep $RETRY_DELAY
-            else
-              echo "Fatal error (exit $EXIT_CODE), not retrying"
-              exit $EXIT_CODE
-            fi
-          done
-          
-          echo "All retries exhausted"
-          exit 1
-        env:
-          TESTSPRITE_API_KEY: ${{ secrets.TESTSPRITE_API_KEY }}
-      - name: Upload JUnit report
-        if: always()
-        uses: actions/upload-artifact@v4
+      # Actions pinned to full commit SHAs so every run executes exactly what was reviewed.
+      - name: Run the TestSprite UI suite
+        uses: TestSprite/testsprite-action@9f3ac52a42baae6c7099d1f89fa603b31d636d63 # v1.0.0
         with:
-          name: testsprite-junit
-          path: testsprite-junit.xml
-          if-no-files-found: ignore
+          api-key: ${{ secrets.TESTSPRITE_API_KEY }}
+          project: "9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d"
+          cli-version: "0.13.0"
+          node-version: "22"
+          timeout: "1800"
