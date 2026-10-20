@@ -18,13 +18,38 @@ jobs:
     timeout-minutes: 55
     # Fork PRs cannot read repository secrets — skip instead of failing red.
     if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+    env:
+      TESTSPRITE_API_KEY: ${{ secrets.TESTSPRITE_API_KEY }}
+      # Netlify deploy preview for this pull request (manual runs fall back to PR 1).
+      TESTSPRITE_TARGET_URL: https://deploy-preview-${{ github.event.pull_request.number || 1 }}--nullrun.netlify.app
     steps:
-      # Actions pinned to full commit SHAs so every run executes exactly what was reviewed.
-      - name: Run the TestSprite UI suite
-        uses: TestSprite/testsprite-action@9f3ac52a42baae6c7099d1f89fa603b31d636d63 # v1.0.0
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          api-key: ${{ secrets.TESTSPRITE_API_KEY }}
-          project: "9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d"
-          cli-version: "0.13.0"
           node-version: "22"
-          timeout: "1800"
+
+      # `ci run` seeds every selected test into a single execution and lets the
+      # server pace dispatch — the same admission the GitHub App uses — so a
+      # full-project run is not cut short by the per-key batch budget.
+      # `--fail-on-skipped` keeps the gate honest: a test that never ran fails
+      # the job instead of warning it green.
+      - name: Run the TestSprite UI suite
+        run: |
+          npx --yes @testsprite/testsprite-cli@0.15.0 ci run \
+            --project "9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" \
+            --env default \
+            --target-url "$TESTSPRITE_TARGET_URL" \
+            --timeout 1800 \
+            --fail-on-skipped \
+            --report junit --report-file testsprite-junit.xml \
+            --summary-file testsprite-summary.json
+
+      - name: Upload the TestSprite report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: testsprite-junit
+          path: |
+            testsprite-junit.xml
+            testsprite-summary.json
+          if-no-files-found: warn
