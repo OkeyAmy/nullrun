@@ -15,16 +15,37 @@ jobs:
   suite:
     name: UI suite
     runs-on: ubuntu-latest
-    timeout-minutes: 55
-    # Fork PRs cannot read repository secrets — skip instead of failing red.
+    timeout-minutes: 60
     if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     steps:
-      # Run the TestSprite UI suite via test list (deterministic stored-code tests)
-      - name: Run the TestSprite UI suite
+      - name: Run the TestSprite UI suite (test list with retry)
         run: |
-          npx -y @testsprite/testsprite-cli@0.13.0 testlist run 39eb38d6-01dd-486b-ae5f-11124b657bbd \
-            --wait --report junit --report-file testsprite-junit.xml \
-            --timeout 1800
+          set -euo pipefail
+          LIST_ID="39eb38d6-01dd-486b-ae5f-11124b657bbd"
+          MAX_RETRIES=3
+          RETRY_DELAY=60
+          
+          for attempt in $(seq 1 $MAX_RETRIES); do
+            echo "Attempt $attempt of $MAX_RETRIES"
+            npx -y @testsprite/testsprite-cli@0.13.0 testlist run "$LIST_ID" \
+              --wait --report junit --report-file testsprite-junit.xml \
+              --timeout 1800 --max-concurrency 20
+            EXIT_CODE=$?
+            
+            if [ $EXIT_CODE -eq 0 ]; then
+              echo "All tests passed"
+              exit 0
+            elif [ $EXIT_CODE -eq 7 ]; then
+              echo "Rate-deferred or timed out, waiting ${RETRY_DELAY}s before retry..."
+              sleep $RETRY_DELAY
+            else
+              echo "Fatal error (exit $EXIT_CODE), not retrying"
+              exit $EXIT_CODE
+            fi
+          done
+          
+          echo "All retries exhausted"
+          exit 1
         env:
           TESTSPRITE_API_KEY: ${{ secrets.TESTSPRITE_API_KEY }}
       - name: Upload JUnit report
