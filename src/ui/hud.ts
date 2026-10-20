@@ -71,12 +71,12 @@ export class Hud {
 
   private renderBridge(): void {
     const mode = this.tools.bridge.mode;
-    const label =
-      mode === 'native'
-        ? 'WebMCP native'
-        : mode === 'polyfill'
-          ? 'WebMCP polyfill'
-          : 'WebMCP unavailable';
+    const connected = mode !== 'unavailable';
+    const label = connected
+      ? mode === 'native'
+        ? 'WebMCP native · Connected'
+        : 'WebMCP polyfill · Connected'
+      : 'WebMCP unavailable';
     this.bridgeEl.innerHTML = `<span class="dot ${mode}"></span><span class="label">${label}</span>`;
     this.bridgeEl.title =
       mode === 'native'
@@ -189,7 +189,7 @@ export class Hud {
       <button id="btn-hack" ${!playing || !adjacentTerminal ? 'disabled' : ''}>Hack [E]</button>
       <button id="btn-grab" ${!playing || !onLoot ? 'disabled' : ''}>Lift intel [F]</button>
       <button id="btn-takedown" class="danger" ${!playing || !adjacentGuard ? 'disabled' : ''} title="Costs ${BALANCE.apCost.takedown} AP and leaves a body that can be found">Take down [T]</button>
-      <button id="btn-sprint" class="${this.sprintMode ? 'toggled' : ''}" ${!playing ? 'disabled' : ''}>Sprint [Shift]</button>
+      <button id="btn-sprint" class="${this.sprintMode ? 'toggled' : ''}" data-sprint="${this.sprintMode ? 'on' : 'off'}" ${!playing ? 'disabled' : ''}>Sprint [Shift]</button>
       <button id="btn-extract" class="primary" ${!playing || !onExtraction || !this.game.objectiveComplete() ? 'disabled' : ''}>Extract [X]</button>
       <span class="spacer"></span>
       <span class="keyhint">WASD / arrows move · click a tile to path · hover to preview risk</span>

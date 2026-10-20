@@ -169,6 +169,7 @@ canvas.addEventListener('pointerdown', (event) => {
   drag.lastX = event.clientX;
   drag.lastY = event.clientY;
   canvas.setPointerCapture(event.pointerId);
+  canvas.style.cursor = 'grabbing';
 });
 
 function endDrag(event: PointerEvent): void {
@@ -181,7 +182,7 @@ function endDrag(event: PointerEvent): void {
 canvas.addEventListener('pointerup', endDrag);
 canvas.addEventListener('pointercancel', endDrag);
 
-canvas.addEventListener('mousemove', (event) => {
+canvas.addEventListener('pointermove', (event) => {
   if (drag.active) {
     const dx = event.clientX - drag.lastX;
     const dy = event.clientY - drag.lastY;
@@ -207,7 +208,7 @@ canvas.addEventListener('mousemove', (event) => {
   renderer.routePreview = plan ? plan.steps : null;
 });
 
-canvas.addEventListener('mouseleave', () => {
+canvas.addEventListener('pointerleave', () => {
   renderer.hover = null;
   renderer.routePreview = null;
 });
