@@ -3,8 +3,8 @@
 Purpose: public transparency evidence for the code-defined tests in the NULLRUN
 TestSprite project. Each file here is the exact Python that TestSprite executes
 for that test id (`testsprite test code get <id>` output), replayed against the
-app by the TestSprite CLI, and exercised on every pull request through the
-GitHub Actions workflow `.github/workflows/testsprite.yml`.
+app by the TestSprite CLI, and exercised on every pull request by the
+TestSprite GitHub App check.
 
 Every test drives the real application — real keyboard events, real cursor
 clicks on canvas tiles and buttons, real drag gestures — then asserts on the

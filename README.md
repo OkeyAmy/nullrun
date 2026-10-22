@@ -319,6 +319,25 @@ Where a single-line mutation slipped through, the test got strengthened until it
 Two of my own invariants turned out to be wrong, and the *tests* were corrected rather than the
 code: seeing a wall face is perfectly legitimate, and the fuzz sweep needed a real timeout.
 
+## TestSprite verification (the PR check)
+
+Every pull request carries a TestSprite check. The GitHub App runs the project's suite in
+TestSprite against the pull request's deploy preview and reports the result on the PR, so the
+suite runs without anyone remembering to start it.
+
+The suite drives the real page — real keyboard movement, real clicks on canvas tiles and doors,
+drag gestures, buttons, and the real turn cycle — and asserts on live game state: the AP economy
+and auto-end-of-turn, click-to-path routing, adjacent-door toggling, sprint, hacking, intel lifts,
+takedowns, core collection and extraction gating, floor progression, both failure states, the
+WebMCP tool surface, and persistence across reloads.
+
+Two artifacts make it auditable from the repo:
+
+- `testsprite/tests/` — the exact Python TestSprite executes for every code-defined test, with a
+  table mapping test ids to names.
+- `testsprite/logs/` — JUnit reports and execution summaries from suite runs, carrying test ids
+  and run ids for cross-checking in the TestSprite dashboard.
+
 ---
 
 ## Design decisions worth knowing
