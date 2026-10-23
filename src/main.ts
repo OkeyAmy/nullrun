@@ -8,6 +8,7 @@ import { Hud } from './ui/hud';
 import { ToolSurface } from './webmcp/tools';
 
 const canvas = document.getElementById('board') as HTMLCanvasElement;
+const routeInfoEl = document.getElementById('route-info') as HTMLElement | null;
 
 const game = new Game();
 const renderer = new Renderer(canvas, game);
@@ -32,8 +33,85 @@ const hud = new Hud(game, tools, {
 });
 
 function report(result: { ok: boolean; message: string }): void {
-  if (!result.ok) game.log('system', result.message);
+  if (!result.ok) {
+    game.log('system', result.message);
+    flashAction(result.message);
+  }
   hud.render();
+}
+
+let actionFlash: number | undefined;
+
+/** Surface a refused action where the player is looking, not only in the log. */
+function flashAction(message: string): void {
+  if (!routeInfoEl) return;
+  routeInfoEl.textContent = message;
+  routeInfoEl.classList.add('error');
+  window.clearTimeout(actionFlash);
+  actionFlash = window.setTimeout(() => {
+    routeInfoEl.classList.remove('error');
+    // only clear our own message — a hover readout may have replaced it
+    if (routeInfoEl.textContent === message) {
+      routeInfoEl.textContent = 'Hover a tile to preview the route.';
+    }
+  }, 2600);
+}
+
+/** Readable version of the hover preview: target, cost, exposure. */
+function updateRouteInfo(
+  tile: { x: number; y: number } | null,
+  plan: ReturnType<Game['planRoute']>,
+): void {
+  if (!routeInfoEl) return;
+  routeInfoEl.classList.remove('error');
+  if (!tile || game.state.phase !== 'playing') {
+    routeInfoEl.textContent = 'Hover a tile to preview the route.';
+    return;
+  }
+  const s = game.state;
+  const floorTile = s.floor.tiles[tile.y * s.floor.width + tile.x];
+  const terminal = s.floor.terminals.find((t) => t.x === tile.x && t.y === tile.y);
+  const loot = s.floor.loot.find((l) => !l.taken && l.x === tile.x && l.y === tile.y);
+  const extraction = s.floor.extraction.x === tile.x && s.floor.extraction.y === tile.y;
+  const label = terminal
+    ? terminal.hacked
+      ? 'terminal · hacked'
+      : 'terminal'
+    : extraction
+      ? 'extraction'
+      : loot
+        ? 'intel cache'
+        : floorTile?.kind === 'door'
+          ? floorTile.open
+            ? 'open door'
+            : 'shut door'
+          : floorTile?.kind === 'wall'
+            ? 'wall'
+            : floorTile?.kind === 'cover'
+              ? 'cover'
+              : floorTile?.kind === 'vent'
+                ? 'vent'
+                : '';
+  const where = `Tile ${tile.x},${tile.y}${label ? ` · ${label}` : ''}`;
+
+  if (tile.x === s.player.x && tile.y === s.player.y) {
+    routeInfoEl.textContent = `${where} · you are here`;
+    return;
+  }
+  if (!plan || !plan.length) {
+    routeInfoEl.textContent = `${where} · no route`;
+    return;
+  }
+
+  const dash = Math.min(plan.length, BALANCE.operative.sprintDistance);
+  const cost = hud.sprintMode
+    ? `${BALANCE.apCost.sprint} AP (sprint · ${dash} tile${dash === 1 ? '' : 's'})`
+    : `${plan.apRequired} AP`;
+  const exposure =
+    plan.exposedSteps > 0
+      ? `${plan.exposedSteps} exposed${plan.mostDangerousStep ? ` · watched by ${plan.mostDangerousStep.watchedBy.join(', ')}` : ''}`
+      : 'unseen';
+  routeInfoEl.textContent = `${where} · ${plan.length} step${plan.length === 1 ? '' : 's'} · ${cost} · ${exposure}`;
 }
 
 /**
@@ -123,7 +201,8 @@ window.addEventListener('keydown', (event) => {
   const move = MOVE_KEYS[event.key];
   if (move) {
     event.preventDefault();
-    report(game.move(move[0], move[1]));
+    // sprint applies to the keyboard exactly as it does to clicking a tile
+    report(hud.sprintMode ? game.sprint(move[0], move[1]) : game.move(move[0], move[1]));
     return;
   }
 
@@ -161,7 +240,7 @@ window.addEventListener('keydown', (event) => {
 // Big floors no longer shrink to fit, so the map can be larger than the canvas.
 // A press-and-move pans it; a press without movement is still a click.
 const drag = { active: false, moved: 0, lastX: 0, lastY: 0 };
-const DRAG_THRESHOLD = 4;
+const DRAG_THRESHOLD = 8;
 
 canvas.addEventListener('pointerdown', (event) => {
   drag.active = true;
@@ -194,6 +273,7 @@ canvas.addEventListener('pointermove', (event) => {
       renderer.panBy(dx, dy);
       renderer.hover = null;
       renderer.routePreview = null;
+      updateRouteInfo(null, null);
       return;
     }
   }
@@ -202,15 +282,18 @@ canvas.addEventListener('pointermove', (event) => {
   renderer.hover = tile;
   if (!tile || game.state.phase !== 'playing') {
     renderer.routePreview = null;
+    updateRouteInfo(null, null);
     return;
   }
   const plan = game.planRoute(tile.x, tile.y);
   renderer.routePreview = plan ? plan.steps : null;
+  updateRouteInfo(tile, plan);
 });
 
 canvas.addEventListener('pointerleave', () => {
   renderer.hover = null;
   renderer.routePreview = null;
+  updateRouteInfo(null, null);
 });
 
 canvas.addEventListener('click', (event) => {

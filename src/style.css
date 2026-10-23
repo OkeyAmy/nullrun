@@ -248,6 +248,25 @@ canvas {
   cursor: crosshair;
 }
 
+/* live hover readout: target tile, AP cost and who can see the route */
+.route-info {
+  flex: 0 0 auto;
+  padding: 5px 14px 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--cyan-dim);
+  background: rgba(9, 14, 20, 0.75);
+  border-top: 1px solid var(--line-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.route-info.error {
+  color: var(--red);
+}
+
 /* ---------- action bar ---------- */
 
 .actionbar {

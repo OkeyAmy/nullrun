@@ -125,6 +125,37 @@ test('a move costs exactly one action point and walls reject movement', () => {
   assert.equal(intoWall.ok, false, 'walking into a wall must fail');
 });
 
+test('keyboard sprint covers up to three tiles for one sprint cost', () => {
+  const game = sandboxGame();
+  game.state.ap = 3;
+  game.state.maxAp = 3;
+  const start = { ...game.state.player };
+
+  const dash = game.sprint(1, 0);
+  assert.equal(dash.ok, true);
+  assert.deepEqual(game.state.player, {
+    x: start.x + BALANCE.operative.sprintDistance,
+    y: start.y,
+  });
+  assert.equal(game.state.ap, 3 - BALANCE.apCost.sprint);
+
+  game.state.player = { x: 1, y: 2 };
+  game.state.ap = 3;
+  const wall = game.sprint(-1, 0);
+  assert.equal(wall.ok, false, 'a wall must stop the dash');
+  assert.deepEqual(game.state.player, { x: 1, y: 2 });
+  assert.equal(game.state.ap, 3, 'a refused sprint must not spend action points');
+});
+
+test('sprint is refused when the operative cannot pay for it', () => {
+  const game = sandboxGame();
+  game.state.ap = 1;
+  const refused = game.sprint(1, 0);
+  assert.equal(refused.ok, false);
+  assert.deepEqual(game.state.player, { x: 1, y: 2 });
+  assert.equal(game.state.ap, 1);
+});
+
 test('extraction is refused while data cores remain and allowed once they are gone', () => {
   const game = sandboxGame();
   game.state.floor.terminals = [{ id: 'core-0', x: 3, y: 2, kind: 'data', hacked: false }];

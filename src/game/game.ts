@@ -690,6 +690,61 @@ export class Game {
     };
   }
 
+  /**
+   * Sprint in a straight line — the keyboard counterpart of clicking a tile
+   * while the sprint toggle is on. Pays once for the whole dash and stops at
+   * the first wall or shut door, so it can never tunnel through the facility.
+   */
+  sprint(dx: number, dy: number): ActionResult {
+    const blocked = this.requirePlaying();
+    if (blocked) return blocked;
+    const s = this.state;
+    if ((dx === 0) === (dy === 0)) {
+      return { ok: false, message: 'Sprint needs one cardinal direction.' };
+    }
+
+    const apCost = BALANCE.apCost.sprint;
+    if (s.ap < apCost) {
+      return { ok: false, message: 'Not enough action points to sprint. End the turn.' };
+    }
+
+    const phasing = hasImplant(s.implants, 'phaselattice');
+    const steps: Vec[] = [];
+    const cursor = { ...s.player };
+    for (let i = 0; i < BALANCE.operative.sprintDistance; i++) {
+      const next = { x: cursor.x + Math.sign(dx), y: cursor.y + Math.sign(dy) };
+      if (!inBounds(s.floor, next.x, next.y)) break;
+      const tile = tileAt(s.floor, next.x, next.y);
+      if (tile?.kind === 'door' && !tile.open && !phasing) break;
+      if (!isWalkable(s.floor, next.x, next.y) && !(phasing && tile?.kind === 'door')) break;
+      cursor.x = next.x;
+      cursor.y = next.y;
+      steps.push({ ...cursor });
+    }
+
+    if (!steps.length) {
+      return { ok: false, message: 'Sprint blocked — a wall or shut door is ahead.' };
+    }
+
+    this.spendAp(apCost);
+    s.playerFacing = { dx: Math.sign(dx), dy: Math.sign(dy) };
+    s.player = cursor;
+    this.fire('sprint');
+    const noise = hasImplant(s.implants, 'nullfield') ? 0 : BALANCE.noise.sprint;
+    if (noise > 0) {
+      this.emitNoise(cursor.x, cursor.y, noise);
+      this.log('operative', `Sprint noise at ${cursor.x},${cursor.y} (radius ${noise}).`);
+    }
+
+    updateOperativeVisibility(s.floor, s.player);
+    this.afterOperativeAction();
+    return {
+      ok: true,
+      message: `Sprinted ${steps.length} tile(s) to ${cursor.x},${cursor.y}.`,
+      detail: { steps: steps.length, position: { ...cursor } },
+    };
+  }
+
   toggleDoor(x: number, y: number): ActionResult {
     const blocked = this.requirePlaying();
     if (blocked) return blocked;
