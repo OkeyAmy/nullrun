@@ -121,6 +121,16 @@ body {
   color: var(--red);
 }
 
+.critical-flag {
+  margin-left: 6px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(255, 85, 98, 0.16);
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
 .meter {
   height: 3px;
   margin-top: 4px;
@@ -499,8 +509,8 @@ button.toggled {
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(4, 7, 11, 0.86);
-  backdrop-filter: blur(6px);
+  background: rgba(4, 7, 11, 0.72);
+  backdrop-filter: blur(3px);
   z-index: 20;
   padding: 24px;
 }
@@ -608,6 +618,10 @@ button.toggled {
 .stat-grid strong {
   font-size: 18px;
   color: var(--cyan);
+}
+
+.stat-grid strong.critical-value {
+  color: var(--red);
 }
 
 /* ---------- responsive ---------- */

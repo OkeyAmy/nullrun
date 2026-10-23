@@ -108,8 +108,10 @@ export class Hud {
       ${this.stat('Bandwidth', `${s.bandwidth}/${s.maxBandwidth}`)}
       ${this.stat('Cores left', String(this.game.dataCoresRemaining()))}
       ${this.stat('Intel', String(s.intelThisRun))}
-      <div class="stat alarm ${critical ? 'critical' : ''}">
-        <div class="stat-label">Alarm</div>
+      <div class="stat alarm ${critical ? 'critical' : ''}" data-testid="alarm-stat" data-critical="${critical}">
+        <div class="stat-label">Alarm ${
+          critical ? '<span class="critical-flag">critical</span>' : ''
+        }</div>
         <div class="stat-value">${s.alarm}%</div>
         <div class="meter"><span style="transform:scaleX(${alarmPct / 100})"></span></div>
       </div>
@@ -347,6 +349,10 @@ export class Hud {
         <p class="sub">${escapeHtml(s.endReason)}</p>
         <div class="stat-grid">
           <div><span>Floors cleared</span><strong>${won ? BALANCE.run.floors : s.floor.index}</strong></div>
+          <div><span>Turns</span><strong>${s.turn}</strong></div>
+          <div><span>Alarm</span><strong class="${s.alarm >= 60 ? 'critical-value' : ''}">${s.alarm}%${
+            s.alarm >= 60 ? ' · critical' : ''
+          }</strong></div>
           <div><span>Intel this run</span><strong>${s.intelThisRun}</strong></div>
           <div><span>Banked intel</span><strong>${s.bankedIntel}</strong></div>
           <div><span>Permanent</span><strong>${s.unlockedIds.length}</strong></div>

@@ -156,6 +156,29 @@ test('sprint is refused when the operative cannot pay for it', () => {
   assert.equal(game.state.ap, 1);
 });
 
+test('a refused hack points at the nearest un-hacked terminal', () => {
+  const game = sandboxGame();
+  game.state.floor.terminals = [
+    { id: 'core-0', x: 6, y: 2, kind: 'data', hacked: false },
+    { id: 'core-1', x: 2, y: 2, kind: 'data', hacked: true },
+  ];
+
+  const refused = game.hack();
+  assert.equal(refused.ok, false);
+  assert.match(refused.message, /nearest un-hacked terminal is 5 tiles away/);
+});
+
+test('a refused hack says when every terminal is already down', () => {
+  const game = sandboxGame();
+  game.state.floor.terminals = [
+    { id: 'core-0', x: 6, y: 2, kind: 'data', hacked: true },
+  ];
+
+  const refused = game.hack();
+  assert.equal(refused.ok, false);
+  assert.match(refused.message, /every terminal on this floor is already hacked/);
+});
+
 test('extraction is refused while data cores remain and allowed once they are gone', () => {
   const game = sandboxGame();
   game.state.floor.terminals = [{ id: 'core-0', x: 3, y: 2, kind: 'data', hacked: false }];

@@ -776,11 +776,24 @@ export class Game {
       ? candidates.find((t) => t.id === terminalId)
       : candidates[0];
     if (!terminal) {
+      if (terminalId) {
+        return { ok: false, message: `Terminal ${terminalId} is not adjacent (or already hacked).` };
+      }
+      // Point at the nearest one instead of leaving the player to guess which
+      // console on the floor is still live.
+      const nearest = s.floor.terminals
+        .filter((t) => !t.hacked)
+        .reduce<{ distance: number } | null>((best, t) => {
+          const distance = chebyshev(s.player, t);
+          return !best || distance < best.distance ? { distance } : best;
+        }, null);
       return {
         ok: false,
-        message: terminalId
-          ? `Terminal ${terminalId} is not adjacent (or already hacked).`
-          : 'No un-hacked terminal within reach.',
+        message: nearest
+          ? `No terminal in reach — nearest un-hacked terminal is ${nearest.distance} tile${
+              nearest.distance === 1 ? '' : 's'
+            } away.`
+          : 'No terminal in reach — every terminal on this floor is already hacked.',
       };
     }
     const cost = this.hackCost();

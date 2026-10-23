@@ -195,6 +195,9 @@ window.addEventListener('keydown', (event) => {
   if (!humanCanAct()) {
     // the agent is playing; let the human take the operative back with `C`
     if (event.key === 'c' || event.key === 'C') setMode('coop');
+    else if (MOVE_KEYS[event.key] || 'eEfFtTxX '.includes(event.key)) {
+      flashAction('Agent has control of the operative — press C to take over.');
+    }
     return;
   }
 
@@ -381,11 +384,10 @@ async function boot(): Promise<void> {
   // expose for debugging and for headless agent harnesses
   Object.assign(window, { nullrun: { game, tools, renderer, audio } });
 
-  // A refresh in this tab resumes the seat you left; a fresh visit asks again.
-  const nav = performance.getEntriesByType('navigation')[0] as
-    | PerformanceNavigationTiming
-    | undefined;
-  const saved = nav?.type === 'reload' ? rememberedMode() : null;
+  // Session storage is already scoped to this tab: a fresh visit has nothing
+  // saved, and a refresh (or returning to the page in the same tab) resumes the
+  // seat you picked.
+  const saved = rememberedMode();
   if (saved) setMode(saved);
 }
 
