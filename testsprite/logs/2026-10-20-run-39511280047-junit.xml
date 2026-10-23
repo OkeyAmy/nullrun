@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="testsprite:9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" tests="76" failures="0" errors="0" skipped="0" time="2449.884">
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with W and spend AP" testId="301de2d3-01da-4196-b340-166247fa89e9" runId="fce927e9-8c06-4deb-b40d-36392fa9e486" time="12.562">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="End turn with Space" testId="3753c3ff-5255-4b1d-b223-5acdbf67be61" runId="c5eecd6a-a76f-44f5-8b85-f2e2a0823c1a" time="13.44">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify alarm critical styling appears at the threshold" testId="87da54f4-b4e2-4bdb-8747-7b5750a6308d" runId="bf526e1b-cdd2-4791-b1db-24983d1c9dda" time="13.138">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Hover a tile to read its risk" testId="4b70fca8-c715-4e33-b6c3-aecb79d4779d" runId="9e8d6d32-88c7-4f22-9130-7bc17f37bf9f" time="14.244">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Drag on the board pans camera without moving operative" testId="9ec22811-8550-4755-86ad-ce5127c3ea19" runId="bfc55078-c63e-4351-bc7e-a27e4d6b7980" time="14.169">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with A and spend AP" testId="7f476ef4-3392-4a39-97eb-20719bd0633e" runId="030acf57-620d-42a1-a89b-3fd258fe21eb" time="14.461">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move to an adjacent tile by clicking" testId="40f4055b-2a01-48a7-b46b-cebc9e4214f2" runId="a0ff93ff-b84c-4230-8903-01fd115b1e01" time="14.93">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Hack a terminal with E" testId="677b1bcf-9aa3-47be-8f1f-18e73e994f0b" runId="00087222-4b64-4a97-a09c-e44fd5290c18" time="14.932">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Click distant tile follows a path over time" testId="72ae7252-2a6a-4482-ad0c-20549cab7a08" runId="17a9eba5-e217-4010-abbc-5e77d536dd05" time="14.647">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Click adjacent tile moves one step" testId="8d6ace83-b718-4d0b-98fe-0a3d8bd3344e" runId="4c234886-4506-4e9c-a8b9-a639c45d8dfe" time="14.99">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Toggle sprint with Shift" testId="1b357f60-c38c-4503-81cc-0186bdd09ee1" runId="4c07bee6-7275-48bd-93dc-4448c2dd2b36" time="14.992">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Run ends when alarm reaches 100%" testId="c2901c68-7b5f-4a8c-b8f2-de1d50ead324" runId="105ef744-8fbe-4ad9-85d3-20c3aec91c05" time="15.244">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify alarm rises after detection and is reflected in the HUD" testId="8fe9104c-cac7-47cd-9e48-e1e790a16510" runId="8cf38a4f-5e3e-43dd-844e-1ea5a40498fa" time="15.432">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Run ends when a guard catches the operative" testId="cc2d9564-76b2-4bcf-81fb-8c39c68a5c29" runId="55143407-828b-46a4-9445-42b0559697a6" time="14.249">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Prevent movement when AP is exhausted" testId="3600febb-14bb-4662-8ddb-aaf1ad1aa141" runId="328fd2ea-0192-4ba4-bc70-1fefea4cf467" time="15.504">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Restore mode and sound preference after reload" testId="60f65efb-681e-474c-bd43-f82dd697d0fa" runId="294c9f0a-afb6-4e6e-8daa-1a1747d95599" time="15.891">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take down a guard with T" testId="ac908237-be97-4a31-8dca-4f0ad0294af3" runId="50eb103f-66b6-40b5-9b11-4f94b7dd3810" time="15.688">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with sprint active" testId="c77d813c-9fed-46e7-932c-82b3d30732ef" runId="c5f2d550-be90-4840-8faf-f32fc3af5bca" time="15.691">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Read-only tool call does not change game state" testId="dc164389-4eda-445c-a95e-9c30d3f690b1" runId="7792acee-8745-4c52-b2da-f65b0a28ceb4" time="14.64">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify run failure occurs when alarm reaches maximum" testId="de2fe689-d5ac-4aeb-92eb-afa12b8c7ced" runId="f181d736-5386-447c-bd71-71743cfb82f1" time="15.589">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Changing play mode after a finished run is refused" testId="2bd07ef5-3d4c-49d2-848b-3f2ebd369d31" runId="9e831987-d3e8-4470-ba6e-5efee0945911" time="15.848">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Lift intel with F" testId="ea61c2df-870b-4a61-82b1-2b213827a525" runId="f67e0a9a-87ad-4996-be68-431a623575a1" time="14.894">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with S and spend AP" testId="eb0e0a17-c556-44e4-acbd-a3267d1725d2" runId="219f1cf1-1f00-4309-a2b5-61bcccc0a777" time="13.607">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move to an adjacent tile by clicking it" testId="efbd4180-c209-4166-8c9d-91ff60648ab9" runId="3e1fa841-27dd-4688-8019-ca7f1af83d5b" time="14.579">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Play controls are blocked after a run ends" testId="d28f9a1f-eb36-4478-a006-7f8313d562bc" runId="579ce194-c250-4218-900e-ccff58496fb2" time="16.034">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Remember play mode after reload" testId="33f6fdcc-cda4-43d2-bcbb-f1700a88dbb9" runId="4b13e994-84c7-478e-9de7-187ecd0703fe" time="16.389">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Extract with X when objective is complete" testId="d624d0fe-742e-4e2c-8e51-44e3649daa73" runId="3162eb20-4276-4afd-a42b-f28709543475" time="16.481">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Advance through a cleared floor via extraction" testId="a6893a2e-0984-4bb5-b816-d9a0bc43d714" runId="385bb774-cd36-49af-aae8-3317b7771199" time="17.162">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Start a new run from the end screen" testId="23040e30-1cea-447a-a6ce-4f603132d80e" runId="c2087f89-6941-4c9e-b0f9-6687d5b56721" time="17.979">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take control from agent mode and move" testId="fb25acfd-275d-4b8c-ba42-72944951e2d2" runId="944ece1d-7ee5-49f1-9ed0-38b367ba1a22" time="22.536">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Ignore movement keys when AP is insufficient" testId="f5e6325e-f373-4364-87a8-2a3293e3655a" runId="4c8214a3-4a81-4256-9df6-6bfc3f2b6124" time="22.696">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Pan the board by dragging (code)" testId="0e0c57cb-76d3-47f0-952c-6302b367f482" runId="050435a3-c103-4333-9f40-6ef7bed7cbca" time="22.539">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move one tile with keyboard (code)" testId="c2efe0d3-ffe2-4c31-bc54-b44bbd5f574a" runId="d8d88362-9607-4632-89f6-9daa01a11cdf" time="23.586">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Hack a terminal while adjacent to it (code)" testId="52668bb8-32e6-4a8a-947c-786e99fafd16" runId="2b397999-c4c4-439d-a521-bec163a7e88d" time="23.857">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Open sprint and move farther in a single turn (code)" testId="7933ff2e-3ebe-4c07-91df-15c12b935bb0" runId="a6e072b1-bfff-470a-a9a1-3f80454ebea9" time="23.639">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Bridge status and tool count are exposed (code)" testId="6deec06b-1d1f-4bf4-a484-c52cfd44fcf4" runId="694393eb-63dc-4f58-a710-5724f69b4994" time="23.86">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Walk a path to a distant tile by clicking (code)" testId="70902a5a-3ae2-466f-873f-44f9398378f3" runId="4b951793-1278-4a0a-b7cd-e7e5737ddd12" time="23.774">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Follow a path by clicking a distant tile (code)" testId="822a08f1-1939-4826-9e89-d32ba00cf45d" runId="1042c971-c157-460a-9691-8917e724b624" time="23.861">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take down an adjacent guard (code)" testId="970ea8bf-3eaa-469e-948c-0aa106b56093" runId="1e1e7232-b00d-48da-ae36-86c41dbb9f4a" time="24.36">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Toggle an adjacent door by clicking (code)" testId="1f9c8b28-f865-4063-a72a-5b95a562e334" runId="fea4c711-c20a-4885-914c-ab461a6d4249" time="24.244">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Toggle sprint state with the shortcut action (code)" testId="2e76a409-031e-4cb6-84cf-1c7b5d408f22" runId="444c6848-2b60-47bd-a301-771e4aa5a71e" time="24.417">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Lift intel from loot (code)" testId="3162d38d-b237-4297-95ad-3a0a8453a509" runId="036af72c-c60f-4881-a29e-6f4c8dd38e57" time="24.358">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Click adjacent door toggles instead of moving onto it (code)" testId="7d26b780-1cde-4364-92da-4385212cfce1" runId="4309ffa2-597f-4341-b6bb-fb098dbe62ea" time="24.275">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Failed run records the failure reason in the log (code)" testId="6a9d8f4c-a84c-4b73-97ef-d4217d72b22c" runId="e09b7ca1-2292-4da7-b798-fd3524d8fe40" time="24.158">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Toggle an adjacent door by clicking it (code)" testId="b2feccdd-352a-44ec-b96b-34a705336643" runId="1253617c-f6a4-40b9-8a9a-0c7a1092eecd" time="24.492">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify core collection updates the cores left stat (code)" testId="22e3d752-275c-4a3f-837a-c0ac0c359062" runId="d55a9811-35bf-4421-bb64-50e9d3666717" time="24.357">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Pan the camera by dragging the board (code)" testId="146f3135-c3c8-44db-aaa7-af05c5d02b6b" runId="d9e38174-0c1e-4b96-82c7-d36c117e51b4" time="24.741">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Extraction remains gated until all cores are collected (code)" testId="5784fa97-8a5d-4dbb-8eb0-2ead9362ae86" runId="c5ada47d-0af7-4cfc-b8b0-bc9975f3d904" time="25.34">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Complete the full five-floor run (code)" testId="88e30e2b-8bb4-45d4-b45b-c5fe61788fee" runId="4b92baff-5dd1-4226-8a5d-8319d0933947" time="25.586">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Block movement when action points are exhausted (code)" testId="1fbbfb34-dce8-4b99-a4e5-4ec340e0ab04" runId="9fb2c5ee-5438-4024-8a8a-c9e6b472c6b3" time="25.338">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Advance to the next floor after clearing a floor (code)" testId="1b2e49d5-2066-4b33-b160-6c5671627bb2" runId="08406876-fc07-4c46-bf12-c7fd24d0c094" time="26.268">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Advance to the next floor after clearing a floor (code)" testId="19cd58c4-f315-4bf0-a7e3-04274d614491" runId="aeae1076-9843-49ea-b69b-524e08b6780b" time="26.164">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Extract after completing the floor objective (code)" testId="d1ecb8c5-4d0b-429b-b634-239373ffff30" runId="6f0be39b-6652-40b0-8e07-4c1525c0892a" time="29.339">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Choose agent mode and enter the run" testId="4e76d668-3cbf-4e3e-b404-3c72c0ffc3cf" runId="ecf843a5-83f7-44ed-a68d-8ee98c4066d7" time="39.208">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Begin infiltration with Enter from briefing" testId="e91d2da4-82c8-45eb-a870-5906baaf3b09" runId="e26fa3a1-2845-40b1-9ebe-72b057e5e4c7" time="39.639">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Start the run from the briefing with Enter" testId="751003b7-18ac-4a57-a262-4de53726af42" runId="d100037f-75fc-4944-a112-01616d722184" time="48.969">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Refuse movement while an overlay is shown" testId="c55efadb-296a-4449-8ada-edb160147cd8" runId="56f7440e-0722-4e94-890a-7bf030eba389" time="49.205">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Human mode shows briefing before infiltration" testId="34531575-d13a-4b4a-806e-f0538c4d12ed" runId="51ece249-f68e-4649-bc34-71ce115bf8af" time="49.208">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Agent mode exposes control handoff UI" testId="96bf189d-96be-46bc-8908-f39edc5bf093" runId="081d2890-78e2-41a7-8f67-1fe466cdb232" time="48.967">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify HUD stats display on mission start" testId="3e9c7877-6c75-41a0-b281-813af4043923" runId="5afa0805-cb7d-4cad-bf1f-751a50c1bf02" time="49.726">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take control with C in agent mode" testId="a6098dea-dccb-41d7-a82b-f675e78d8d8e" runId="bca317e2-b5f7-44b7-8734-320dbdea66f7" time="54.867">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take control returns human operative actions" testId="6c6c35fb-0a9f-4ef4-8737-13ac0078b973" runId="4961ac01-f094-494d-b5b0-83cef9138efe" time="55.337">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Choose human mode, begin infiltration, and start play" testId="8efe9fed-2037-4675-8d38-d6c2cc2d2c76" runId="614ad5ce-ab93-4c98-b01e-04fc966a691a" time="56.838">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Ignore movement keys while briefing is shown" testId="fa887087-eac2-4c75-a912-3de822f4dc6c" runId="28619bad-f4e7-4cf8-9dbf-baaac0b7f653" time="57.403">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with D and spend AP" testId="4c2c25b1-199c-4cd6-b18a-33ae9b324f1b" runId="d108d6f4-f6b7-428f-bdc5-3560a066ebda" time="58.493">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Play mode choice persists after reload" testId="fe1b063c-7581-440d-9e57-d4bd2ccbcedd" runId="daf8d1c9-9473-4a22-8afb-2998239d8bed" time="60.964">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Refuse keyboard movement while the briefing overlay is shown" testId="944bd5da-78bb-4fbc-983a-50fe75955a74" runId="465150d0-c47e-40bc-a713-408c605f3bf4" time="63.317">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move one tile with a keyboard direction key" testId="b065407a-6273-4dec-a36e-a197c80e0e5e" runId="94bab750-793b-4bde-a5c7-0efd6b85da29" time="64.157">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Sound toggle persists after reload" testId="8c0921fa-da81-406a-a6b5-6a451bb77964" runId="2db9884b-9ccb-4a6c-8194-a273e278b049" time="63.999">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify turn counter increments after ending a turn" testId="29f494af-3e76-45e3-8a83-e706a0e80e93" runId="0ac3cc93-12c3-4983-a36a-0ec81b5bd421" time="71.246">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify action points decrease with actions and reset on next turn" testId="182f47c5-2d34-45f0-8549-ad0f64df46ca" runId="a5590749-fd88-472f-b453-cf9f8468d109" time="73.185">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="End the turn with the keyboard shortcut" testId="2a824a24-bb79-41a6-af8d-34d8f5a38333" runId="5d7f731b-0264-432d-ba4c-8a75d32a8034" time="75.442">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify HUD stats remain visible during active play" testId="ace8f16f-e2fe-48f4-8bd4-fd88224f615d" runId="6f2610a8-6f36-469d-8873-df60ff97bafb" time="79.916">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Ignore disabled action shortcut keys" testId="476a94e9-9d99-4c0f-b0ef-e2928d7a65ac" runId="4a352ef5-c462-4050-b17c-7338e557863c" time="83.133">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Keep sound preference after reload" testId="1a5470bd-6d5a-4de7-956c-2e2234d90d45" runId="7e6fad6d-7a08-40d1-aa2d-891570327ef3" time="88.985">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Prevent movement while overlay is shown" testId="74e7e532-fa56-4a78-8bfc-345d69c60df5" runId="1f5e28ed-3c65-4920-b17b-02851fa0b0ee" time="92.489">
+    </testcase>
+  </testsuite>
+</testsuites>

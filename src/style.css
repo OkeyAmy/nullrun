@@ -121,6 +121,16 @@ body {
   color: var(--red);
 }
 
+.critical-flag {
+  margin-left: 6px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(255, 85, 98, 0.16);
+  color: var(--red);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
 .meter {
   height: 3px;
   margin-top: 4px;
@@ -246,6 +256,25 @@ canvas {
   display: block;
   image-rendering: pixelated;
   cursor: crosshair;
+}
+
+/* live hover readout: target tile, AP cost and who can see the route */
+.route-info {
+  flex: 0 0 auto;
+  padding: 5px 14px 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  color: var(--cyan-dim);
+  background: rgba(9, 14, 20, 0.75);
+  border-top: 1px solid var(--line-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.route-info.error {
+  color: var(--red);
 }
 
 /* ---------- action bar ---------- */
@@ -480,8 +509,8 @@ button.toggled {
   inset: 0;
   display: grid;
   place-items: center;
-  background: rgba(4, 7, 11, 0.86);
-  backdrop-filter: blur(6px);
+  background: rgba(4, 7, 11, 0.72);
+  backdrop-filter: blur(3px);
   z-index: 20;
   padding: 24px;
 }
@@ -589,6 +618,10 @@ button.toggled {
 .stat-grid strong {
   font-size: 18px;
   color: var(--cyan);
+}
+
+.stat-grid strong.critical-value {
+  color: var(--red);
 }
 
 /* ---------- responsive ---------- */
