@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="testsprite:9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" tests="77" failures="2" errors="0" skipped="50" time="569.663">
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with sprint active" testId="c77d813c-9fed-46e7-932c-82b3d30732ef" runId="a5aadd01-0d21-4d3b-9f86-050816314d02" time="8.755">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move one tile with keyboard (code)" testId="c2efe0d3-ffe2-4c31-bc54-b44bbd5f574a" runId="6cb9794f-4c6e-41bc-92f3-0bb6e1908057" time="8.61">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Drag on the board pans camera without moving operative" testId="9ec22811-8550-4755-86ad-ce5127c3ea19" runId="4cdba628-c896-423c-a65c-6ff20e54c85a" time="9.282">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Lift intel with F" testId="ea61c2df-870b-4a61-82b1-2b213827a525" runId="448b61c6-4ff4-4949-9d70-c7289f65ffa7" time="8.937">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Run ends when alarm reaches 100%" testId="c2901c68-7b5f-4a8c-b8f2-de1d50ead324" runId="4ef4eefe-db1f-421d-a143-d72b8cb277c6" time="9.401">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take down an adjacent guard (code)" testId="970ea8bf-3eaa-469e-948c-0aa106b56093" runId="054aee6d-daad-40a8-a3cb-c51b0d773608" time="9.661">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with S and spend AP" testId="eb0e0a17-c556-44e4-acbd-a3267d1725d2" runId="fe6f3804-5aae-4a0e-9997-540891ac2067" time="10.183">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move to an adjacent tile by clicking it" testId="efbd4180-c209-4166-8c9d-91ff60648ab9" runId="65d1bd24-aa3f-4703-945e-5b9d6ec45c4e" time="10.297">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Extract with X when objective is complete" testId="d624d0fe-742e-4e2c-8e51-44e3649daa73" runId="10ce995e-2740-4532-a24f-af3c643e85d2" time="10.776">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Read-only tool call does not change game state" testId="dc164389-4eda-445c-a95e-9c30d3f690b1" runId="b27715af-8caf-43b4-b541-0d824c11525c" time="10.63">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify run failure occurs when alarm reaches maximum" testId="de2fe689-d5ac-4aeb-92eb-afa12b8c7ced" runId="85d26941-ebed-45eb-9352-f364c3b288b7" time="10.832">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take control from agent mode and move" testId="fb25acfd-275d-4b8c-ba42-72944951e2d2" runId="077c44ee-9a31-4b63-8d96-1fe164888394" time="10.782">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take down a guard with T" testId="ac908237-be97-4a31-8dca-4f0ad0294af3" runId="e5fc4733-6de6-43f2-b77f-0de15c88e32f" time="10.922">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Run ends when a guard catches the operative" testId="cc2d9564-76b2-4bcf-81fb-8c39c68a5c29" runId="4a04611c-5c7e-4e14-b2c0-7e042bdd1c05" time="11.183">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Ignore movement keys when AP is insufficient" testId="f5e6325e-f373-4364-87a8-2a3293e3655a" runId="ceb8dc22-6820-4ccf-a9ce-04a268f03303" time="11.258">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Play controls are blocked after a run ends" testId="d28f9a1f-eb36-4478-a006-7f8313d562bc" runId="c3e3c246-873b-4467-8efb-35f57e02e664" time="11.479">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Advance through a cleared floor via extraction" testId="a6893a2e-0984-4bb5-b816-d9a0bc43d714" runId="68fcac21-c173-4542-a574-fb76be956228" time="11.669">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Extract after completing the floor objective (code)" testId="d1ecb8c5-4d0b-429b-b634-239373ffff30" runId="83fc8591-6b8c-4648-8168-35755bf52d1d" time="13.04">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Toggle an adjacent door by clicking it (code)" testId="b2feccdd-352a-44ec-b96b-34a705336643" runId="1f9d6afe-edea-4fa7-b3a3-06359877187c" time="24.79">
+      <failure message="failed" type="failed">status: failed
+runId: 1f9d6afe-edea-4fa7-b3a3-06359877187c</failure>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Agent mode exposes control handoff UI" testId="96bf189d-96be-46bc-8908-f39edc5bf093" runId="047d622c-801f-4d82-808a-96fabe4d38b6" time="32.492">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Begin infiltration with Enter from briefing" testId="e91d2da4-82c8-45eb-a870-5906baaf3b09" runId="c2af645f-a3d0-483b-b667-20fa620a7e77" time="32.894">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Refuse movement while an overlay is shown" testId="c55efadb-296a-4449-8ada-edb160147cd8" runId="cf568e5d-b31a-4fc2-b3c1-591e76dd2d8f" time="33.873">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Ignore movement keys while briefing is shown" testId="fa887087-eac2-4c75-a912-3de822f4dc6c" runId="e4ce79a8-f515-41bb-b8f9-e2ba01ef798f" time="34.394">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take control with C in agent mode" testId="a6098dea-dccb-41d7-a82b-f675e78d8d8e" runId="38f83079-fe1a-42c3-8afd-5f42927286d4" time="36.562">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Play mode choice persists after reload" testId="fe1b063c-7581-440d-9e57-d4bd2ccbcedd" runId="f029cf11-fbc7-423c-ad10-67bc8daf31af" time="49.928">
+      <failure message="failed" type="failed">status: failed
+runId: f029cf11-fbc7-423c-ad10-67bc8daf31af</failure>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move one tile with a keyboard direction key" testId="b065407a-6273-4dec-a36e-a197c80e0e5e" runId="6cec6a57-f2dd-4b9c-8a5a-737cd1947053" time="56.097">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify HUD stats remain visible during active play" testId="ace8f16f-e2fe-48f4-8bd4-fd88224f615d" runId="a241e076-f0f6-4efb-9122-5059d6c2409a" time="80.936">
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Pan the board by dragging (code)" testId="0e0c57cb-76d3-47f0-952c-6302b367f482" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Pan the camera by dragging the board (code)" testId="146f3135-c3c8-44db-aaa7-af05c5d02b6b" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify action points decrease with actions and reset on next turn" testId="182f47c5-2d34-45f0-8549-ad0f64df46ca" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Advance to the next floor after clearing a floor (code)" testId="19cd58c4-f315-4bf0-a7e3-04274d614491" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Keep sound preference after reload" testId="1a5470bd-6d5a-4de7-956c-2e2234d90d45" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Advance to the next floor after clearing a floor (code)" testId="1b2e49d5-2066-4b33-b160-6c5671627bb2" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Toggle sprint with Shift" testId="1b357f60-c38c-4503-81cc-0186bdd09ee1" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Lift intel from loot" testId="1bf02839-3c42-4889-9181-e2c7a8ffb68c" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Toggle an adjacent door by clicking (code)" testId="1f9c8b28-f865-4063-a72a-5b95a562e334" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Block movement when action points are exhausted (code)" testId="1fbbfb34-dce8-4b99-a4e5-4ec340e0ab04" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify core collection updates the cores left stat (code)" testId="22e3d752-275c-4a3f-837a-c0ac0c359062" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Start a new run from the end screen" testId="23040e30-1cea-447a-a6ce-4f603132d80e" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify turn counter increments after ending a turn" testId="29f494af-3e76-45e3-8a83-e706a0e80e93" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="End the turn with the keyboard shortcut" testId="2a824a24-bb79-41a6-af8d-34d8f5a38333" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Changing play mode after a finished run is refused" testId="2bd07ef5-3d4c-49d2-848b-3f2ebd369d31" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Toggle sprint state with the shortcut action (code)" testId="2e76a409-031e-4cb6-84cf-1c7b5d408f22" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with W and spend AP" testId="301de2d3-01da-4196-b340-166247fa89e9" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Lift intel from loot (code)" testId="3162d38d-b237-4297-95ad-3a0a8453a509" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Remember play mode after reload" testId="33f6fdcc-cda4-43d2-bcbb-f1700a88dbb9" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Human mode shows briefing before infiltration" testId="34531575-d13a-4b4a-806e-f0538c4d12ed" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Prevent movement when AP is exhausted" testId="3600febb-14bb-4662-8ddb-aaf1ad1aa141" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="End turn with Space" testId="3753c3ff-5255-4b1d-b223-5acdbf67be61" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify HUD stats display on mission start" testId="3e9c7877-6c75-41a0-b281-813af4043923" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move to an adjacent tile by clicking" testId="40f4055b-2a01-48a7-b46b-cebc9e4214f2" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Ignore disabled action shortcut keys" testId="476a94e9-9d99-4c0f-b0ef-e2928d7a65ac" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Hover a tile to read its risk" testId="4b70fca8-c715-4e33-b6c3-aecb79d4779d" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with D and spend AP" testId="4c2c25b1-199c-4cd6-b18a-33ae9b324f1b" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Choose agent mode and enter the run" testId="4e76d668-3cbf-4e3e-b404-3c72c0ffc3cf" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Hack a terminal while adjacent to it (code)" testId="52668bb8-32e6-4a8a-947c-786e99fafd16" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Extraction remains gated until all cores are collected (code)" testId="5784fa97-8a5d-4dbb-8eb0-2ead9362ae86" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Restore mode and sound preference after reload" testId="60f65efb-681e-474c-bd43-f82dd697d0fa" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Hack a terminal with E" testId="677b1bcf-9aa3-47be-8f1f-18e73e994f0b" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Failed run records the failure reason in the log (code)" testId="6a9d8f4c-a84c-4b73-97ef-d4217d72b22c" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Take control returns human operative actions" testId="6c6c35fb-0a9f-4ef4-8737-13ac0078b973" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Bridge status and tool count are exposed (code)" testId="6deec06b-1d1f-4bf4-a484-c52cfd44fcf4" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Walk a path to a distant tile by clicking (code)" testId="70902a5a-3ae2-466f-873f-44f9398378f3" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Click distant tile follows a path over time" testId="72ae7252-2a6a-4482-ad0c-20549cab7a08" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Prevent movement while overlay is shown" testId="74e7e532-fa56-4a78-8bfc-345d69c60df5" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Start the run from the briefing with Enter" testId="751003b7-18ac-4a57-a262-4de53726af42" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Open sprint and move farther in a single turn (code)" testId="7933ff2e-3ebe-4c07-91df-15c12b935bb0" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Click adjacent door toggles instead of moving onto it (code)" testId="7d26b780-1cde-4364-92da-4385212cfce1" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Move with A and spend AP" testId="7f476ef4-3392-4a39-97eb-20719bd0633e" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Follow a path by clicking a distant tile (code)" testId="822a08f1-1939-4826-9e89-d32ba00cf45d" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify alarm critical styling appears at the threshold" testId="87da54f4-b4e2-4bdb-8747-7b5750a6308d" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Complete the full five-floor run (code)" testId="88e30e2b-8bb4-45d4-b45b-c5fe61788fee" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Sound toggle persists after reload" testId="8c0921fa-da81-406a-a6b5-6a451bb77964" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Click adjacent tile moves one step" testId="8d6ace83-b718-4d0b-98fe-0a3d8bd3344e" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Choose human mode, begin infiltration, and start play" testId="8efe9fed-2037-4675-8d38-d6c2cc2d2c76" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Verify alarm rises after detection and is reflected in the HUD" testId="8fe9104c-cac7-47cd-9e48-e1e790a16510" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+    <testcase classname="9f2ff1bd-24e6-4c98-9511-4f9ebc60be4d" name="Refuse keyboard movement while the briefing overlay is shown" testId="944bd5da-78bb-4fbc-983a-50fe75955a74" time="0">
+      <skipped message="Insufficient credits: 25 credit(s) required. Top up your credit balance at https://www.testsprite.com/dashboard-v3/o/39e7cea1-fc6b-516e-9626-22d343c9ad30/settings/billing or upgrade your plan at https://www.testsprite.com/pricing, then retry. (not dispatched)"/>
+    </testcase>
+  </testsuite>
+</testsuites>
